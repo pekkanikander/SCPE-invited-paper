@@ -1,0 +1,146 @@
+%%
+%% This is file 'scpe2013.tex', 
+%% An invited paper with siam macros for use with LaTeX 2e, 
+%% by Paul Duggan for the Society for Industrial and Applied
+%% Mathematics, October 1, 1995, Version 1.0
+%% 
+
+\documentclass[draft,a4paper]{siamltex}
+
+\title{{ELL-i}: A scalable and inexpensive platform for fixed things}
+
+\author{Pekka Nikander \and Vaddina Kameswar Rao\thanks{University of Turku}
+  \and Hannu Tenhunen\thanks{Kungliga Tekniska H\"{o}gskolan, Stockholm}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The Internet of Things (IoT) vision is enticing; each and every
+``thing'' in the world is expected to be eventually connected to the
+Internet.  In most of the IoT research, the focus has been in enabling
+movable things to communication, including phones, tablets, RFID tags,
+watches, and jewelry, to name but a few.  In such an approach, the
+things are expected to have their own batteries or receive temporary
+power over short distance electro-magnetic field, and the
+communications is necessarily expected to take place over radio.
+However, this approach has also dominated the more fixed side of the
+IoT research, including a large fraction on the work on stationary
+sensors and actuators, focusing also there on battery-based operations
+and wireless communication. 
+
+In this invited paper, we introduce an alternative view to the world
+of stationary things.  We argue that a large majority of the fixed or
+stationary things would benefit from being permanently powered using
+wireline connections, and while doing so, it becomes natural to use
+the same wires also for their communication needs.  We introduce the
+ELL-i platform, a new open source initiative for provide a low-cost
+flexible prototyping and production platform for extensible,
+Power-over-Ethernet based smart appliances.  We describe the first
+ELL-i prototyping board and briefly describe the planned technical
+roadmap, a number of application concepts, and discuss the novel
+business model. 
+\end{abstract}
+
+\begin{keywords} 
+internet of things, direct current power transmission, power over
+Ethernet, TBD
+\end{keywords}
+
+\pagestyle{myheadings}
+\thispagestyle{plain}
+\markboth{Nikander, Rao, and Tenhunen}{ELL-i}
+
+
+\section{Introduction}
+
+\begin{itemize}
+  \item Refer to \cite{Atzori20102787}, define IoT
+  \item Find at least two references that discuss IoT power; [1]
+    discusses only RFID and battery, see their table 1. 
+  \item the field: fixed appliances, lighting, actuators, sensors
+  \item the problem of power: battery or powerline
+  \item the ELL-i solution: PoE over ubiquitous CAT5 (or even CAT3),
+    flexible, open source, inexpensive 
+\end{itemize}
+
+The rest of this paper is organised as follows.  First, in
+Section~\ref{sec:related} TBD.
+ 
+\section{Related work}
+\label{sec:related}
+
+\begin{itemize}
+  \item relevant references: here I will need your group's help to gather these
+  \item powering solutions in IoT
+  \item any other similar PoE platforms: Arduino PoE, etc
+    \begin{itemize}
+    \item difference from these
+    \end{itemize}
+  \item PoE
+    \begin{itemize}
+    \item 802.3af, 802.3at, non-standard solutions to up to 65W or so
+    \end{itemize}
+\end{itemize}
+ 
+\section{Platform architecture}
+\label{sec:architecture}
+
+\begin{itemize}
+  \item architectural figure
+  \item architecture explained
+  \item current implementation
+  \item plans for the next implementation round
+  \item brief discussion about the design choices
+\end{itemize}
+ 
+\section{Application examples}
+\label{sec:examples}
+
+\begin{itemize}
+  \item illumination: LEDs and other low-power lamps
+  \item show lighting
+  \item flexible retail lighting
+  \item existing protocols: DALI, DMX, ...
+  \item building and industrial automation
+  \item description of the technical challenges here: reliability, ...
+  \item education and prototyping
+    \begin{itemize}
+    \item brief explanation of the experiences in Grenoble
+    \end{itemize}
+  \item ...
+\end{itemize}
+ 
+\section{Business model}
+\label{sec:business}
+
+\begin{itemize}
+  \item open source co-op
+  \item contribution incentive struct
+  \item licensing model
+\end{itemize}
+ 
+\section{Ongoing work}
+\label{sec:ongoing}
+
+\begin{itemize}
+  \item ability to use other wiring than CAT3/CAT6
+  \item RTOS
+  \item flashing over Ethernet
+  \item smooth path from Arduino IDE to a more advanced environment
+    (Eclipse/
+\end{itemize}
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+\section*{Acknowledgments}
+
+The authors would like to TBD.
+
+\bibliography{scpe2013}{}
+\bibliographystyle{plain}
+
+\end{document} 
+
