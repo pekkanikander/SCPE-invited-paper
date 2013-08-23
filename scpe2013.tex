@@ -94,23 +94,135 @@ Section~\ref{sec:related} TBD.
   \item plans for the next implementation round
   \item brief discussion about the design choices
 \end{itemize}
+
+In this section, we describe the ELL-i technical architecture in
+sufficient detail to ground the following discussion; for further
+details, please refer to the open source design files at
+\hbox{\tt http://www.github.com/Ell-i}.
+First, we describe the overall technical architecture in a
+bottom-up-fashion, including hardware, firmware, and the forthcoming
+could platform.  After that, we introduce the current
+implementation and the plans for the next hardware implementation.  We
+conclude the section with a brief discussion of the design choices
+made so far.
+
+\subsection{Overall technical architecture}
+
+\begin{itemize}
+  \item Hardware
+    \begin{itemize}
+    \item Smarts -- the MCU
+    \item Communications -- Ethernet
+    \item Power -- Power-over-Ethernet
+    \item ``Thingyness'' -- I/O subsystem
+    \end{itemize}
+  \item Programming environments
+    \begin{itemize}
+    \item Eclipse and XCode
+    \item Emacs and make
+    \item Compiler optimizations
+    \end{itemize}
+  \item Firmware -- on the board
+    \begin{itemize}
+    \item APIs
+    \item RTOS and HAL
+    \item Internet communications
+    \item Optional build-in webserver
+    \end{itemize}
+  \item Cloud -- in the Internet
+    \begin{itemize}
+    \item Registration
+    \item Monitoring
+    \item Remote updates
+    \item Community
+    \end{itemize}
+\end{itemize}
+
+\subsection{Current implementation}
+
+\begin{itemize}
+  \item Hardware
+    \begin{itemize}
+    \item STM32F051 Cortex-M0 MCU
+    \item Microchip ENC29J60 based Ethernet
+    \item Linear LTXXXX based PoE
+    \item Arduino compatible I/O subsystem
+    \item Plastic 3D printed case
+    \end{itemize}
+  \item Arduino IDE
+    \begin{itemize}
+    \item API limitations
+    \item compiler optimisations
+    \end{itemize}
+\end{itemize}
+
+\subsection{The next version in the works}
+
+
+\begin{itemize}
+  \item Overall goal: Help people to kickstart from nothign to Arduino
+    compatible, and then from Arduino compatible to IDE and real hardware
+    development.
+  \item Hardware
+    \begin{itemize}
+    \item 2-PCB ``sandwitch'' system; reasons why
+    \item Support for 12-60V DC in
+    \item Support form STM32F051 and STM32F407 (or similar)
+    \item PCB support for RTC, OpAmps, level shifters, and driver FETs
+    \item Mechanical enhancements
+    \item Metal case
+    \end{itemize}
+  \item Software
+    \begin{itemize}
+    \item ChibiOS
+    \item uIP
+    \item Ibisense cloud integration
+    \item Remote updates
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Design choices}
  
+\begin{itemize}
+  \item Primary goal: *Low-cost* platform for PoE devices.
+    \begin{itemize}
+    \item Low-end ARM Cortex-M series
+    \item Low-end Ethernet
+    \item Connectors
+    \item Mechanics
+    \item ChibiOS
+    \item Protocols
+    \item Cloud-side
+    \end{itemize}
+\end{itemize}
+
 \section{Application examples}
 \label{sec:examples}
 
 \begin{itemize}
   \item illumination: LEDs and other low-power lamps
-  \item show lighting
-  \item flexible retail lighting
-  \item existing protocols: DALI, DMX, ...
+    \begin{itemize}
+    \item show lighting
+    \item flexible retail lighting
+    \item existing protocols: DALI, DMX, ...
+    \end{itemize}
   \item building and industrial automation
-  \item description of the technical challenges here: reliability, ...
+    \begin{itemize}
+    \item description of the technical challenges here: reliability, ...
+    \end{itemize}
   \item education and prototyping
     \begin{itemize}
     \item brief explanation of the experiences in Grenoble
     \end{itemize}
   \item ...
 \end{itemize}
+
+\subsection{Illumination}
+
+\subsection{Automation}
+
+\subsection{Education}
  
 \section{Business model}
 \label{sec:business}
