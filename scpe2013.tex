@@ -115,34 +115,75 @@ made so far.
 
 \subsection{Overall technical architecture}
 
+The ELL-i platform consists of a hardware architecture, a runtime
+(firmware), cloud-based components, and support for a set of
+programming environments.  The basic architecture is depicted in
+\ref{fig:arch}.
+
+XXX insert figure.
+
+The hardware architecture is based on combining power and
+communications on a single cable, making both of them available to
+applications.  In practise, the current implementation is based on the
+IEEE 802.3at Power-over-Ethernet standard, which is an economic
+solution when the power consumption is roughly in the 1--100 Watts
+range.  In the long run, we expect to expand the power range to both
+smaller and higher power levels; for example, there are no technical
+reasons why Power-over-Ethernet could not be applied to thicker wires
+and higher currents.
+
+The main goal of the runtime and the cloud components is make it easy
+to provide connectivity for the appliances.  Hence, the goal of the
+runtime is to package TCP/IP based protocols, such as HTTP~\cite{HTTP}
+and CoAP~\cite{CoAP} in an easy-to-use way.  As it is undesirable to
+perform packet processing in an interrupt context and as many of the
+protocols depend on timeouts, abstracting the protocol processing away
+from the runtime API requires some kind of threading, either in the
+``scouts honour'' style (as in e.g. Contiki~\cite{Contiki-scheduler})
+or in a proper pre-emptive manner.  At this writing it is still an
+open question which variant we will primarily support.
+
+As ELL-i is positioned as an easy-to-start platform, the main goal in
+the programming environment area is to make it easy to start with the
+ELL-i platform.  Hence, we have focused on providing an Arduino IDE
+extension that allows Arduino skills to be readily applied on ELL-i.
+However, we also realise that the default Arduino runtime is geared
+for hobbyists.  Therefore we will also support XCode and Eclipse, most
+probably by adopting the existing Arduino plugins.
+
+\subsubsection{Hardware}
+
 \begin{itemize}
-  \item Hardware
-    \begin{itemize}
-    \item Smarts -- the MCU
-    \item Communications -- Ethernet
-    \item Power -- Power-over-Ethernet
-    \item ``Thingyness'' -- I/O subsystem
-    \end{itemize}
-  \item Programming environments
-    \begin{itemize}
-    \item Eclipse and XCode
-    \item Emacs and make
-    \item Compiler optimizations
-    \end{itemize}
-  \item Firmware -- on the board
-    \begin{itemize}
-    \item APIs
-    \item RTOS and HAL
-    \item Internet communications
-    \item Optional build-in webserver
-    \end{itemize}
-  \item Cloud -- in the Internet
-    \begin{itemize}
-    \item Registration
-    \item Monitoring
-    \item Remote updates
-    \item Community
-    \end{itemize}
+\item Smarts -- the MCU
+\item Communications -- Ethernet
+\item Power -- Power-over-Ethernet
+\item ``Thingyness'' -- I/O subsystem
+\end{itemize}
+
+\subsubsection{Runtime}
+
+\begin{itemize}
+\item APIs
+\item RTOS and HAL
+\item Internet communications
+\item Optional build-in webserver
+\end{itemize}
+
+\subsubsection{Cloud components}
+
+\begin{itemize}
+\item Registration
+\item Monitoring
+\item Remote updates
+\item Community
+\end{itemize}
+
+\subsubsection{Programming environments}
+
+\begin{itemize}
+\item Eclipse and XCode
+\item Emacs and make
+\item Compiler optimizations
 \end{itemize}
 
 \subsection{Current implementation}
