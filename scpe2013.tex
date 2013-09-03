@@ -393,10 +393,20 @@ XXX insert figure ot the prototype
 
 \subsubsection{Runtime and Arduino IDE support}
 
-\begin{itemize}
-\item Approach, including compiler optimisations
-\item API limitations
-\end{itemize}
+As the first programming environment, we have been focusing on
+supporting the Arduino IDE.  Starting with the Arduino IDE 1.5
+extension mechanism~\cite{ArduinoIDEextension}, we have developed our
+own Arduino-compatible runtime that compiles about over 90\% of the
+sketches provided with the Arduino IDE.  However, while most of the
+APIs are supported at the syntax level, there is still quite some
+underlying code missing so that only some 40-50\% of the API
+functionality is supported.  The existing functionality is enough for
+many of the basic sketches, though, thereby helping people to get
+started with ELL-i.
+
+At the moment we are busy implementing the first version of our
+scheduling system, after which we will be able to provide TCP/IP
+support with uIP.  XXX UPDATE!
 
 \subsection{Ongoing efforts}
 
