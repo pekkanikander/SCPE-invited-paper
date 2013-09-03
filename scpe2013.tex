@@ -336,6 +336,12 @@ At this writing in September 2013, the currently available
 implementation consists of the first prototyping board, an initial
 runtime, and support for the Arduino IDE.  Work on the cloud-side
 components has not been started yet.
+The goal of the first prototyping board was to create Arduino
+compatible hardware and software that would support a more powerful
+MCU than the present basic Arduinoes do and to allow custom DC/DC
+power supply design.  This goal has been reached.  With the first
+prototyping board, prospecting developers can utilise the existing
+Arduino examples, learning material, and shields, to a large extent.
 
 \subsubsection{First prototyping board}
 
@@ -410,26 +416,113 @@ support with uIP.  XXX UPDATE!
 
 \subsection{Ongoing efforts}
 
+When designing the first prototyping board, our goal was to learn how
+to build Arduino compatible boards and how to provide an Arduino
+compatible IDE with that.  We have clearly reached that goal.  With
+the next board, we want to go further.  A major goal of this present
+design round is to allow people to easily extend their designs from
+the Arduino world into real-world embedded applications, allowing
+real-life creation of intelligent and connected fixed appliances.
+
+\subsubsection{Hardware design in progress}
+
+While the first prototyping board was produced as a single PCB in the
+Arduino Due/Mega form factor, the next hardware revision is based on
+the idea of using two separate boards in a sandwich fashion.  In
+addition to that, we plan to add support for 12--60V DC operations allowing
+the boards to be used independently from Power-over-Ethernet, for
+multiple MCU versions ranging from STM32F050 to STM32F407, for
+optional real time clock, operational amplifiers, level shifter, and
+driver FETs.  Finally, in addition to the current plastic case our
+plans include a sturdy metal case.
+
+{\bf Two-board design.}
+
+There are two reasons for having two boards instead of one.  Firstly,
+we learned from the first board that the standard RJ11 Ethernet
+connectors and the typical flyback transformers are so high that they
+do not fit in to a board with standard-height 100mil
+headers\footnote{It the PCB industry, it is a standard practise to
+  space the pins on older component packages and larger connectors at
+  100mil or 0.1 inch spacing (2.56 mm).  The female connectors in the Arduino
+  boards do this.  The standard 100mil female header height is
+  typically around 8 mm, while even the lowest RJ45 sockets
+  are around 14 mm.  This makes it challenging to produce Arduino
+  compatible boards with standard-height headers.}.
+Having two boards stacked in a sandwich fashion allows us to place the
+high components on the lower PCB and the Arduino-compatible 100 mil
+headers on the upper PCB.  In this way we can use standard-height
+connectors; see Figure~\ref{fig:stacking}.
+
+Secondly, dividing the board into two allows the ``main'' board to be
+designed with production use in mind, without any restrictions from
+Arduino compatibility.  The second board provides Arduino
+compatibility and other development facilities.  Consequently, we denote
+the lower ``main'' board as the {\it production} board and call the
+upper, Arduino-compatible board as the {\it development} board.
+
+In the new design, the production board essentially hosts all the
+components in the current prototyping board in a smaller form factor.
+However, instead of having the Arduino-compatible 100 mil female
+headers, it has a pair of low-profile board-to-board connectors,
+providing connectivity with the development board or any other
+extension board.  Furthermore, the production board is designed in a
+fashion that allows it to be devided into two parts, one part hosting
+the MCU, the Ethernet chip, and the I/O subsystem, the other part hosting the
+PoE signalling, DC/DC PSU, and Ethernet magnetics.  When separated,
+these two boards may be connected with seven wires, allows them to be
+placed inside the device in a flexible manner.  This is illustreated
+in Figure~\ref{fig:divided}.
+
+The development board, in turn, hosts the Arduino-compatible headers,
+and USB slave chip that can be used for flashing and debugging the MCU
+on the production board, and a number of low-current LEDs which may be
+used to monitor the I/O state at the Arduino connectors, and ability
+to provide 5V power from the USB connector, thereby allowing the board
+to be used even when powered only via the USB connector.
+
+{\bf Other hardware enhancements.}
+
+According to the datasheet, the flyback controller on the LTC4267 chip
+is capable of using any input voltage between roughly 11 and 60
+volts\footnote{Care must be taken in generating the initial
+boot-time operating voltage for the LTC4267 chip so that it is placed
+at the right range of roughly 7--9V.}.  Hence, in the next revision we
+attempt to allow the board to be powered at any voltage in the range
+of 11--60V, both through the external power connector and over the
+spare pairs on the CAT5 cable.  The selection between PoE-compatible
+powering and other powering will take place with a jumper.  When
+alternative powering is used, care must be taken not to draw too much
+power as the PoE-built-in current limitation will not be in use.
+
+One of the benefits of using the STM32F series MCUs is that they have
+been designed to be (almost) pin compatible in various packages.
+Hence, in the 64-pin packages that we are using we can design the PCB
+to host MCUs ranging from the low-end STM32F050 Cortex-M0 one to the
+high end STM32F407 Cortex-M4 one, with just a few simple solder
+jumpers.
+
+While we are not planning to add any additional placed components on
+the production board, in order to keep it at a low cost, we plan to
+add unplaced pads for supporting an RTC, operational amplifiers, level
+shifters, and driver FETs which may be used when connecting various
+I/O XXX TBC
+
+
 \begin{itemize}
-  \item Overall goal: Help people to kickstart from nothign to Arduino
-    compatible, and then from Arduino compatible to IDE and real hardware
-    development.
-  \item Hardware
-    \begin{itemize}
-    \item 2-PCB ``sandwitch'' system; reasons why
-    \item Support for 12-60V DC in
-    \item Support form STM32F051 and STM32F407 (or similar)
-    \item PCB support for RTC, OpAmps, level shifters, and driver FETs
-    \item Mechanical enhancements
-    \item Metal case
-    \end{itemize}
-  \item Software
-    \begin{itemize}
-    \item ChibiOS
-    \item uIP
-    \item Ibisense cloud integration
-    \item Remote updates
-    \end{itemize}
+\item Support form STM32F051 and STM32F407 (or similar)
+\item PCB support for RTC, OpAmps, level shifters, and driver FETs
+\item Mechanical enhancements
+\item Metal case
+\end{itemize}
+
+\subsubsection{Software efforts taking place}
+
+\begin{itemize}
+\item RTOS
+\item uIP
+\item Ibisense cloud integration
+\item Remote updates
 \end{itemize}
 
 \subsection{Design choices}
