@@ -96,14 +96,6 @@ Kamesh was here :)
 \section{Platform architecture}
 \label{sec:architecture}
 
-\begin{itemize}
-  \item architectural figure
-  \item architecture explained
-  \item current implementation
-  \item plans for the next implementation round
-  \item brief discussion about the design choices
-\end{itemize}
-
 In this section, we describe the ELL-i technical architecture in
 sufficient detail to ground the discussion that follows\footnote{For further
 details, please refer to the open source design files at
@@ -284,38 +276,82 @@ components and by default sends sensor data to the cloud.
 In addition to the software components running on the ELL-i hardware,
 the ELL-i platform contains also cloud components, running on a
 compatible cloud runtime, such as AWS~{AWS} or AppScale~{AppScale}.
+The cloud components provide interaction, update and community
+services to the ELL-i boards, and they are enabled by default in each
+ELL-i development board.
 
-\begin{itemize}
-\item Registration
-\item Monitoring
-\item Remote updates
-\item Community
-\end{itemize}
+In the default configuration, a newly installed Ell-i development
+board attempts to contact its counterpart component at the cloud
+side, making the cloud-side component aware that the board is running
+and has Internet connectivity.  At the same time, the user may direct
+their browser to a board-specific URL and view the board status.  The
+board may also peridically send sensor information to the cloud, such
+as a reading from the MCU-internal temperature sensor.  This data is
+then visualised to the user.
+
+Another cloud-based service is the ability to remotely upgrade the
+firmware on ELL-i boards.  If the remote upgrade is enabled, the
+firmware contains a tiny CoAP-based communications module that is able
+to download new firmware page-by-page to the RAM, and flash it.  By
+default, each page must be protected with a symmetric cryptographic
+key, shared between the board-specific cloud component and the board
+itself.  If the remote upgrade fails and the board no longer boots, it
+still remains possible to completely reflash the board using a serial
+line and a separate programming board.
+
+We are also contemplating of including community services to the cloud
+side, such as allowing the developers to see (but not modify) some of
+the cloud-side data of other developers' devices.
 
 \subsubsection{Programming environments}
 
-\begin{itemize}
-\item Eclipse and XCode
-\item Emacs and make
-\item Compiler optimizations
-\end{itemize}
+The ELL-i platform is designed to support multiple programming
+environments, including the Arduino IDE, Eclipse, XCode, and for the
+old timers, plain \hbox{\tt emacs} and \hbox{\tt make}.  At this
+writing only the Arduino IDE is formally supported, even though some
+of the early adopters do use command-line tools.  The aim is to make
+it {\it easy} to move from the Arduino IDE to the more advanced
+programming environments, with clear instructions how to convert
+Arduino sketches into proper C++ source files.  This also requires
+clear explanations of what is happening under the hood in the runtime.
+
+On the compiler side, at the moment we are still using the very GCC
+version provided by the default Arduino IDE.  However, our plan is to
+move to LLVM~\cite{LLVM} as soon as possible, and to enable global
+link-time optimisation.  This together with well-written static
+initialisation of global C++ objects, such as the Arduino \hbox{\tt
+  Serial}, allows the compiler in many cases to optimise away not only
+virtual function calls but use constant propagation down to the level
+where the Arduino syntactic sugar may be optimised completely way,
+providing the same level of efficiency as would normally be
+achieveable through bare-metal access while still working with
+high-level C++ abstractions.  We are also considering whether it would
+be possible to pre-run the Arduino \hbox{\tt setup()} function and
+some of the preceeding setup machinery during the compilation
+time\cite{Rinta-aho_et_al}, providing boot-time optimisations.
 
 \subsection{Current implementation}
 
+At this writing in September 2013, the currently available
+implementation consists of the first prototyping board, an initial
+runtime, and support for the Arduino IDE.  Work on the cloud-side
+components has not been started yet.
+
+\subsubsection{First prototyping board}
+
 \begin{itemize}
-  \item Hardware
-    \begin{itemize}
-    \item STM32F051 Cortex-M0 MCU
-    \item Microchip ENC29J60 based Ethernet
-    \item Linear LTXXXX based PoE
-    \item Arduino compatible I/O subsystem
-    \item Plastic 3D printed case
-    \end{itemize}
-  \item Arduino IDE
-    \begin{itemize}
-    \item API limitations
-    \item compiler optimisations
-    \end{itemize}
+\item STM32F051 Cortex-M0 MCU
+\item Microchip ENC29J60 based Ethernet
+\item Linear LTXXXX based PoE
+\item Arduino compatible I/O subsystem
+\item Plastic 3D printed case
+\end{itemize}
+
+\subsubsection{Runtime and Arduino IDE support}
+
+\begin{itemize}
+\item Approach, including compiler optimisations
+\item API limitations
 \end{itemize}
 
 \subsection{Ongoing efforts}
