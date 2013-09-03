@@ -530,25 +530,31 @@ jumpers.
 While we are not planning to add any additional placed components on
 the production board, in order to keep it at a low cost, we plan to
 add unplaced pads for supporting an RTC, operational amplifiers, level
-shifters, and driver FETs which may be used when connecting various
-I/O XXX TBC
+shifters, and driver FETs which may be used when connecting the MCU
+I/O pins various sensors and power devices.  The production board is
+planned to include 100 mil spaced soldering holes on both of its long
+sides, for directly connecting external devices or for adding male
+headers to plug in the production board to a breadboard,
 
-
-\begin{itemize}
-\item Support form STM32F051 and STM32F407 (or similar)
-\item PCB support for RTC, OpAmps, level shifters, and driver FETs
-\item Mechanical enhancements
-\item Metal case
-\end{itemize}
+On the mechanical side, the plan is to allow one to use
+punch-down Ethernet connectors~\cite{Krone} instead of the RJ45 jack
+for fixed installation.  The metal case is planned to host the
+production board together with any extension boards of the same
+dimensions.
 
 \subsubsection{Software efforts taking place}
 
-\begin{itemize}
-\item RTOS
-\item uIP
-\item Ibisense cloud integration
-\item Remote updates
-\end{itemize}
+At the moment we are extending the existing Arduino compatible runtime
+with a simple pre-emptive scheduling system, thereby allowing the uIP
+TCP/IP stack to run in parallel with any Arduino sketch.  We are
+considering whether we should support a more full fledged real time
+operating system (RTOS), such as ChibiOS/RT~\cite{ChibiOS}; at this
+writing the question is still open.
+
+Once we will have basic TCP/IP up and running, the next step is to
+start integrating the system with cloud components.  The exact plan
+for this is still open.  Finally, proper cloud connectivity will
+enable secure remote software updates.
 
 \subsection{Design choices}
  
