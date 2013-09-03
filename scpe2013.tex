@@ -339,13 +339,57 @@ components has not been started yet.
 
 \subsubsection{First prototyping board}
 
-\begin{itemize}
-\item STM32F051 Cortex-M0 MCU
-\item Microchip ENC29J60 based Ethernet
-\item Linear LTXXXX based PoE
-\item Arduino compatible I/O subsystem
-\item Plastic 3D printed case
-\end{itemize}
+The first ELL-i prototyping board was designed during spring 2013, and
+the first batch of 50 boards arrived in the end of May.  These initial
+boards have an STM32F051\cite{STM32F051} ARM Cortex-M0
+microcontroller, Microchip ENC28J60\cite{ENC28J60} Ethernet chip,
+Linear LTC4267 PoE controller with build-in flyback SMPS controller,
+and Arduino-compatible headers.  We also have a 3D printed case for
+the prototyping board, with enough of space for a few Arduino shields.
+
+The STM32F051 MCU was selected partially because it was already
+familiar to us, partially because it represents a relatively new
+Cortex-M MCU at an attractive price point compared to the included
+peripherals.  We also appreciate the fact that the STM32F050 and
+STM32F060 MCUs are potentially even cheaper choices when considering
+mass production.  The STM32F051 is also available at an 64-leg LQFP
+package which is essentially pin compatible with its bigger brothers,
+up to STM32F4 Cortex-M4 series.
+
+The old and tried ENC28J60 was selected for its low price and good
+software support, even though it has its known quirks.  As a chip that
+contains both the Ethernet PHY and MAC layers it provides a unique
+combination, saving both silicon and pins at the MCU end, thereby
+leading to an optimised overall pricepoint.
+
+At the PoE side, Linear LTC4267 was chosen relatively blindly, as we
+had little understanding of the PoE PD chip choices when we started.
+Its evaluation kit worked nicely and it was easy to copy the
+schematics for our purposes.  At it works, it appeared to be a good
+choice for the initial design.  For the next round, we need to
+evaluate more alternatives.
+
+For Arduino-compatibility, we designed the LTC4267-based flyback DC/DC
+converter to produce 5V, using a standard linear regulator to produce
+3.3V out of the regulated 5V supply.  That allows us to replicate
+Arduino Due and Arduino Mega I/O pins with some accuracy.  We left out
+the ``east'' end headers, though, as there are clearly fewer I/O pins
+available in the 64-pins package than is available in either Due or
+Mega.  At the moment the I/O pins have been assigned so that there is
+a separate timer/counter channel available for all of the digital I/O
+pins, an ADC channel for all of the analog pins, and the DAC on the
+STM32F051 is connected to the Due DAC0 line.  At the moment, the Due
+DAC1 line is connected directly to the STM32F051 PA11 GPIO line;
+however, we are considering adding there a low pass filter to allow
+the attach PWM counter/timer to be used to generate analogue signals.
+
+XXX insert figure of the design
+
+The current case design is depicted in Figure~\ref{fig:casedesign} and
+a corresponding prototype in Figure~\ref{fig:case}.  The prototype has
+been printed with the MakerBot II~\cite{MakerBotII} 3D printer.
+
+XXX insert figure ot the prototype
 
 \subsubsection{Runtime and Arduino IDE support}
 
