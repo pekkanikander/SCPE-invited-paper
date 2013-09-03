@@ -260,7 +260,8 @@ management is not supported and is strongly discouraged; any threads
 need to have their stacks to be allocated at compile time.
 
 The Internet API provides basic services for operating TCP, UDP and
-CoAP sockets.  The TCP/IP stack is based on uIP~\cite{uIP}, with the
+CoAP~\cite{CoAP}q sockets.  The TCP/IP stack is based on
+uIP~\cite{uIP}, with the
 uIP API working as such.  We plan to support Contiki~\cite{Contiki}
 style protothreads~\cite{protothreads}, thereby making it easier to
 support existing uIP-based protocol stacks and applications.
@@ -279,6 +280,10 @@ a basic service module that registers the node with the cloud
 components and by default sends sensor data to the cloud.
 
 \subsubsection{Cloud components}
+
+In addition to the software components running on the ELL-i hardware,
+the ELL-i platform contains also cloud components, running on a
+compatible cloud runtime, such as AWS~{AWS} or AppScale~{AppScale}.
 
 \begin{itemize}
 \item Registration
