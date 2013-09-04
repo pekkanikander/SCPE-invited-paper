@@ -557,19 +557,59 @@ for this is still open.  Finally, proper cloud connectivity will
 enable secure remote software updates.
 
 \subsection{Design choices}
- 
-\begin{itemize}
-  \item Primary goal: *Low-cost* platform for PoE devices.
-    \begin{itemize}
-    \item Low-end ARM Cortex-M series
-    \item Low-end Ethernet
-    \item Connectors
-    \item Mechanics
-    \item ChibiOS
-    \item Protocols
-    \item Cloud-side
-    \end{itemize}
-\end{itemize}
+
+% XXX This section needs more work, or needs to be removed
+
+With the ELL-i platform, our goal has been to produce an easy-to-use,
+flexible, and inexpensive platform for fixed appliances.  These goals
+have guided our design choices.  Indeed, the primary choice of using
+Power-over-Ethernet stems from this goal, as it allows us to use a
+single cable for both power and communications, thereby potentially
+reducing the overall cost while still being flexible and easy-to-use.
+
+Considering the component choices in the first prototyping board, we
+have tried to select the lowest-cost components that are easy-to-use
+and flexible enough.  Consequently, we opted for the lowest end ARM
+series, Cortex-M0, as they are easy-to-use as a familiar 32-bit
+platform and most likely to hit the lowest price point in the area
+within a few years\footnote{At the moment, there are still older
+  Cortex-M3 based MCUs on the market that are sold cheaper than the
+  newer Cortex-M0 MCUs in small lots.  However, the lowest price
+  point is most likely to be replaced with the Cortex-M0 MCUs within
+  the next couple of years.}.
+The chosen Ethernet chip is the lowest-cost denominator of those
+widely used in the market.  At the PoE and DC/DC PSU side there is
+still room for optimisation, but we are currently planning to leave
+that for later as we don't have enough of experience in that area yet.
+
+For hardware-level expandability, we are still working to determine
+the right approach.  At the moment, we are using the Arduino I/O
+connector design for development-time extensions.  However, it is
+clear that they are not a good choice for production use, for many
+reasons\footnote{The Arduino connectors are physically quite large,
+  requirign more space than what is available within many devices and
+  e.g. within a pattressbox.  Furthermore, the Arduino connectors are
+  basically unbuffered, making it somewhat tricky to get good ADC
+  readings or driving higher loads through them.}.
+
+Considering the connectors and mechanics, our goals are again the
+same: easy-to-use, flexible, and inexpensive.  For Ethernet, the goal
+is to support both the familiar RJ45 connectors and the punch-down
+connectors for fixed design, the punch-down connectors being clearly
+cheaper.  In the new design, we are looking at various options for the
+connectors between the production and development boards.  At the
+moment, we are planning to allow different approaches for tying the
+boards together, including using screws and having suitable notches in
+the packages.
+
+At the firmware side, it looks likely that we will end up implementing
+our own runtime.  Looking at the various open source RTOS options
+available, they typically include more than what we need and with a
+license that is not fully compatible with our planned business model;
+see below.  The cloud-side components will be based on the lowest
+common platform-as-a-service (PAAS) denominator, which at the moment
+seems to be the Amazon Web Services (AWS)~\cite{AWS} APIs, also supported by
+e.g. the AppScale~\cite{AppScale} open source framework.
 
 % ------------------------------------------------------------------
 
