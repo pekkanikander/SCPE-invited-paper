@@ -279,7 +279,7 @@ management is not supported and is strongly discouraged; any threads
 need to have their stacks to be allocated at compile time.
 
 The Internet API provides basic services for operating TCP, UDP and
-CoAP~\cite{CoAP}q sockets.  The TCP/IP stack is based on
+CoAP\cite{CoAP} sockets.  The TCP/IP stack is based on
 uIP~\cite{uIP}, with the
 uIP API working as such.  We plan to support Contiki~\cite{Contiki}
 style protothreads~\cite{protothreads}, thereby making it easier to
@@ -616,31 +616,121 @@ e.g. the AppScale~\cite{AppScale} open source framework.
 \section{Application examples}
 \label{sec:examples}
 
+As a platform, the ELL-i design is open ended.  In this section, we
+briefly describe a few designs that we presume the ELL-i platform
+making easier or less costly to implement than before.  Furthermore,
+wherever applicable, we attempt to illustrate how the open source
+nature of ELL-i will benefit the individual applications.
+
 \subsection{Illumination}
 
-LEDs and other low-power lamps.
+The very first demo that we implemented using ELL-i, while the
+platform was still a set of evaluation kits bolted to a wooden board
+and wired together, was a driver for a commercial high-power RGB LED
+projector.  Since then, we have repeated the LED driver exercise a few
+times.
 
-\begin{itemize}
-  \item show lighting
-  \item flexible retail lighting
-  \item existing protocols: DALI, DMX, ...
-\end{itemize}
+From the electronics point of view, an adjustable HP LED driver is a
+relatively simple device, as LEDs in general are current-driven
+components.  That is, the voltage drop over a LED remains relatively
+constant independent of how much current is flowing through the LED,
+and the amount of current determines how brightly the LED shines.  The
+typical voltage drop over a HP LED is around 3V.  Hence, for driving a
+LED from a voltage source that is higher than the voltage drop of the
+LED it is enough to limit the amount of current.  For indicator LEDs
+the current is usually limited with a suitable series resistor;
+however, such an arrangment would be very inefficient for driving an
+HP LED out of the PoE nominal 48V.  Fortunately, a buck
+converter~\cite{buck-converter}, the simplest of the so-called
+switching mode power supply (SMPS)~\cite{SMPS} topologies, is quite
+easy to regulate to produce a constant, adjustable current.  All that
+is needed is a simple current-measurement circuit and a simple
+algorithm to drive the switching FET in within the driver.  While
+achieving high efficiency requires somewhat more work, even an
+electronics amateur, like us, is able to design a simple
+MCU-controlled buck converter in a couple of weeks time.
+
+So, it looks like that from the hardware point of view, driving
+LED-based lamps would be an ideal application for the ELL-i platform.
+In addition to the components already in ELL-i, a LED driver at its
+simplest format requires a switching FET, a choke coil, a diode for
+the sustained current from the coil when the FET is not conducting,
+and a current measurement circuit consisting of a shunt resistor and
+an operational amplifier.  In a practical design, a few more
+components are needed, but their additional cost is a few cents.
+
+Consequently, ELL-i may be an excellent platform for implementing
+future, more intelligent show lighting systems, flexible retail
+lighting, and other illumination applications where it is beneficial
+to control each and every lamp separately.  In such an environment,
+ELL-i implements the yesterday maxim of each light bulb having its own
+IP address~\cite{lightbulb}.
+
+To communicate with the external world, and ELL-i node may implement
+the Ethernet or TCP/IP variants of the commonly used lighting control
+protocols, including DALI\cite{DALI} and DMX\cite{DMX}.
 
 \subsection{Automation}
 
-Building and industrial automation.
+Another area where the ELL-i platform may bring benefits is building
+and industrial automation.  In the building automation area, there are
+already a number of Power-over-Ethernet products at the market,
+including locks and other security and safety equipment.  However, to
+a large extent the existing automation systems are still based on
+standards, such as KNX\cite{KNX}, BACnet\cite{BACnet}, or
+LonTalk\cite{LonTalk}, which generally utilise twisted pair
+control cables with separate power supply.
 
-Description of the technical challenges here: reliability, ...
+From that point of view, ELL-i provides an open source platform to
+build upon.  As such, ELL-i provides little benefit directly to
+automation, as it is lacking direct connectivity with sensors and
+actuators, and it does not as such implement any of the existing
+protocols.  Therefore, as a standalone component it does not integrate
+with the existing automation systems.
 
-\subsection{Education and prototyping}
+However, Ell-i is a small, connected, intelligent, power-convoying low-cost
+component, the ELL-i platform provides a platform.  Therefore it could
+potentially be co-located with the sensors and actuators, providing
+power to them and integrating both intelligence and connectivity
+directly to them.  Consequently, it would allow replacing the
+hierarchy of separate field devices (sensors and actuators) and the
+programmable logic controllers (PLC) with a flat logical hierarchy,
+allowing the physical connectivity to be arranged in any topology.
 
-\subsubsection{EIT Smart Spaces summer school}
+Beyond the basic functionality challenges, applying ELL-i in
+automation systems would require a number of non-functional challenges
+to be addressed.  First and foremost, it should be demonstrated that
+the ELL-i system is reliable as the known and proven old solutions.
+As it is unlikely to happen as such any soon, one way to address the
+reliability concern is to build reliability through redundancy.  That
+is, a system consisting of the ELL-i platform based nodes can be
+engineered to be inherently redundant, placing two ELL-i nodes at each
+sensor or actuator side, using standard Ethernet network redundancy
+approaches\footnote{Dual cabling with redundant switches, spanning
+  tree protocols to avoid bridging loops, etc.}, and addressing
+software-level redundancy through differing runtime systems.
+
+\subsection{Education}
+
+A third area where ELL-i may turn out to be useful is education.  As
+an open system, ELL-i itself can be studied and modified by the
+students.  Secondly, as an easy-to-use embedded system ELL-i may be
+used in various student projects where real-life interaction is
+needed.  We already have some experience on this; see below.  Finally,
+the ELL-i system itself may be extended to be a platform for teaching
+basic programming in a fun and easy-to-understand way.
+
+\subsubsection{A subject of studies}
+
+
+\subsubsection{A student project platform}
+
+{\bf EIT Smart Spaces summer school}
 
 Brief explanation of the experiences in Grenoble.
 
-\subsubsection{Prototyping experiences so far}
+\subsubsection{An educational tool}
 
-Antti's experiences.
  
 % ------------------------------------------------------------------
 
