@@ -288,7 +288,7 @@ management is not supported and is strongly discouraged; any threads
 need to have their stacks to be allocated at compile time.
 
 The Internet API provides basic services for operating TCP, UDP and
-CoAP~\cite{CoAP}q sockets.  The TCP/IP stack is based on
+CoAP\cite{CoAP} sockets.  The TCP/IP stack is based on
 uIP~\cite{uIP}, with the
 uIP API working as such.  We plan to support Contiki~\cite{Contiki}
 style protothreads~\cite{protothreads}, thereby making it easier to
@@ -539,71 +539,207 @@ jumpers.
 While we are not planning to add any additional placed components on
 the production board, in order to keep it at a low cost, we plan to
 add unplaced pads for supporting an RTC, operational amplifiers, level
-shifters, and driver FETs which may be used when connecting various
-I/O XXX TBC
+shifters, and driver FETs which may be used when connecting the MCU
+I/O pins various sensors and power devices.  The production board is
+planned to include 100 mil spaced soldering holes on both of its long
+sides, for directly connecting external devices or for adding male
+headers to plug in the production board to a breadboard,
 
-
-\begin{itemize}
-\item Support form STM32F051 and STM32F407 (or similar)
-\item PCB support for RTC, OpAmps, level shifters, and driver FETs
-\item Mechanical enhancements
-\item Metal case
-\end{itemize}
+On the mechanical side, the plan is to allow one to use
+punch-down Ethernet connectors~\cite{Krone} instead of the RJ45 jack
+for fixed installation.  The metal case is planned to host the
+production board together with any extension boards of the same
+dimensions.
 
 \subsubsection{Software efforts taking place}
 
-\begin{itemize}
-\item RTOS
-\item uIP
-\item Ibisense cloud integration
-\item Remote updates
-\end{itemize}
+At the moment we are extending the existing Arduino compatible runtime
+with a simple pre-emptive scheduling system, thereby allowing the uIP
+TCP/IP stack to run in parallel with any Arduino sketch.  We are
+considering whether we should support a more full fledged real time
+operating system (RTOS), such as ChibiOS/RT~\cite{ChibiOS}; at this
+writing the question is still open.
+
+Once we will have basic TCP/IP up and running, the next step is to
+start integrating the system with cloud components.  The exact plan
+for this is still open.  Finally, proper cloud connectivity will
+enable secure remote software updates.
 
 \subsection{Design choices}
- 
-\begin{itemize}
-  \item Primary goal: *Low-cost* platform for PoE devices.
-    \begin{itemize}
-    \item Low-end ARM Cortex-M series
-    \item Low-end Ethernet
-    \item Connectors
-    \item Mechanics
-    \item ChibiOS
-    \item Protocols
-    \item Cloud-side
-    \end{itemize}
-\end{itemize}
+
+% XXX This section needs more work, or needs to be removed
+
+With the ELL-i platform, our goal has been to produce an easy-to-use,
+flexible, and inexpensive platform for fixed appliances.  These goals
+have guided our design choices.  Indeed, the primary choice of using
+Power-over-Ethernet stems from this goal, as it allows us to use a
+single cable for both power and communications, thereby potentially
+reducing the overall cost while still being flexible and easy-to-use.
+
+Considering the component choices in the first prototyping board, we
+have tried to select the lowest-cost components that are easy-to-use
+and flexible enough.  Consequently, we opted for the lowest end ARM
+series, Cortex-M0, as they are easy-to-use as a familiar 32-bit
+platform and most likely to hit the lowest price point in the area
+within a few years\footnote{At the moment, there are still older
+  Cortex-M3 based MCUs on the market that are sold cheaper than the
+  newer Cortex-M0 MCUs in small lots.  However, the lowest price
+  point is most likely to be replaced with the Cortex-M0 MCUs within
+  the next couple of years.}.
+The chosen Ethernet chip is the lowest-cost denominator of those
+widely used in the market.  At the PoE and DC/DC PSU side there is
+still room for optimisation, but we are currently planning to leave
+that for later as we don't have enough of experience in that area yet.
+
+For hardware-level expandability, we are still working to determine
+the right approach.  At the moment, we are using the Arduino I/O
+connector design for development-time extensions.  However, it is
+clear that they are not a good choice for production use, for many
+reasons\footnote{The Arduino connectors are physically quite large,
+  requirign more space than what is available within many devices and
+  e.g. within a pattressbox.  Furthermore, the Arduino connectors are
+  basically unbuffered, making it somewhat tricky to get good ADC
+  readings or driving higher loads through them.}.
+
+Considering the connectors and mechanics, our goals are again the
+same: easy-to-use, flexible, and inexpensive.  For Ethernet, the goal
+is to support both the familiar RJ45 connectors and the punch-down
+connectors for fixed design, the punch-down connectors being clearly
+cheaper.  In the new design, we are looking at various options for the
+connectors between the production and development boards.  At the
+moment, we are planning to allow different approaches for tying the
+boards together, including using screws and having suitable notches in
+the packages.
+
+At the firmware side, it looks likely that we will end up implementing
+our own runtime.  Looking at the various open source RTOS options
+available, they typically include more than what we need and with a
+license that is not fully compatible with our planned business model;
+see below.  The cloud-side components will be based on the lowest
+common platform-as-a-service (PAAS) denominator, which at the moment
+seems to be the Amazon Web Services (AWS)~\cite{AWS} APIs, also supported by
+e.g. the AppScale~\cite{AppScale} open source framework.
 
 % ------------------------------------------------------------------
 
 \section{Application examples}
 \label{sec:examples}
 
+As a platform, the ELL-i design is open ended.  In this section, we
+briefly describe a few designs that we presume the ELL-i platform
+making easier or less costly to implement than before.  Furthermore,
+wherever applicable, we attempt to illustrate how the open source
+nature of ELL-i will benefit the individual applications.
+
 \subsection{Illumination}
 
-LEDs and other low-power lamps.
+The very first demo that we implemented using ELL-i, while the
+platform was still a set of evaluation kits bolted to a wooden board
+and wired together, was a driver for a commercial high-power RGB LED
+projector.  Since then, we have repeated the LED driver exercise a few
+times.
 
-\begin{itemize}
-  \item show lighting
-  \item flexible retail lighting
-  \item existing protocols: DALI, DMX, ...
-\end{itemize}
+From the electronics point of view, an adjustable HP LED driver is a
+relatively simple device, as LEDs in general are current-driven
+components.  That is, the voltage drop over a LED remains relatively
+constant independent of how much current is flowing through the LED,
+and the amount of current determines how brightly the LED shines.  The
+typical voltage drop over a HP LED is around 3V.  Hence, for driving a
+LED from a voltage source that is higher than the voltage drop of the
+LED it is enough to limit the amount of current.  For indicator LEDs
+the current is usually limited with a suitable series resistor;
+however, such an arrangment would be very inefficient for driving an
+HP LED out of the PoE nominal 48V.  Fortunately, a buck
+converter~\cite{buck-converter}, the simplest of the so-called
+switching mode power supply (SMPS)~\cite{SMPS} topologies, is quite
+easy to regulate to produce a constant, adjustable current.  All that
+is needed is a simple current-measurement circuit and a simple
+algorithm to drive the switching FET in within the driver.  While
+achieving high efficiency requires somewhat more work, even an
+electronics amateur, like us, is able to design a simple
+MCU-controlled buck converter in a couple of weeks time.
+
+So, it looks like that from the hardware point of view, driving
+LED-based lamps would be an ideal application for the ELL-i platform.
+In addition to the components already in ELL-i, a LED driver at its
+simplest format requires a switching FET, a choke coil, a diode for
+the sustained current from the coil when the FET is not conducting,
+and a current measurement circuit consisting of a shunt resistor and
+an operational amplifier.  In a practical design, a few more
+components are needed, but their additional cost is a few cents.
+
+Consequently, ELL-i may be an excellent platform for implementing
+future, more intelligent show lighting systems, flexible retail
+lighting, and other illumination applications where it is beneficial
+to control each and every lamp separately.  In such an environment,
+ELL-i implements the yesterday maxim of each light bulb having its own
+IP address~\cite{lightbulb}.
+
+To communicate with the external world, and ELL-i node may implement
+the Ethernet or TCP/IP variants of the commonly used lighting control
+protocols, including DALI\cite{DALI} and DMX\cite{DMX}.
 
 \subsection{Automation}
 
-Building and industrial automation.
+Another area where the ELL-i platform may bring benefits is building
+and industrial automation.  In the building automation area, there are
+already a number of Power-over-Ethernet products at the market,
+including locks and other security and safety equipment.  However, to
+a large extent the existing automation systems are still based on
+standards, such as KNX\cite{KNX}, BACnet\cite{BACnet}, or
+LonTalk\cite{LonTalk}, which generally utilise twisted pair
+control cables with separate power supply.
 
-Description of the technical challenges here: reliability, ...
+From that point of view, ELL-i provides an open source platform to
+build upon.  As such, ELL-i provides little benefit directly to
+automation, as it is lacking direct connectivity with sensors and
+actuators, and it does not as such implement any of the existing
+protocols.  Therefore, as a standalone component it does not integrate
+with the existing automation systems.
 
-\subsection{Education and prototyping}
+However, Ell-i is a small, connected, intelligent, power-convoying low-cost
+component, the ELL-i platform provides a platform.  Therefore it could
+potentially be co-located with the sensors and actuators, providing
+power to them and integrating both intelligence and connectivity
+directly to them.  Consequently, it would allow replacing the
+hierarchy of separate field devices (sensors and actuators) and the
+programmable logic controllers (PLC) with a flat logical hierarchy,
+allowing the physical connectivity to be arranged in any topology.
 
-\subsubsection{EIT Smart Spaces summer school}
+Beyond the basic functionality challenges, applying ELL-i in
+automation systems would require a number of non-functional challenges
+to be addressed.  First and foremost, it should be demonstrated that
+the ELL-i system is reliable as the known and proven old solutions.
+As it is unlikely to happen as such any soon, one way to address the
+reliability concern is to build reliability through redundancy.  That
+is, a system consisting of the ELL-i platform based nodes can be
+engineered to be inherently redundant, placing two ELL-i nodes at each
+sensor or actuator side, using standard Ethernet network redundancy
+approaches\footnote{Dual cabling with redundant switches, spanning
+  tree protocols to avoid bridging loops, etc.}, and addressing
+software-level redundancy through differing runtime systems.
+
+\subsection{Education}
+
+A third area where ELL-i may turn out to be useful is education.  As
+an open system, ELL-i itself can be studied and modified by the
+students.  Secondly, as an easy-to-use embedded system ELL-i may be
+used in various student projects where real-life interaction is
+needed.  We already have some experience on this; see below.  Finally,
+the ELL-i system itself may be extended to be a platform for teaching
+basic programming in a fun and easy-to-understand way.
+
+\subsubsection{A subject of studies}
+
+
+\subsubsection{A student project platform}
+
+{\bf EIT Smart Spaces summer school}
 
 Brief explanation of the experiences in Grenoble.
 
-\subsubsection{Prototyping experiences so far}
+\subsubsection{An educational tool}
 
-Antti's experiences.
  
 % ------------------------------------------------------------------
 
