@@ -223,8 +223,8 @@ Power-over-Ethernet standard, including the physical-layer signalling
 that consists of an initial resistive-load based detection phase, a
 current-sink based classification phase, an optional second
 classification mode added in 802.3at, and an operating-voltage rampup
-phase~\cite{802.3at}.  We haven't implemented the Ethernet Layer 2
-based advanced power management~\cite{802.3at}, yet.
+phase~\cite{802.3at}.  We will implemente the Ethernet Layer 2
+based advanced power management~\cite{802.3at} later.
 
 The DC/DC power supply is responsible for converting the incoming
 Power-over-Ethernet 48V voltage into the 5V and/or 3.3V needed by the
@@ -384,7 +384,7 @@ time\cite{Rinta-aho_et_al}, providing boot-time optimisations.
 At this writing in September 2013, the currently available
 implementation consists of the first prototyping board, an initial
 runtime, and support for the Arduino IDE.  Work on the cloud-side
-components has not been started yet.
+components will be started later.
 The goal of the first prototyping board was to create Arduino
 compatible hardware and software that would support a more powerful
 MCU than the present basic Arduinoes do and to allow custom DC/DC
@@ -602,7 +602,7 @@ within a few years\footnote{At the moment, there are still older
 The chosen Ethernet chip is the lowest-cost denominator of those
 widely used in the market.  At the PoE and DC/DC PSU side there is
 still room for optimisation, but we are currently planning to leave
-that for later as we don't have enough of experience in that area yet.
+that for later.
 
 For hardware-level expandability, we are still working to determine
 the right approach.  At the moment, we are using the Arduino I/O
