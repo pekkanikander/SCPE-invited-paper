@@ -856,6 +856,25 @@ how the DC/DC power supplies actually work.
 
 \subsubsection{ELL-i as an educational tool}
 
+With relatively simple extensions, ELL-i has potential of becoming a
+platform for teaching the basics of programming.  With today's
+computers and smart phones with fancy graphical user interfaces,
+writing very basic programs that only print on a console log is
+unexciting.  On the other hand, with an Arduino-like platform even a
+simple program can light up LEDs and affect real-life things.  With
+its powering capability ELL-i adds there the ability of doing ``real''
+things as such, such as driving solenoids or even motors.
+
+Given that the Arduino APIs and sketches are C++ programs in practise,
+it would be possible to write a set of C++ proxy classes and templates that
+compile an Arduino sketch so that it runs in an emulator, allowing the
+functioning of such a sketch to be simulated and illustrated on a PC.
+Furthermore, with the Ethernet interface, another set of proxy classes
+could be used to instrument a sketch, allowing it to be run on the
+ELL-i platform while simultaneously inspecting the variables and I/O
+ports.  In practise the instrumentation classes would communicate the
+application state over the Ethernet to a PC, which would then use the
+simulator user interface to illustrate the application state.
  
 % ------------------------------------------------------------------
 
