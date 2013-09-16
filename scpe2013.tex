@@ -292,6 +292,7 @@ attempts to make designing and building both of these customisations
 easier than what the state-of-the-art has been so far.
 
 \subsubsection{Runtime}
+\label{sssec:runtime}
 
 The runtime system forms the bases of any firmware running on the
 ELL-i platform.  In practise, it consists of a software library that
@@ -304,7 +305,7 @@ easy-to-start but still powerful programming environment for both
 novices and professionals, and to offer facilities for communicating
 with the cloud components in the Internet.  To achieve that, the ELL-i
 runtime consists of a boot module, a hardware abstraction layer (HAL),
-a small RTOS kernel providing concurrency, an Internet-communications
+a tiny scheduler providing concurrency, an Internet-communications
 module, an optional built-in Webserver, and a set of APIs providing
 programmatic access to all of these.  The runtime architecture is
 illustrated in Figure~\ref{fig:software}.
@@ -312,7 +313,7 @@ illustrated in Figure~\ref{fig:software}.
 XXX insert figure.
 
 The set of APIs may be devided into five groups, corresponding to the
-booting, HAL, RTOS, Internet, and Web-services.  In the current
+booting, HAL, scheduler, Internet, and Web-services.  In the current
 implementation, the boot and HAL APIs provide an Arduino compatible
 programming environment, allowing programmers to initialise the
 hardware using the familiar \hbox{\tt setup()} function and to run a
@@ -323,13 +324,13 @@ HAL APIs are supported, such as accessing GPIOs and serial lines.
 
 While the original Arduino runtime does not provide any concurrency,
 thereby causing e.g. busy loops to stall the whole MCU, in the ELL-i
-runtime there is a small RTOS kernel running ``under'' the Arduino
-APIs.  Using the RTOS, The Internet and Web-server modules are
+runtime there is a small scheduler running ``under'' the Arduino
+APIs.  Using the scheduler, The Internet and Web-server modules are
 implemented so that they always run concurrently with any Arduino
 sketch.  More advanced programmers that override the \hbox{\tt main()}
-function must include a call to initialise the RTOS.
+function must include a call to initialise the scheduler.
 
-The RTOS API provides services for starting and stopping concurrent
+The scheduler API provides services for starting and stopping concurrent
 threads and adjusting the scheduling algorithms.  By default threading
 is fully pre-emptive, allowing the TCP/IP stack to work on a higher
 priority than any Arduino sketch.  Any I/O modules requiring precise
@@ -780,16 +781,80 @@ needed.  We already have some experience on this; see below.  Finally,
 the ELL-i system itself may be extended to be a platform for teaching
 basic programming in a fun and easy-to-understand way.
 
-\subsubsection{A subject of studies}
+\subsubsection{ELL-i platform itself as course material}
+
+The ELL-i platform has been designed to be not only easy to use but
+also easy to understand.  The hardware represents a complete design
+with an MCU, Ethernet-based communications, and a DC/DC PSU.  The
+chosen MCU is a relatively simple but still powerful one, from a
+family that is commonly used in open source projects.  The CPU core
+within the MCU is a modern 32-bit RISC architecture with simple
+3-stage pipelining and no instruction reordering, being easy to teach
+and to understand.  The MCU-related prt of schematic is very similar
+to the relevant part of the MCU manufacturer's evaluation board.  The
+Ethernet communications module consists of a single chip and the
+magnetics and has a wide support in the open source community.
+Finally, the DC/DC PSU is a relatively simple buck converter design
+that can be understood in a few days with a basic analogue electronics
+background.
+
+At the software side, the firmware has been written in a modular
+manner, as was explained above in Section~\ref{sssec:runtime}.  Hence,
+studying simple firmware designs that do little but initialise the MCU
+and blink some LEDs is relatively easy.  The modularity then allows
+more complex features, such as communications and scheduling, to be
+added in a piecewise manner to the design.  This allows the teacher to
+demonstrate the full runtime in a gradual manner, starting from MCU
+initialisation and simple I/O, continuing through the SPI and I2C
+protocols up to simple Web services.
+
+Hence, the ELL-i platform may be used to introduce and demonstrate all
+the elements of a modern Web-connected computer, including both the
+hardware and software, without the complexities present in the typical
+moder computers.
+
+\subsubsection{ELL-i as a student project platform}
+
+Due to the simplicity and the modular design of the ELL-i platform, it
+is a relatively easy platform for students to build their platforms
+upon.  Arduino compatibility allows adoptation of almost any of the
+some 300 existing Arduino shields, typically with some minor
+software-side modifications.  In many cases, the more powerful MCU on
+the ELL-i platform allows the sensors or other components on the
+shield to be used more intelligently than with the basic Arduino
+boards.  Ethernet-based powering allows the devices to be placed
+relatively freely anywhere, thereby allowing the students to build
+smart spaces or place smart fixed devices at desired locations.
+
+The simplicity and flexibility of the platform also allows the
+students to replace many parts of the platform with their own
+components.  For example, at this writing, a student group at
+University of Turku have completed a preliminary port of the
+FreeRTOS~\cite{FreeRTOS}.
+
+{\bf EIT Smart Spaces summer school.}
+In June 2013, a couple of weeks after the first ELL-i prototyping
+boards had arrived, two of us held a one-day ELL-i tutorial at the
+European Institute of Innovation and Technology (EIT) Smart Spaces
+summer school in Grenoble, France.  The tutorial lasted for six hours,
+within which the computer science students built a simple buck
+converter based LED driver, using the ELL-i platform, discrete
+components, and the Arduino IDE.
+
+During the tutorial, the students learned how to handle basic physical
+electronic components, including resistors, capacitors, coils, FET
+transistors, diodes, and LEDs.  Starting from a very simple design,
+they built in a stepwise manner an adjustable constant-current DC/DC
+converter that generated some 300 mA of current from the nominally 48V
+unregulated DC power available from the PoE header on the Ell-i
+prototyping board.  The background of the students varied from ones
+that had only taken theoretical basic courses in electronics, as a
+part of their basic studies, to a few that had built simple
+Arduino-based prototypes before.  None of the students had any idea of
+how the DC/DC power supplies actually work.
 
 
-\subsubsection{A student project platform}
-
-{\bf EIT Smart Spaces summer school}
-
-Brief explanation of the experiences in Grenoble.
-
-\subsubsection{An educational tool}
+\subsubsection{ELL-i as an educational tool}
 
  
 % ------------------------------------------------------------------
@@ -1010,7 +1075,7 @@ Structure:
 
 \begin{itemize}
   \item ability to use other wiring than CAT3/CAT6
-  \item RTOS
+  \item scheduler
   \item flashing over Ethernet
   \item smooth path from Arduino IDE to a more advanced environment
     (Eclipse/
