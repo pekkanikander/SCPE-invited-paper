@@ -58,7 +58,13 @@ Ethernet, TBD
 
 \section{Introduction}
 
+Most of the research, presented use cases and applications have
+assumed the use of some wireless connectivity technology although the
+first ideas do not specifically refer to specific wireless or wired
+networking, or to a any information and communications technology.
+
 \begin{itemize}
+  \item Motivation: Making physical context available and serviceable
   \item Refer to \cite{Atzori20102787}, define IoT
   \item Find at least two references that discuss IoT power; [1]
     discusses only RFID and battery, see their table 1. 
@@ -76,7 +82,40 @@ Section~\ref{sec:related} TBD.
 \section{Related work}
 \label{sec:related}
 
-IOT devices can be used to design products and services which can be enhanced by
+\subsection{Defining {\it Internet of Things} and {\it
+    Machine-to-Machine}}
+
+A first definition of Internet-of-Things (IoT) referred to identifiers
+placed in objects so that they could be monitored and managed by
+computers~\cite{ashton2009internet}. The idea dealt with tagging of
+objects and with applications for cases like retail and logistics. It
+was also related to the famous and more generic definition of the
+disappearing computer by Mark Wiser~\cite{weiser1991computer} where he
+described that miniaturization and ubiquity of sensors would
+eventually lead to disappearing to the computational elements ``into
+the fabric of everyday life''.  This has been later mentioned as
+pervasive or ubiquitous computing.
+
+One of many definitions of IoT is by Cluster of European Research
+Projects (now IERC) who defined IOT as ``dynamic networked global
+infrastructure with self configuring capabilities based on standard
+and interoperable communication protocols where physical and virtual
+things have identities, physical attributes and virtual personalities
+and use intelligent interfaces, and are seamlessly integrated to the
+information network''~\cite{vermesan2011internet}.
+
+A second dimension and branch of development of IoT is the
+machine-to-machine or M2M concept with further refers to linking the
+plethora of digital devices (from simple microcontrolled devices to
+smartphones and large industrial instrumentation). This refers more to
+the communications protocols required to allow devices to communicate
+with standard communications, typically wireless or even more
+specifically cellular systems.  A couple of popular projects
+developing the technology are the Eclipse M2M Industry Working
+Group~\cite{EclipseM2M} and ITU-T Focus Group M2M~\cite{ITU-T_FG_M2M}.
+
+In general, IoT devices can be used to design products and services
+which can be enhanced by
 data connectivity and can provide intelligent feedback back to the user.
 Proliferation of cheap and versatile sensors, actuators, computing, storage and
 networking solutions augmented by the desire to connect people with their
@@ -88,6 +127,8 @@ applications with built-in powering solutions. In this work we focus on an
 alternative way for providing both the communication and powering solutions to
 fixed and immovable devices, which would anyhow be powered by wirelines, using
 Power over Ethernet (POE) standard.
+
+\subsection{Classifying IoT devices -- power and security}
 
 In this work, IOT devices have been classified by the amount of power required
 for their efficient operation. Some IOT devices use batteries, some scavenge
@@ -110,7 +151,36 @@ respectively when compared to "no encrption" results~\cite{hamad2009energy}.
 Furthermore, increasing the key size for the encryption also increases the
 battery consumption and processing time. That is, increasing the keysize from
 128 bits to 192 bits results in 8\% increase in power and time consumption and
-16\% increase when the key size is increased to 256 bits~\cite{hamad2009energy}. 
+16\% increase when the key size is increased to 256
+bits~\cite{hamad2009energy}.
+
+\subsection{Internet of Things applications}
+
+Internet-of-Things applications include a variety of applications
+ranging from vehicle telematics, tracking and tracing of objects to
+applications applying wireless sensor networks and machine-to-machine
+(M2M) systems. Typical applications are in military use cases (like
+intelligence, surveillance), environmental use cases (e.g. monitoring
+conditions that affect farming and animal husbandry, or monitoring
+macro-scale phenomena in soil, forest, marine or atmospheric
+contexts), health applications (remote monitoring of patients, tracing
+of care personnel or equipment), home applications, or other
+commercial applications like interactive smart spaces in office or
+other working environments.
+
+The use cases include applications with large area networks and high
+mobility but also no-mobility use cases. Wu~et.~al. discusse the
+requirements for future applications from the M2M
+perspective~\cite{wu2011m2m}. While many of them assume wireless
+connectivity, a good part of them are in fact for fixed things, like
+in home management, industrial automation and metering, sensors, and
+lighting. More generically IoT use cases with no mobility exits in
+smart homes or smart buildings and smart cities e.g. for the purpose
+of reducing the consumption of resources associated to buildings
+(electricity, water) or improving the satisfaction level of humans
+populating them~\cite{miorandi2012internet}.
+
+\subsection{Digital power management}
 
 The industry has been challenged to provide digital power-management solutions
 which can communicate with various connected systems that inhabit our world.
@@ -121,7 +191,7 @@ foresee the interdevice communications for both power and data without the
 advances in mixed-bus connector architectures, such as USB and POE (power over
 ethenet)~\cite{FutureIOT}. 
 
-A power over ethernet system can communicate with its power source
+A Power-over-Ethernet system can communicate with its power source
 bidirectionally for both power and intelligence. This can provide new and
 innovative ways to develop power management methodologies inorder to raise the
 overall power efficiency of the system.
@@ -1043,26 +1113,66 @@ licencees' point of view.
 
 \subsubsection{Developer incentive structure}
 
-Goals:
-\begin{itemize}
-  \item Make it easy to start with the platform, with as few
-    obligations as possible
-  \item Encourage individual developers to contribute back to the
-    project
-\end{itemize}
+The developers are the main ``raw material'' for any open source
+initiative.  Our goal is to make it easy to become a developer and
+encourage the developers to continue staying community members,
+building a sustainable group of ``core'' developers.
 
-Structure:
-\begin{itemize}
-  \item Anyone may clone the source and do their own modifications
-  \item Anyone wanting to contribute their modifications to the core
-    must donate the IPR to the co-operative
-  \item The co-operative may accept such donation or not, thereby
-    creating a gradually tightening quality control barrier
-  \item Anyone whose donations has been accepted may join the
-    co-operative as a member
-  \item Co-operative members get membership benefits and govern the
-    co-operative
-\end{itemize}
+In principle, the set of potential incentives for
+engaging developers are extrinsic motivators, such traditional
+currencies (money) and money-like alternative
+currencies~\cite{Liataer2001}, and intrinsic and internalised
+extrinsic incentives, such as fun, reputation, learning, and personal
+use~\cite{von2012carrots}.  The internalised extrinsic incentives
+include social aspects such as community respect and membership in an
+exclusive community.
+
+According to conceptual process modelf of sustained participation, as
+introduced by Fang and Neufeld~\cite{fang2009understanding}, an open
+source project needs a large pool of potential candidate developers in
+order to build a sustainable base of core developers.  To attrack such
+candiates, the project needs to be easily accessible and the platform
+needs to be useful, creating an initial motivation based on expected
+personal use.  The ELL-i platform aims to reach these goals through
+making the platform easy to use, marketing the platform widely in the
+open source community, and producing a number of example designs that
+are useful as such.
+
+Once a project has a large-enough pool of candidate developers, the
+project should support a continuous participation cycle that fosters
+situated learning and identity construction.  That is, there should be
+a clear learning path for new developers so that they may easily start
+contributing to the project through conceptual suggestions and
+practical doing, allowing them to establish a known ``name'' (communal
+respect) within the community~\cite{fang2009understanding}.
+
+We postulate that such sustained participation created initially
+through personal utility and later mainly through communal respect and other
+social factors may be further strengthened via non-convential
+extrinsic factors, resembling Lieataer's alternative
+currencies~\cite{Lietaer2001}.  Examples of such incentive mechanisms
+may be both non-transferable or even convertible ``contribution tokens'',
+denoting a developers' overall level of contribution to the project
+over time or allowing them to financially benefit from their
+contributions.
+
+At the present, the idea is that a typical developer ``career'' would
+consists of the following steps:
+\begin{enumerate}
+  \item Anyone may become a (private) developer through downloading
+    the source code and making their own modifications.
+  \item Those developers that want to contribute their modifications
+    to the core, for example due to extrinsic or intrinsic factors,
+    must donate the copyrights to the co-operative.
+  \item The co-operative may accept such copyright donations or not,
+    thereby creating a gradually tightening quality control barrier.
+  \item The developers whose copyright donations have been accepted to
+    the core may formally join to the co-operative as full members.
+  \item The full members of the co-operative govern the co-operative
+    an get extrinsic membership benefits, such as discounts on future
+    versions of the hardware or special non-money or alternative-mony
+    tokens denoting the significance of their contributions.
+\end{enumerate}
 
 \subsubsection{Commercial licensee incentive structure}
 
