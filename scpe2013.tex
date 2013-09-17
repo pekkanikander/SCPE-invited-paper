@@ -234,18 +234,24 @@ bluetooth transmitters (driving power \~5mW; data trasmission rate \~500kbits/s;
 power consumption of 10 nW/bit) which are required to be in active mode
 periodically~\cite{wang2010toward}.
 
+\subsection{Open source embedded platforms}
 
 \begin{itemize}
-  \item relevant references: here I will need your group's help to gather these
-  \item powering solutions in IoT
   \item any other similar PoE platforms: Arduino PoE, etc
     \begin{itemize}
     \item difference from these
     \end{itemize}
+\end{itemize}
+
+\subsection{Single-wire powering and communication solutions}
+
+\begin{itemize}
   \item PoE
     \begin{itemize}
     \item 802.3af, 802.3at, non-standard solutions to up to 65W or so
     \end{itemize}
+  \item Ethernet-over-Powerline
+  \item Others
 \end{itemize}
  
 % ------------------------------------------------------------------
@@ -981,7 +987,7 @@ planned and will be adjusted to make the platform lucrative for
 commercial licensees.
 
 However, in order to get the platform there in the first place, we
-first need to entice a group of entusiastic developers that want to
+first need to entice a group of enthusiastic developers that want to
 contribute to the project.  For that, we presume that we first need to
 create a level of activity close to the Arduino project, i.e. selling
 a few thousand boards.  Based on studies in similar kinds of
@@ -1034,7 +1040,7 @@ e.g. through a Kickstarter~\cite{Kickstarter} campaign.  That may help
 with gaining initial production volume and inducing a few new
 developers; however, such a campaign is also likely to saturate the
 early market, making it considerably harder to sell new hardware for a
-while.  Hence, at the time a crowdsourcing campaing is commenced,
+while.  Hence, at the time a crowdsourcing campaign is commenced,
 there must be sufficient structure in place so that the new developers
 have a clearly laid approach and incentive to start contributing to
 the project.
@@ -1176,39 +1182,93 @@ consists of the following steps:
 
 \subsubsection{Commercial licensee incentive structure}
 
-Goals:
-\begin{itemize}
-  \item Enable commercial usage of the platform without an obligation
-    of opening the kimono
-  \item Encourage commercial licensees to contribute back to the
-    project
-\end{itemize}
+Let us now look at the situation from a commercial licensee point of
+view.  When considering the ELL-i platfrom, a company has a number of
+choices: they may decide to use the ELL-i platform using the open
+source license, they may decide to license the ELL-i platform under a
+different license, they may decide to use another platform, or they
+may decide to build their product without any external platform at
+all.  Each of these choices have their pros and cons, whose closer
+analysis falls beyond the scope of this paper; here we merely list a
+number of preconditions without which the choice of licensing ELL-i
+under a commercial license will not be attractive at all.
 
-Structure:
-\begin{itemize}
-  \item Anyone may licence the source under a GPL licence
-  \item Anyone may aquire a commercial unidirectional licence from
-    the co-operative
-  \item Commercial licensees may join the co-operative, at the same
-    time updating their license into a bidirectional one
-  \item Co-operative members get membership benefits and govern the
-    co-operative
-\end{itemize}
+For a commercial license to be more attractive than an open source
+license, the open source license needs to be somehow more restrictive;
+for example, if the open source license is a GPL variant, the
+``virality'' of the GPL may be considered as a drawback.  For ELL-i to
+be more attractive than some other platform or in-house development,
+it shall provide tanglible benefits, such faster time-to-market,
+lower investment costs, lower maintenance costs, or higher quality.
+
+In addition to the initiali licensing decision, we also need to
+consider the incentives for a commercial company to contribute back to
+the community in the form of donated code or other technology.
+In addition to the ownership and governance benefits stemming from
+membership, companies may also benefit form of network effects
+stemming from platform standards
+(cf.~eg.~\cite{gandal2002compatibility}) and the ability to influence
+them.
+
+While we have a relatively good understanding how the incentive model
+might work for individual developers, our understanding of the detals
+of the licensing model are still in the works.
 
 \subsection{Business model summary}
+
+As a first approximation from the conventional economics point of
+view, the ELL-i platform seems to form a fairly classical two-sided
+market~\cite{rochet2003platform}.  ELL-i offers the platform
+essentially free-of-charge to the developer community, allowing
+individual developers to innovate and fulfil their personal needs.  At
+the same time, it offers the platform for commercial companies for a
+fee.  However, at the same time it attempts to form a joint community
+of both individual developers and products companies, creating a
+larger two-sided market where the sides are the hardware component
+manufacturers and the product users.  From that point of view, ELL-i
+benefits the component suppliers through larger volumes, the product
+companies through increased bargaining power, and the product users
+through increased variety and lower average price of the products.  A
+more detailed analysis of the market structure is in the works.
+
+From a societal point of view, if ELL-i succeeds as a platform it may
+produce essentially a virtual non-profit monopoly, benefitting the
+society through the increased efficiency of scale of the used
+components and overall lower user prices of the technology.  At the
+same time, its egalitarian ownership structure anchors the forming
+intellectual capital within the community while the meritocratic
+governance structure allows any further development to be primarily
+technology driven, aiming for long-term engineering excellence instead
+of short-term profits.
 
 % ------------------------------------------------------------------
 
 \section{Ongoing work}
 \label{sec:ongoing}
 
-\begin{itemize}
-  \item ability to use other wiring than CAT3/CAT6
-  \item scheduler
-  \item flashing over Ethernet
-  \item smooth path from Arduino IDE to a more advanced environment
-    (Eclipse/
-\end{itemize}
+As a platform and a business model, ELL-i is still at its infancy.  As
+a development platform, we are still busy laying out the building
+blocks: the next version of the hardware is being worked on, the
+software is receiving constant inprovements, and at the tools side we
+are smoothing out the developer path from the easy-to-start-with but
+simplistic Arduino IDE to the more powerful full-fledged tools.  At
+the same time we are looking at how to expand the technology to conver
+a wider variety of environments; for example, it would be very
+desirable to use the ELL-i platform without requiring any new cabling
+when renovating existing installations.
+
+From the community building point of view, Ell-i has but started yet.
+We are still considering how to best launch a campaign to expand the
+developer base beyond the founders of the co-operative.  It seems
+clear that we need some sort of a crowdsourcing campaign to attract
+developers and to gain initial volumes.
+
+Finally, the governance and licencing models clearly need much more
+work.  Our understanding of how to structure the business model in a
+way that allows both fast organic growth and sustained technical
+development is still inadequate, requiring both better theoretical
+understanding of the various stekeholder incentives and real-life
+experimentation in the form of trying out a few alternatives.
 
 % ------------------------------------------------------------------
 
