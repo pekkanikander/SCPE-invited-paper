@@ -121,12 +121,12 @@ Proliferation of cheap and versatile sensors, actuators, computing, storage and
 networking solutions augmented by the desire to connect people with their
 devices in a more meaningful way have contributed significantly to the IOT
 research. IMS research predicts that there will be 30 billion devices which will
-be connected to the internet by 2020~\cite{ABIresearch}. Most of the IOT
+be connected to the Internet by 2020~\cite{ABIresearch}. Most of the IOT
 research has been used to serve diverse domains of wireless and RFID based
 applications with built-in powering solutions. In this work we focus on an
 alternative way for providing both the communication and powering solutions to
 fixed and immovable devices, which would anyhow be powered by wirelines, using
-Power over Ethernet (POE) standard.
+Power over Ethernet (PoE) standard.
 
 \subsection{Classifying IoT devices -- power and security}
 
@@ -188,13 +188,18 @@ Digital power-management protocols like the PMBus could not be moved to the
 board level and provide real value to the designer before the introduction of
 intermediate-bus architecture~\cite{FutureIOT}. It would have been difficult to
 foresee the interdevice communications for both power and data without the
-advances in mixed-bus connector architectures, such as USB and POE (power over
+advances in mixed-bus connector architectures, such as USB and PoE (power over
 ethenet)~\cite{FutureIOT}. 
 
 A Power-over-Ethernet system can communicate with its power source
 bidirectionally for both power and intelligence. This can provide new and
 innovative ways to develop power management methodologies inorder to raise the
 overall power efficiency of the system.
+
+%
+% Condense the following three chapters into a message about power
+% requiremnts here
+%
 
 The smallest RFID chip manufactured by Hitachi is at 0.05mm $\times$ 0.05mm
 $\times$ 0.005mm. It can respond to 2.45GHz microwave from a scanner by
@@ -239,9 +244,36 @@ periodically~\cite{wang2010toward}.
 \begin{itemize}
   \item any other similar PoE platforms: Arduino PoE, etc
     \begin{itemize}
-    \item difference from these
+    \item technical difference from these
+    \item governance difference from these
     \end{itemize}
 \end{itemize}
+
+Today, there are a few tens of slightly different open source embedded
+platforms.  The Raspberry Pi~\cite{RasPi} forms a category of its own,
+offering an unbeatable price point in the embedded Linux category.  In
+the lower category, the Arduino~\cite{ArduinoProject,hribernik2011co}
+project has gained the largest user community, with half a dozen
+different official boards and a number of derivatives~\cite{XXX}.
+
+XXX
+
+The Arduino project is a somewhat loose collaboration led a number of
+people that developed the original Arduino design.  They have decided
+to open source all of the software and hardware but to keep the
+Arduino and associated graphics as trademark.  At the moment there are
+three companies that are authorized by the project leaders to produce
+official Arduino boards~\cite{ArduinoPolicy}.  The financial
+arrangements between the project leaders and the authorised
+manufacturers are not known.
+
+The Raspberry Pi is produced by the Raspberry Pi Foundation, which is
+a UK registered charity founded in May 2009 in Caldecote,
+Cambridgeshire, UK, supported by the University of Cambridge Computer
+Laboratory and Broadcom~\cite{RaspiFoundationWikipedia}.  For its
+first three years of operation, the foundation income was annually
+less than \textsterling 10.000.  The foundation income and spendings for 2012
+were not registered at the UK Charity Commission at this writing.
 
 \subsection{Single-wire powering and communication solutions}
 
@@ -390,7 +422,7 @@ XXX insert figure.
 
 The set of APIs may be devided into five groups, corresponding to the
 booting, HAL, scheduler, Internet, and Web-services.  In the current
-implementation, the boot and HAL APIs provide an Arduino compatible
+implementation, the boot and HAL APIs provide an Arduino-compatible
 programming environment, allowing programmers to initialise the
 hardware using the familiar \hbox{\tt setup()} function and to run a
 main loop within the \hbox{\tt loop()} function.  Both of these are
@@ -401,7 +433,7 @@ HAL APIs are supported, such as accessing GPIOs and serial lines.
 While the original Arduino runtime does not provide any concurrency,
 thereby causing e.g. busy loops to stall the whole MCU, in the ELL-i
 runtime there is a small scheduler running ``under'' the Arduino
-APIs.  Using the scheduler, The Internet and Web-server modules are
+APIs.  Using the scheduler, the Internet and Web-server modules are
 implemented so that they always run concurrently with any Arduino
 sketch.  More advanced programmers that override the \hbox{\tt main()}
 function must include a call to initialise the scheduler.
@@ -500,8 +532,9 @@ At this writing in September 2013, the currently available
 implementation consists of the first prototyping board, an initial
 runtime, and support for the Arduino IDE.  Work on the cloud-side
 components will be started later.
-The goal of the first prototyping board was to create Arduino
-compatible hardware and software that would support a more powerful
+The goal of the first prototyping board was to create
+Arduino-compatible hardware and software that would support a more
+powerful
 MCU than the present basic Arduinoes do and to allow custom DC/DC
 power supply design.  This goal has been reached.  With the first
 prototyping board, prospecting developers can utilise the existing
@@ -581,7 +614,7 @@ support with uIP.  XXX UPDATE!
 \subsection{Ongoing efforts}
 
 When designing the first prototyping board, our goal was to learn how
-to build Arduino compatible boards and how to provide an Arduino
+to build Arduino-compatible boards and how to provide an Arduino
 compatible IDE with that.  We have clearly reached that goal.  With
 the next board, we want to go further.  A major goal of this present
 design round is to allow people to easily extend their designs from
@@ -610,8 +643,8 @@ headers\footnote{It the PCB industry, it is a standard practise to
   100mil or 0.1 inch spacing (2.56 mm).  The female connectors in the Arduino
   boards do this.  The standard 100mil female header height is
   typically around 8 mm, while even the lowest RJ45 sockets
-  are around 14 mm.  This makes it challenging to produce Arduino
-  compatible boards with standard-height headers.}.
+  are around 14 mm.  This makes it challenging to produce
+  Arduino-compatible boards with standard-height headers.}.
 Having two boards stacked in a sandwich fashion allows us to place the
 high components on the lower PCB and the Arduino-compatible 100 mil
 headers on the upper PCB.  In this way we can use standard-height
@@ -640,7 +673,7 @@ in Figure~\ref{fig:divided}.
 The development board, in turn, hosts the Arduino-compatible headers,
 and USB slave chip that can be used for flashing and debugging the MCU
 on the production board, and a number of low-current LEDs which may be
-used to monitor the I/O state at the Arduino connectors, and ability
+used to monitor the I/O state at the Arduino-compatible connectors, and ability
 to provide 5V power from the USB connector, thereby allowing the board
 to be used even when powered only via the USB connector.
 
@@ -681,7 +714,7 @@ dimensions.
 
 \subsubsection{Software efforts taking place}
 
-At the moment we are extending the existing Arduino compatible runtime
+At the moment we are extending the existing Arduino-compatible runtime
 with a simple pre-emptive scheduling system, thereby allowing the uIP
 TCP/IP stack to run in parallel with any Arduino sketch.  We are
 considering whether we should support a more full fledged real time
@@ -720,12 +753,12 @@ still room for optimisation, but we are currently planning to leave
 that for later.
 
 For hardware-level expandability, we are still working to determine
-the right approach.  At the moment, we are using the Arduino I/O
+the right approach.  At the moment, we are using the Arduino-compatible I/O
 connector design for development-time extensions.  However, it is
 clear that they are not a good choice for production use, for many
-reasons\footnote{The Arduino connectors are physically quite large,
+reasons\footnote{The Arduino-compatible connectors are physically quite large,
   requirign more space than what is available within many devices and
-  e.g. within a pattressbox.  Furthermore, the Arduino connectors are
+  e.g. within a pattressbox.  Furthermore, the Arduino-compatible connectors are
   basically unbuffered, making it somewhat tricky to get good ADC
   readings or driving higher loads through them.}.
 
@@ -989,8 +1022,7 @@ commercial licensees.
 However, in order to get the platform there in the first place, we
 first need to entice a group of enthusiastic developers that want to
 contribute to the project.  For that, we presume that we first need to
-create a level of activity close to the Arduino project, i.e. selling
-a few thousand boards.  Based on studies in similar kinds of
+sell a few thousand boards.  Based on studies in similar kinds of
 situations~\cite{need-reference}, we expect that 1--4\% of the early
 % XXX Check the percentage above
 adopters will turn into active developers; see
