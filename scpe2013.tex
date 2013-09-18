@@ -21,13 +21,15 @@
 \begin{abstract}
 The Internet of Things (IoT) vision is enticing; each and every
 ``thing'' in the world is expected to be eventually connected to the
-Internet.  In most of the IoT research, the focus has been in enabling
-movable things to communication, including phones, tablets, RFID tags,
+Internet, thereby becoming a part of the ``context'' within which the
+applications live.  
+In most of the IoT research, the focus has been in enabling
+movable things to communicate, including phones, tablets, RFID tags,
 watches, and jewelry, to name but a few.  In such an approach, the
 things are expected to have their own batteries or receive temporary
 power over short distance electro-magnetic field, and the
 communications is necessarily expected to take place over radio.
-However, this approach has also dominated the more fixed side of the
+This approach has also dominated the more fixed side of the
 IoT research, including a large fraction on the work on stationary
 sensors and actuators, focusing also there on battery-based operations
 and wireless communication. 
@@ -36,18 +38,21 @@ In this invited paper, we introduce an alternative view to the world
 of stationary things.  We argue that a large majority of the fixed or
 stationary things would benefit from being permanently powered using
 wireline connections, and while doing so, it becomes natural to use
-the same wires also for their communication needs.  We introduce the
+the same wires also for their communication and contextual needs.
+Such an approach allows the appliciances to become both part of the
+the wider application context.  With this in mind,
+we introduce the
 ELL-i platform, a new open source initiative for provide a low-cost
 flexible prototyping and production platform for extensible,
 Power-over-Ethernet based smart appliances.  We describe the first
 ELL-i prototyping board and briefly describe the planned technical
-roadmap, a number of application concepts, and discuss the novel
+roadmap, a number of application concepts, and discuss its
 business model. 
 \end{abstract}
 
 \begin{keywords} 
-internet of things, direct current power transmission, power over
-Ethernet, TBD
+Internet of Things, Context Awareness, Direct Current (DC) power
+transmission, Power over Ethernet
 \end{keywords}
 
 \pagestyle{myheadings}
@@ -58,32 +63,98 @@ Ethernet, TBD
 
 \section{Introduction}
 
-Most of the research, presented use cases and applications have
-assumed the use of some wireless connectivity technology although the
-first ideas do not specifically refer to specific wireless or wired
-networking, or to a any information and communications technology.
+Making real-life appliances intelligent and internet-connected not
+only enriches the amount of environmental information available to
+applications but also creates the promise of making the environment
+itself a situation-aware part of the ``applications''.  As we can
+easily see from the multitude of sensors that are available in today's
+smartphones, once we realise the Internet of Things (IoT)
+vision~\cite{Atzori20102787} of making each ``light bulb'' Internet
+connected~\cite{cerf1997next}, the amount of available sensor data is
+likely to multiply.  Furthermore, through making the applicances not
+only sensitive but also active, the appliances may themselves become
+more aware of the nearby humans, reacting and proacting in a
+situation-aware manner.
 
-\begin{itemize}
-  \item Motivation: Making physical context available and serviceable
-  \item Refer to \cite{Atzori20102787}, define IoT
-  \item Find at least two references that discuss IoT power; [1]
-    discusses only RFID and battery, see their table 1. 
-  \item the field: fixed appliances, lighting, actuators, sensors
-  \item the problem of power: battery or powerline
-  \item the ELL-i solution: PoE over ubiquitous CAT5 (or even CAT3),
-    flexible, open source, inexpensive 
-\end{itemize}
+Considering physical space, a key aspect of making a room, building,
+or any physical space context aware is to have a sufficient number of
+sensors and providing a framework for pre-prosessing the
+data~\cite{Baldauf2007a}.  This is typically expected to take place
+through installing a {\it sensor network} to an already existing
+building or space, and routing the collected data to an aggregation
+service.  In the large majority of the recent works, the sensor
+network is expected to be a wireless one, to the extent that the most
+widely referred referred survays carry the word ``wireless'' in their
+title~\cite{akyildiz2002wireless, akkaya2005survey}.
+
+At the same time, most of the works have implicitly ignored how the
+sensors are to be powered or assume that they have a battery that will
+last for their lifetime.  In general, in most of the published
+research, the presented use cases and applications assume the use of
+some wireless connectivity technology, although the primary ideas do
+not specifically refer to specifically wireless or wired networking,
+or to a any specific information and communications technology.
+Looking at the situation from greenfield applications point of view,
+or more widely from a sustainability perspective, assuming that the
+sensors will be replaced every few, or even every tens of years, does
+not look like a very rewarding alternative.
+
+While it may well be possible to create sensor nodes that scavenge
+energy from the environment and use radio or light bursts to
+communicate with the environment~\cite{wang2010toward}, creating
+wirelessly powered every day appliances that have some other active
+function that mere sensing seems improbable.  Hence, it seems prudent
+to assume that a large majority of different appliances will remain
+wired, including air conditioners, blinds, coffee machines, doorbells,
+electroliers, and freezers, to mention but a few.
+
+In this paper we argue that it makes economic sense to introduce a
+common open source platform for wired, communicating, intelligent
+``things''.  Once established, such a platform would allow designing
+and producing inexpensive appliances that are able to monitor their
+(immediate) environment, participate in wider situation data
+collection and perusal, and act in accordance with the users' explicit
+and sometimes even implicit intentions.  In particular, we introduce
+the ELL-i platform, an open source initiative that aims to provide a
+low-cost prototyping and production platform for embedding wired
+intelligence into buildings, appliances, and other implements.
+
+As its first technical platform, ELL-i provides open source hardware
+and software for building inexpensive embedded intelligence into
+devices, allowing them to communicate and be powered with
+Power-over-Ethernet (PoE)~\cite{PoE}, an established but rapidly
+evolving standard for providing up to 100 Watts of electric power
+through standard Ethernet cables.  The currently available ELL-i
+prototyping board is compatible with the popular
+Arduino~\cite{ArduinoProject} prototyping platform, with a clear path
+for mass-producable miniature units that may be embedded into standard
+pattress boxes within builings and most wired appliances.
+
+The ELL-i initiative is organised a co-operative, providing an
+egalitarian ownership model that anchors the property rights with the
+community.  The governance model is designed to be meritocratic,
+assuring that the platform will evolve in a technically sound manner.
+The incentive models are designed to inspirit participation from a
+wider open source developer community while still allowing mass-market
+production by commercial companies.
 
 The rest of this paper is organised as follows.  First, in
-Section~\ref{sec:related} TBD.
+Section~\ref{sec:related} we consider related work from a relatively
+wide perspective.  Then, in Section~\ref{sec:architecture} we
+introduce the ELL-i platform from a technical point of view.  In
+Section~\ref{sec:examples} we briefly describe some example
+applications that are immediately viable with ELL-i, followed in
+Section~\ref{sec:business} with a hopefully succint description of the
+business model.  Section~\ref{sec:ongoing} enlists our ongoing work.
+We conclude the paper in Section~\ref{sec:conclusions}, attempting to
+summarise the lessons learned so far.
  
 % ------------------------------------------------------------------
 
 \section{Related work}
 \label{sec:related}
 
-\subsection{Defining {\it Internet of Things} and {\it
-    Machine-to-Machine}}
+\subsection{Internet of Things and Machine-to-Machine}
 
 A first definition of Internet-of-Things (IoT) referred to identifiers
 placed in objects so that they could be monitored and managed by
@@ -128,32 +199,6 @@ alternative way for providing both the communication and powering solutions to
 fixed and immovable devices, which would anyhow be powered by wirelines, using
 Power over Ethernet (PoE) standard.
 
-\subsection{Classifying IoT devices -- power and security}
-
-In this work, IOT devices have been classified by the amount of power required
-for their efficient operation. Some IOT devices use batteries, some scavenge
-energy from radio waves (RFID and NFC), while others are powered by seperate
-power supply from the mains (like PoE).  The main roles of IOT devices include
-sensing, collecting, processing, transmitting, collaborating and communicating.
-All of these roles require power to accomplish. Smart and tiny embedded systems
-have sensors, actuators, CPU, memory and a low-power communication
-device~\cite{lopez2012adding}. Usually, these can be powered by a battery. On
-the other hand, Wireless Sensor Networks (WSN's) which is a popular research
-area uses energy efficient battery powered wireless devices for transmitting
-sensor data~\cite{akyildiz2002wireless}.
-
-Security:
-For the case of mobile devices, as the complexity of the encryption algorithm
-increases, their battery consumption increases as well. It has been shown that
-among symmetric encryptions used in security protocols, the AES128 algorithm
-increases the battery consumption and the processing time by 75\% and 65\%
-respectively when compared to "no encrption" results~\cite{hamad2009energy}.
-Furthermore, increasing the key size for the encryption also increases the
-battery consumption and processing time. That is, increasing the keysize from
-128 bits to 192 bits results in 8\% increase in power and time consumption and
-16\% increase when the key size is increased to 256
-bits~\cite{hamad2009energy}.
-
 \subsection{Internet of Things applications}
 
 Internet-of-Things applications include a variety of applications
@@ -180,7 +225,33 @@ of reducing the consumption of resources associated to buildings
 (electricity, water) or improving the satisfaction level of humans
 populating them~\cite{miorandi2012internet}.
 
-\subsection{Digital power management}
+\subsection{Power management and security in IoT and M2M research}
+
+In this work, IOT devices have been classified by the amount of power required
+for their efficient operation. Some IOT devices use batteries, some scavenge
+energy from radio waves (RFID and NFC), while others are powered by seperate
+power supply from the mains (like PoE).  The main roles of IOT devices include
+sensing, collecting, processing, transmitting, collaborating and communicating.
+All of these roles require power to accomplish. Smart and tiny embedded systems
+have sensors, actuators, CPU, memory and a low-power communication
+device~\cite{lopez2012adding}. Usually, these can be powered by a battery. On
+the other hand, Wireless Sensor Networks (WSN's) which is a popular research
+area uses energy efficient battery powered wireless devices for transmitting
+sensor data~\cite{akyildiz2002wireless}.
+
+Security:
+For the case of mobile devices, as the complexity of the encryption algorithm
+increases, their battery consumption increases as well. It has been shown that
+among symmetric encryptions used in security protocols, the AES128 algorithm
+increases the battery consumption and the processing time by 75\% and 65\%
+respectively when compared to "no encrption" results~\cite{hamad2009energy}.
+Furthermore, increasing the key size for the encryption also increases the
+battery consumption and processing time. That is, increasing the keysize from
+128 bits to 192 bits results in 8\% increase in power and time consumption and
+16\% increase when the key size is increased to 256
+bits~\cite{hamad2009energy}.
+
+\subsection{Digital power management in general}
 
 The industry has been challenged to provide digital power-management solutions
 which can communicate with various connected systems that inhabit our world.
@@ -239,6 +310,17 @@ bluetooth transmitters (driving power \~5mW; data trasmission rate \~500kbits/s;
 power consumption of 10 nW/bit) which are required to be in active mode
 periodically~\cite{wang2010toward}.
 
+\subsection{Single-wire powering and communication solutions}
+
+\begin{itemize}
+  \item PoE
+    \begin{itemize}
+    \item 802.3af, 802.3at, non-standard solutions to up to 65W or so
+    \end{itemize}
+  \item Ethernet-over-Powerline
+  \item Others
+\end{itemize}
+ 
 \subsection{Open source embedded platforms}
 
 \begin{itemize}
@@ -275,20 +357,9 @@ first three years of operation, the foundation income was annually
 less than \textsterling 10.000.  The foundation income and spendings for 2012
 were not registered at the UK Charity Commission at this writing.
 
-\subsection{Single-wire powering and communication solutions}
-
-\begin{itemize}
-  \item PoE
-    \begin{itemize}
-    \item 802.3af, 802.3at, non-standard solutions to up to 65W or so
-    \end{itemize}
-  \item Ethernet-over-Powerline
-  \item Others
-\end{itemize}
- 
 % ------------------------------------------------------------------
 
-\section{Platform architecture}
+\section{ELL-i platform architecture}
 \label{sec:architecture}
 
 In this section, we describe the ELL-i technical architecture in
@@ -1306,6 +1377,43 @@ experimentation in the form of trying out a few alternatives.
 
 \section{Conclusions}
 \label{sec:conclusions}
+
+Realising the Internet-of-Things (IoT) and Machine-to-Machine (M2M)
+visions will make our environment immensely contextual in the sense
+that the digitally interconnected artifacts in our environment may
+jointly form a rich model of what is taking place in any given space,
+allowing the environment to react in a smart manner.  In this paper,
+we have discussed one potential step towards that vision, the ELL-i
+initiative and technical platform.
+
+The ELL-i initiative is organised as a co-operative, with the
+intention of producing inexpensive open source hardware and software
+for wired appliances and implements, such as aquariums, bowling
+alleys, cooktops, dishwashers, the way to toasters, underlayments,
+vacuum cleaners, washers, xerox machines, yachts, and kitchen zinks.
+The currently available ELL-i prototyping board allows researchers and
+other developers to explore the ELL-i approach, creating prototypes of
+intelligent, communicating things that can be readily located anywhere
+at the distance of an Ethernet cable.  With its Arduino compatibility,
+the ELL-i platform provides a very low entry barrier, while still
+outlining a clear path for more powerful approaches.
+
+From the technical point of view, the main promise of the ELL-i
+approach is in its ability to provide reasonable amounts of electrical
+power, combined with the communication and data processing capability,
+at a very reasonable price point.  If ELL-i ever reaches
+mass-production quantities, it will provide an electronics module that
+allows almost any wired electrical device to be converted into its
+``smart'' equivalent at the additional production cost of just a
+couple euros.  Consequently, as even a typical light switch or toaster
+is priced at a level close to or exceeding ten euros, that may
+gradually enable complete ``smartification'' of our urban
+environment. 
+
+The ownership, governance, and incentive models built into the ELL-i
+co-operative have been designed with sustainability in mind.  They aim
+to create an openly governed, jointly owned platform that is firmly
+anchored within the society and developed as a common good. 
 
 \section*{Acknowledgments}
 
