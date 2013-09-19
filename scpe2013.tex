@@ -340,7 +340,7 @@ different official boards and a number of derivatives~\cite{XXX}.
 
 XXX
 
-The Arduino project is a somewhat loose collaboration led a number of
+The Arduino project is a somewhat loose collaboration led by a number of
 people that developed the original Arduino design.  They have decided
 to open source all of the software and hardware but to keep the
 Arduino and associated graphics as trademark.  At the moment there are
@@ -356,6 +356,33 @@ Laboratory and Broadcom~\cite{RaspiFoundationWikipedia}.  For its
 first three years of operation, the foundation income was annually
 less than \textsterling 10.000.  The foundation income and spendings for 2012
 were not registered at the UK Charity Commission at this writing.
+
+There are other Arduino and Raspberry Pi based PoE
+solutions~\cite{ArduinoEthernetPOE} \cite{ArduinoEthernetShieldPOE}
+\cite{POEthernetShield} \cite{etherduino} \cite{xtronix} currently available in
+the market. Some of them are complete PoE solutions while others are shields
+that can be plugged into an Arduino. The Arduino Ethernet with
+PoE~\cite{ArduinoEthernetPOE} is an Arduino development board with the built in
+Wiznet Ethernet interface. Although the board can be powered over the Ethernet
+connection, the developers have removed the USB-serial driver and hence it will
+need an FTDI breakout to upload Arduino sketches. The Arduino Ethernet Shield
+with the PoE Module~\cite{ArduinoEthernetShieldPOE} allows an Arduino board to
+connect to the internet. It is based on Wiznet W5100 ethernet chip which
+provides a network IP stack capable of both TCP and UDP. The PoEthernet
+Shield~\cite{POEthernetShield} gives access to the Internet via the Ethernet
+library and also allows the Arduino based projects to power itself from the
+Ethernet line. The Raspberry Pi Power Over Ethernet (PoE) Adapter~\cite{xtronix}
+manufactured by Xtronix Ltd, is designed to be plugged directly on to a
+Raspberry Pi and power it with +5 Volts at up to 1.0 Amps output. All of these
+solutions are either expensive and/or bulky to reside in a pattress box.
+
+The long term vision for ELL-i differs significantly from those of other PoE
+solutions that are described here. ELL-i is a multi-voltage domain design and
+both the PoE 48V or the DC-to-DC converters can be used. ELL-i is aiming to be
+an inexpensive low-cost PoE device which will come with integrated cloud based
+services pre-loaded out of the box. When it is ready, the ELL-i board will be
+around 45 $\times$ 45 $mm^2$ and can easily fit into DIN pattress boxes. 
+
 
 % ------------------------------------------------------------------
 
@@ -547,7 +574,7 @@ The cloud components provide interaction, update and community
 services to the ELL-i boards, and they are enabled by default in each
 ELL-i development board.
 
-In the default configuration, a newly installed Ell-i development
+In the default configuration, a newly installed ELL-i development
 board attempts to contact its counterpart component at the cloud
 side, making the cloud-side component aware that the board is running
 and has Internet connectivity.  At the same time, the user may direct
@@ -929,7 +956,7 @@ actuators, and it does not as such implement any of the existing
 protocols.  Therefore, as a standalone component it does not integrate
 with the existing automation systems.
 
-However, Ell-i is a small, connected, intelligent, power-convoying low-cost
+However, ELL-i is a small, connected, intelligent, power-convoying low-cost
 component, the ELL-i platform provides a platform.  Therefore it could
 potentially be co-located with the sensors and actuators, providing
 power to them and integrating both intelligence and connectivity
@@ -1026,7 +1053,7 @@ electronic components, including resistors, capacitors, coils, FET
 transistors, diodes, and LEDs.  Starting from a very simple design,
 they built in a stepwise manner an adjustable constant-current DC/DC
 converter that generated some 300 mA of current from the nominally 48V
-unregulated DC power available from the PoE header on the Ell-i
+unregulated DC power available from the PoE header on the ELL-i
 prototyping board.  The background of the students varied from ones
 that had only taken theoretical basic courses in electronics, as a
 part of their basic studies, to a few that had built simple
@@ -1360,7 +1387,7 @@ a wider variety of environments; for example, it would be very
 desirable to use the ELL-i platform without requiring any new cabling
 when renovating existing installations.
 
-From the community building point of view, Ell-i has but started yet.
+From the community building point of view, ELL-i has but started yet.
 We are still considering how to best launch a campaign to expand the
 developer base beyond the founders of the co-operative.  It seems
 clear that we need some sort of a crowdsourcing campaign to attract
