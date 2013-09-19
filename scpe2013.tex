@@ -7,6 +7,8 @@
 
 \documentclass[draft,a4paper]{siamltex}
 
+\usepackage{graphicx}
+
 \title{{ELL-i}: An inexpensive platform for fixed things}
 
 \author{Pekka Nikander\thanks{{ELL-i} open source co-operative, Helsinki}
@@ -34,7 +36,7 @@ IoT research, including a large fraction on the work on stationary
 sensors and actuators, focusing also there on battery-based operations
 and wireless communication. 
 
-In this invited paper, we introduce an alternative view to the world
+In this paper, we introduce an alternative view to the world
 of stationary things.  We argue that a large majority of the fixed or
 stationary things would benefit from being permanently powered using
 wireline connections, and while doing so, it becomes natural to use
@@ -407,7 +409,12 @@ The ELL-i platform consists of a hardware architecture, a runtime
 programming environments.  The basic architecture is depicted in
 \ref{fig:arch}.
 
-XXX insert figure.
+\begin{figure}
+\centering
+\includegraphics[scale=.4]{figure-arch.eps}
+\caption{ELL-i platform architecture}
+\label{fig:arch}
+\end{figure}
 
 The hardware architecture is based on combining power and
 communications on a single cable, making both of them available to
@@ -516,7 +523,12 @@ module, an optional built-in Webserver, and a set of APIs providing
 programmatic access to all of these.  The runtime architecture is
 illustrated in Figure~\ref{fig:software}.
 
-XXX insert figure.
+\begin{figure}
+\centering
+\includegraphics[scale=.4]{figure-software.eps}
+\caption{ELL-i runtime architecture}
+\label{fig:software}
+\end{figure}
 
 The set of APIs may be devided into five groups, corresponding to the
 booting, HAL, scheduler, Internet, and Web-services.  In the current
@@ -684,13 +696,24 @@ DAC1 line is connected directly to the STM32F051 PA11 GPIO line;
 however, we are considering adding there a low pass filter to allow
 the attach PWM counter/timer to be used to generate analogue signals.
 
-XXX insert figure of the design
+\begin{figure}
+\centering
+\includegraphics[scale=.4]{figure-casedesign.eps}
+\caption{ELL-i case design}
+\label{fig:casedesign}
+\end{figure}
 
 The current case design is depicted in Figure~\ref{fig:casedesign} and
 a corresponding prototype in Figure~\ref{fig:case}.  The prototype has
 been printed with the MakerBot II~\cite{MakerBotII} 3D printer.
 
-XXX insert figure ot the prototype
+\begin{figure}
+\centering
+\includegraphics[scale=.4]{figure-case.eps}
+\caption{ELL-i 3D-printed prototype case}
+\label{fig:case}
+\end{figure}
+
 
 \subsubsection{Runtime and Arduino IDE support}
 
@@ -748,6 +771,13 @@ high components on the lower PCB and the Arduino-compatible 100 mil
 headers on the upper PCB.  In this way we can use standard-height
 connectors; see Figure~\ref{fig:stacking}.
 
+\begin{figure}
+\centering
+\includegraphics[scale=.4]{figure-stacking.eps}
+\caption{Stacking PCB construction}
+\label{fig:stacking}
+\end{figure}
+
 Secondly, dividing the board into two allows the ``main'' board to be
 designed with production use in mind, without any restrictions from
 Arduino compatibility.  The second board provides Arduino
@@ -767,6 +797,13 @@ PoE signalling, DC/DC PSU, and Ethernet magnetics.  When separated,
 these two boards may be connected with seven wires, allows them to be
 placed inside the device in a flexible manner.  This is illustreated
 in Figure~\ref{fig:divided}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=.4]{figure-divided.eps}
+\caption{Two-part PCB}
+\label{fig:stacking}
+\end{figure}
 
 The development board, in turn, hosts the Arduino-compatible headers,
 and USB slave chip that can be used for flashing and debugging the MCU
@@ -1440,7 +1477,7 @@ environment.
 The ownership, governance, and incentive models built into the ELL-i
 co-operative have been designed with sustainability in mind.  They aim
 to create an openly governed, jointly owned platform that is firmly
-anchored within the society and developed as a common good. 
+anchored within the society and developed as an essentially public good.
 
 \section*{Acknowledgments}
 
