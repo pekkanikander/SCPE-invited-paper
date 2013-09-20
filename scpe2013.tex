@@ -436,8 +436,8 @@ and higher currents.
 
 The main goal of the runtime and the cloud components is make it easy
 to provide connectivity for the appliances.  Hence, the goal of the
-runtime is to package TCP/IP based protocols, such as HTTP~\cite{HTTP}
-and CoAP~\cite{CoAP} in an easy-to-use way.  As it is undesirable to
+runtime is to package TCP/IP based protocols, such as HTTP~\cite{fielding1999hypertext}
+and CoAP~\cite{shelby2013constrained} in an easy-to-use way.  As it is undesirable to
 perform packet processing in an interrupt context and as many of the
 protocols depend on timeouts, abstracting the protocol processing away
 from the runtime API requires some kind of threading, either in the
@@ -566,8 +566,8 @@ management is not supported and is strongly discouraged; any threads
 need to have their stacks to be allocated at compile time.
 
 The Internet API provides basic services for operating TCP, UDP and
-CoAP\cite{CoAP} sockets.  The TCP/IP stack is based on
-uIP~\cite{uIP}, with the
+CoAP\cite{shelby2013constrained} sockets.  The TCP/IP stack is based on
+uIP~\cite{dunkels2006uip}, with the
 uIP API working as such.  We plan to support Contiki~\cite{dunkels2004contiki}
 style protothreads~\cite{protothreads}, thereby making it easier to
 support existing uIP-based protocol stacks and applications.
@@ -1134,10 +1134,10 @@ simulator user interface to illustrate the application state.
 \section{Business model}
 \label{sec:business}
 
-In this section, we briefly look at the ELL-i business model, which
-somewhat deviates from most typical business models, being closer to
-to the Linux kernel community~\cite{Linux-kernel-need-reference}
-and XXX~\cite{Something-else-need-reference}.
+In this section, we briefly look at the ELL-i business model, which somewhat
+deviates from most typical business models, being closer to to the Linux kernel
+community~\cite{hertel2003motivation} and
+XXX~\cite{Something-else-need-reference}.
 
 As stated, the goal of the ELL-i project include providing an
 inexpensive and easy-to-use platform for all kinds of fixed
