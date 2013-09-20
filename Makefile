@@ -3,8 +3,8 @@
 all:  scpe2013.pdf
 
 scpe2013.pdf: 	scpe2013.dvi
-	dvi2ps scpe2013
-	pstopdf scpe2013.ps -o scp2013.pdf
+	dvi2ps  scpe2013
+	pstopdf scpe2013.ps -o scpe2013.pdf
 
 scpe2013.dvi:	scpe2013.tex scpe2013.bbl figure-arch.eps
 	latex scpe2013
