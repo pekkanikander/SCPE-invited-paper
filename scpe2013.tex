@@ -8,7 +8,7 @@
 %\documentclass[draft,a4paper]{siamltex}
 \documentclass[final]{siamltex}
 
-\usepackage{graphicx} 
+\usepackage{graphicx}
 
 \title{{ELL-i}: An inexpensive platform for fixed things}
 
@@ -419,7 +419,7 @@ programming environments.  The basic architecture is depicted in
 
 \begin{figure}
 \centering
-\includegraphics[scale=.4]{figure-arch.eps}
+\includegraphics[scale=.55]{figure-arch.eps}
 \caption{ELL-i platform architecture}
 \label{fig:arch}
 \end{figure}
@@ -528,15 +528,15 @@ with the cloud components in the Internet.  To achieve that, the ELL-i
 runtime consists of a boot module, a hardware abstraction layer (HAL),
 a tiny scheduler providing concurrency, an Internet-communications
 module, an optional built-in Webserver, and a set of APIs providing
-programmatic access to all of these.  The runtime architecture is
-illustrated in Figure~\ref{fig:software}.
+programmatic access to all of these.
+% The runtime architecture is illustrated in Figure~\ref{fig:software}.
 
-\begin{figure}
-\centering
-\includegraphics[scale=.4]{figure-software.eps}
-\caption{ELL-i runtime architecture}
-\label{fig:software}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[scale=.4]{figure-software.eps}
+% \caption{ELL-i runtime architecture}
+% \label{fig:software}
+% \end{figure}
 
 The set of APIs may be devided into five groups, corresponding to the
 booting, HAL, scheduler, Internet, and Web-services.  In the current
@@ -668,6 +668,13 @@ Linear LTC4267 PoE controller with build-in flyback SMPS controller,
 and Arduino-compatible headers.  We also have a 3D printed case for
 the prototyping board, with enough of space for a few Arduino shields.
 
+\begin{figure}
+\centering
+\includegraphics[scale=.28]{figure-casedesign.eps}
+\caption{ELL-i case design}
+\label{fig:casedesign}
+\end{figure}
+
 The STM32F051 MCU was selected partially because it was already
 familiar to us, partially because it represents a relatively new
 Cortex-M MCU at an attractive price point compared to the included
@@ -703,13 +710,6 @@ STM32F051 is connected to the Due DAC0 line.  At the moment, the Due
 DAC1 line is connected directly to the STM32F051 PA11 GPIO line;
 however, we are considering adding there a low pass filter to allow
 the attach PWM counter/timer to be used to generate analogue signals.
-
-\begin{figure}
-\centering
-\includegraphics[scale=.4]{figure-casedesign.eps}
-\caption{ELL-i case design}
-\label{fig:casedesign}
-\end{figure}
 
 The current case design is depicted in Figure~\ref{fig:casedesign} and
 a corresponding prototype in Figure~\ref{fig:case}.  The prototype has
