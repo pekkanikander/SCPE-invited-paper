@@ -5,8 +5,8 @@
 %% Mathematics, October 1, 1995, Version 1.0
 %% 
 
-%\documentclass[draft,a4paper]{siamltex}
-\documentclass[final]{siamltex}
+\documentclass[draft,a4paper]{siamltex}
+%\documentclass[final]{siamltex}
 
 \usepackage{graphicx}
 
@@ -30,26 +30,26 @@ In most of the IoT research, the focus has been in enabling
 movable things to communicate, including phones, tablets, RFID tags,
 watches, and jewelry, to name but a few.  In such an approach, the
 things are expected to have their own batteries or receive temporary
-power over short distance electro-magnetic field, and the
-communications is necessarily expected to take place over radio.
+power over short distance electro-magnetic field.
 This approach has also dominated the more fixed side of the
 IoT research, including a large fraction on the work on stationary
 sensors and actuators, focusing also there on battery-based operations
 and wireless communication. 
 
 In this paper, we introduce an alternative view to the world
-of stationary things.  We argue that a large majority of the fixed or
+of stationary Internet-connected things.  
+We argue that a large majority of the fixed or
 stationary things would benefit from being permanently powered using
 wireline connections, and while doing so, it becomes natural to use
 the same wires also for their communication and contextual needs.
-Such an approach allows the appliciances to become both part of the
+Such an approach allows the appliciances to become part of the
 the wider application context.  With this in mind,
 we introduce the
 ELL-i platform, a new open source initiative for provide a low-cost
 flexible prototyping and production platform for extensible,
 Power-over-Ethernet based smart appliances.  We describe the first
-ELL-i prototyping board and briefly describe the planned technical
-roadmap, a number of application concepts, and discuss its
+ELL-i prototyping board,
+a number of application concepts, and discuss its
 business model. 
 \end{abstract}
 
@@ -66,7 +66,7 @@ transmission, Power over Ethernet
 
 \section{Introduction}
 
-Making real-life appliances intelligent and internet-connected not
+Making real-life appliances intelligent and Internet-connected not
 only enriches the amount of environmental information available to
 applications but also creates the promise of making the environment
 itself a situation-aware part of the ``applications''.  As we can
@@ -77,7 +77,7 @@ connected~\cite{cerf1997next}, the amount of available sensor data is
 likely to multiply.  Furthermore, through making the applicances not
 only sensitive but also active, the appliances may themselves become
 more aware of the nearby humans, reacting and proacting in a
-situation-aware manner.
+situation-aware manner~\cite{kindberg2002people}.
 
 Considering physical space, a key aspect of making a room, building,
 or any physical space context aware is to have a sufficient number of
@@ -88,19 +88,19 @@ building or space, and routing the collected data to an aggregation
 service.  In the large majority of the recent works, the sensor
 network is expected to be a wireless one, to the extent that the most
 widely referred referred survays carry the word ``wireless'' in their
-title~\cite{akyildiz2002wireless, akkaya2005survey}.
+title~\cite{akkaya2005survey, akyildiz2002wireless}.
 
 At the same time, most of the works have implicitly ignored how the
 sensors are to be powered or assume that they have a battery that will
-last for their lifetime.  In general, in most of the published
+last for their lifetime.  Additionally, in most of the published
 research, the presented use cases and applications assume the use of
 some wireless connectivity technology, although the primary ideas do
 not specifically refer to specifically wireless or wired networking,
 or to a any specific information and communications technology.
 Looking at the situation from greenfield applications point of view,
 or more widely from a sustainability perspective, assuming that the
-sensors will be replaced every few, or even every tens of years, does
-not look like a very rewarding alternative.
+sensors will be replaced every few, years or even every tens of years, does
+not look like a very rewarding alternative~\cite{rowland2002prevalence}.
 
 While it may well be possible to create sensor nodes that scavenge
 energy from the environment and use radio or light bursts to
@@ -112,26 +112,28 @@ wired, including air conditioners, blinds, coffee machines, doorbells,
 electroliers, and freezers, to mention but a few.
 
 In this paper we argue that it makes economic sense to introduce a
-common open source platform for wired, communicating, intelligent
+public open source platform for wired, communicating, intelligent
 ``things''.  Once established, such a platform would allow designing
 and producing inexpensive appliances that are able to monitor their
-(immediate) environment, participate in wider situation data
+environment, participate in wider situation data
 collection and perusal, and act in accordance with the users' explicit
 and sometimes even implicit intentions.  In particular, we introduce
 the ELL-i platform, an open source initiative that aims to provide a
 low-cost prototyping and production platform for embedding wired
 intelligence into buildings, appliances, and other implements.
 
-As its first technical platform, ELL-i provides open source hardware
+As its first technical platform, the ELL-i initiative 
+provides open source hardware
 and software for building inexpensive embedded intelligence into
 devices, allowing them to communicate and be powered with
 Power-over-Ethernet (PoE)~\cite{PoE}, an established but rapidly
-evolving standard for providing up to 100 Watts of electric power
+evolving standard for providing up to 100 Watts of electric 
+power~\cite{hdbaset2011}
 through standard Ethernet cables.  The currently available ELL-i
 prototyping board is compatible with the popular
-Arduino~\cite{ArduinoProject} prototyping platform, with a clear path
+Arduino~\cite{ArduinoProject} prototyping platform, with a path
 for mass-producable miniature units that may be embedded into standard
-pattress boxes within builings and most wired appliances.
+pattress boxes within buildings and most wired appliances.
 
 The ELL-i initiative is organised a co-operative, providing an
 egalitarian ownership model that anchors the property rights with the
@@ -147,7 +149,7 @@ wide perspective.  Then, in Section~\ref{sec:architecture} we
 introduce the ELL-i platform from a technical point of view.  In
 Section~\ref{sec:examples} we briefly describe some example
 applications that are immediately viable with ELL-i, followed in
-Section~\ref{sec:business} with a hopefully succint description of the
+Section~\ref{sec:business} with a succint description of the
 business model.  Section~\ref{sec:ongoing} enlists our ongoing work.
 We conclude the paper in Section~\ref{sec:conclusions}, attempting to
 summarise the lessons learned so far.
@@ -157,51 +159,53 @@ summarise the lessons learned so far.
 \section{Related work}
 \label{sec:related}
 
-IoT devices can be used to design products and services which can be enhanced by
-data connectivity and can provide intelligent feedback back to the user.
 Proliferation of cheap and versatile sensors, actuators, computing, storage and
-networking solutions augmented by the desire to connect people with their
-devices in a more meaningful way have contributed significantly to the IOT
-research. IMS research predicts that there will be 30 billion devices which will
-be connected to the Internet by 2020~\cite{ABIresearch}. Most of the IOT
-research has been used to serve diverse domains of wireless and RFID based
-applications with built-in powering solutions. In this work we focus on an
-alternative way for providing both the communication and powering solutions to
+networking solutions, augmented with the desire to connect people with their
+devices in a meaningful way, have contributed significantly to the IoT
+research. 
+In this work we focus on an
+almost banal way for providing both the communication and powering solutions to
 fixed and immovable devices, which would anyhow be powered by wirelines, using
-Power over Ethernet (PoE) standard. In this section, we give the general and
-broadly accepted definition for Internet-of-things (IoT), explain briefly how
-the plethora of digital devices can be connected together with both wired and
-wireless technologies in the Machine-to-Machine (M2M) branch of IoT, explain the
-application of IoT devices and delve into the power management and security
-related aspects in IoT and M2M research. Later, we explain briefly about digital
-power management in general of state of the art IoT devices, explain state of
-the art single-wire powering and communications solutions and finally conclude
-by detailing other opensource embedded PoE platforms.
+Power over Ethernet (PoE) standard. 
 
+In this section, we give a general and broadly accepted definition for
+Internet-of-things (Sec.~\ref{ssec:definition}, explore IoT
+applications (\ref{ssec:applications}, and delve quickly into the
+power management and security related aspects in IoT and M2M research
+(\ref{ssec:powersec}.  After that, we briefly look into digital power
+management in genera (\ref{ssec:powermgmt}, and conclude by detailing
+other opensource embedded PoE platforms (\ref{ssec:platforms}).
 
 \subsection{Internet of Things and Machine-to-Machine}
+\label{ssec:definition}
 
-A first definition of Internet-of-Things (IoT) referred to identifiers
+Perhaps the first definition of what later became Internet of Things
+was given by the Internet pioneer Vint Cerf in this ACM conference
+talk in 1997~\cite{cerf1997next}, where he visioned each light bulp
+having their own internet address.  
+The term Internet-of-Things (IoT) was first used
+by Kevin Ashton in 1999, when he referred to identifiers
 placed in objects so that they could be monitored and managed by
-computers~\cite{ashton2009internet}. The idea dealt with tagging of
-objects and with applications for cases like retail and logistics. It
-was also related to the famous and more generic definition of the
-disappearing computer by Mark Wiser~\cite{weiser1991computer} where he
+computers~\cite{ashton2009internet}.  It
+became related to the famous and more generic definition of the
+disappearing computer by Mark Wiser~\cite{weiser1991computer}, where he
 described that miniaturization and ubiquity of sensors would
 eventually lead to disappearing to the computational elements ``into
-the fabric of everyday life''.  This has been later mentioned as
+the fabric of everyday life''.  This has been later dentoted to as
 pervasive or ubiquitous computing.
 
-One of many definitions of IoT is by Cluster of European Research
-Projects (now IERC) who defined IOT as ``dynamic networked global
+More recently, one of many definitions of IoT is given by the Cluster
+of European Research
+Projects (now IERC), who defined IoT as a ``dynamic networked global
 infrastructure with self configuring capabilities based on standard
 and interoperable communication protocols where physical and virtual
 things have identities, physical attributes and virtual personalities
 and use intelligent interfaces, and are seamlessly integrated to the
 information network''~\cite{vermesan2011internet}.
 
-A second dimension and branch of development of IoT is the machine-to-machine or
-M2M concept with further refers to linking the plethora of digital devices (from
+A second dimension and branch of development of IoT is the so called
+Machine-to-Machine or M2M concept, which further refers to linking the
+plethora of digital devices (from
 simple microcontrolled devices to smartphones and large industrial
 instrumentation). This refers more to the communications protocols required to
 allow devices to communicate with standard communications, typically wireless or
@@ -210,89 +214,64 @@ the technology are the Eclipse M2M Industry Working Group~\cite{EclipseM2M} and
 ITU-T Focus Group M2M~\cite{ITU-T_FG_M2M}.
 
 \subsection{Internet of Things applications}
+\label{ssec:applications}
 
-Internet-of-Things applications include a variety of applications
-ranging from vehicle telematics, tracking and tracing of objects to
-applications applying wireless sensor networks and machine-to-machine
+IoT applications include a variety of applications
+ranging from tracking and tracing of objects to
+applications applying wireless sensor networks and Machine-to-Machine
 (M2M) systems. Typical applications are in military use cases (like
 intelligence, surveillance), environmental use cases (e.g. monitoring
 conditions that affect farming and animal husbandry, or monitoring
 macro-scale phenomena in soil, forest, marine or atmospheric
 contexts), health applications (remote monitoring of patients, tracing
 of care personnel or equipment), home applications, or other
-commercial applications like interactive smart spaces in office or
+commercial applications, such as interactive smart spaces in office or
 other working environments.
 
 The use cases include applications with large area networks and high
-mobility but also no-mobility use cases. Wu~et.~al. discusse the
+mobility but also no-mobility use cases. Wu~et.~al. discuss the
 requirements for future applications from the M2M
 perspective~\cite{wu2011m2m}. While many of them assume wireless
 connectivity, a good part of them are in fact for fixed things, like
 in home management, industrial automation and metering, sensors, and
-lighting. More generically IoT use cases with no mobility exits in
-smart homes or smart buildings and smart cities e.g. for the purpose
+lighting. More generally, there are IoT use cases with no mobility in
+smart homes or smart buildings and smart cities; e.g., for the purpose
 of reducing the consumption of resources associated to buildings
 (electricity, water) or improving the satisfaction level of humans
 populating them~\cite{miorandi2012internet}.
 
 \subsection{Power management and security in IoT and M2M research}
+\label{ssec:powersec}
 
-In this work, IOT devices have been classified by the amount of power required
-for their efficient operation. Some IOT devices use batteries, some scavenge
+In this work, IoT devices have been classified by the amount of power required
+for their efficient operation. Some IoT devices use batteries, some scavenge
 energy from radio waves (RFID and NFC), while others are powered by seperate
-power supply from the mains (like PoE).  The main roles of IOT devices include
-sensing, collecting, processing, transmitting, collaborating and communicating.
-All of these roles require power to accomplish. Smart and tiny embedded systems
+power supply from the mains.  Smart and tiny embedded systems
 have sensors, actuators, CPU, memory and a low-power communication
 device~\cite{lopez2012adding}. Usually, these can be powered by a battery. On
 the other hand, Wireless Sensor Networks (WSN's) which is a popular research
 area uses energy efficient battery powered wireless devices for transmitting
 sensor data~\cite{akyildiz2002wireless}.
 
-Security:
-For the case of mobile devices, as the complexity of the encryption algorithm
+From the security point of view, as the complexity of the encryption algorithm
 increases, their battery consumption increases as well. It has been shown that
-among symmetric encryptions used in security protocols, the AES128 algorithm
+among symmetric encryption algorithms used in security protocols, the AES128 algorithm
 increases the battery consumption and the processing time by 75\% and 65\%
-respectively when compared to "no encrption" results~\cite{hamad2009energy}.
+respectively when compared to "no encryption" results~\cite{hamad2009energy}.
 Furthermore, increasing the key size for the encryption also increases the
-battery consumption and processing time. That is, increasing the keysize from
-128 bits to 192 bits results in 8\% increase in power and time consumption and
-16\% increase when the key size is increased to 256
+battery consumption and processing time. For example, in one case study increasing the keysize from
+128 bits to 192 bits resulted in 8\% increase in power and time consumption and
+16\% increase when the key size was increased to 256
 bits~\cite{hamad2009energy}.
 
 \subsection{Digital power management in general}
+\label{ssec:powermgmt}
 
 The industry has been challenged to provide digital power-management solutions
 which can communicate with various connected systems that inhabit our world.
-Digital power-management protocols like the PMBus could not be moved to the
-board level and provide real value to the designer before the introduction of
-intermediate-bus architecture~\cite{FutureIOT}. It would have been difficult to
-foresee the interdevice communications for both power and data without the
-advances in mixed-bus connector architectures, such as USB and PoE (power over
-ethenet)~\cite{FutureIOT}. 
-
-A Power-over-Ethernet system can communicate with its power source
-bidirectionally for both power and intelligence. This can provide new and
-innovative ways to develop power management methodologies inorder to raise the
-overall power efficiency of the system.
-
-%
-% Condense the following three chapters into a message about power
-% requiremnts here
-%
-
-The smallest RFID chip manufactured by Hitachi is at 0.05mm $\times$ 0.05mm
-$\times$ 0.005mm. It can respond to 2.45GHz microwave from a scanner by
-reflecting back a unique 128-bit ID number. It can be read from 30cm away and
-requires no batteries or power supply~\cite{hornyak2008rfid}.
-
-It would be a daunting logistical challenge to experiment with thousands of
-battery-power nodes which has been limiting the development of this
-field~\cite{gluhak2011survey}. Also, indoor installation and usage of nodes
-provides easier access to power and cabling~\cite{gluhak2011survey}. Although,
-nodes maybe cheap, their deployment and maintainance is an expensive
-proposition.
+Digital power-management protocols cannot
+provide real value to the designer before the introduction of
+intermediate-bus architecture~\cite{FutureIOT}. 
 
 It is possible to use the energy harvested from the environment to power
 nanosystems which have the capabilities to sense, control, communicate and
@@ -300,55 +279,34 @@ actuate~\cite{wang2010toward}. For independent, sustainable,
 maintainance-free operations of implantable biosensors, remote and mobile
 environmental sensors, nanorobotics, micro electromechanical systems, and even
 portable/wearable personal electronics require power on the scale of
-microwatts~\cite{wang2010toward}. Wang~\cite{wang2010toward} has invented a
-nanogenerator which can convert random energy (the mechanical energy which is
-available in our environment and has wide spectrum of frequencies and
-time-dependent amplitudes is defined as random energy. It can come from various
-sources like irregular vibrations, light airflow, ambient noise and other human
-activity). The nanogenerator converts random energy into electrical energy using
+microwatts~\cite{wang2010toward}.  
+
+A nanogenerator is able to convert random energy into electrical energy using
 piezoelectric zinc oxide nanowire
-arrays~\cite{wang2006piezoelectric}\cite{yang2009converting}. A gentle straining
-on the array of nanowires can output 1.2-3V, which can drive a self-powered pH
-and UV nanosensor~\cite{xu2010self}, liquid crystal display and light emitting
-diode~\cite{xu2010piezoelectric}\cite{zhu2010flexible}. Although the power that
+arrays~\cite{wang2006piezoelectric,yang2009converting}. A gentle straining
+on the array of nanowires can output 1.2-3V.  Although the power that
 is generated by the nanogenerator may not be sufficient for continuous operation
 of a nanodevice, it is sufficient enough to drive the device for a few seconds,
 when the charge being generated is accumulated over a period of
-time~\cite{wang2010toward}. This would have practical uses when the device has
-active and standby modes, such a glucose sensors, blood pressure sensors and
-bluetooth transmitters (driving power \~5mW; data trasmission rate \~500kbits/s;
-power consumption of 10 nW/bit) which are required to be in active mode
-periodically~\cite{wang2010toward}.
+time~\cite{wang2010toward}. 
 
-\subsection{Single-wire powering and communication solutions}
+It would be a daunting logistical challenge to experiment with thousands of
+battery-power nodes which has been limiting the development of this
+field~\cite{gluhak2011survey,rowland2002prevalence}.
+ Also, indoor installation and usage of nodes
+provides easier access to power and cabling~\cite{gluhak2011survey}. Although,
+nodes maybe cheap, their deployment and maintainance is an expensive
+proposition.
 
-\begin{itemize}
-  \item PoE
-    \begin{itemize}
-    \item 802.3af, 802.3at, non-standard solutions to up to 65W or so
-    \end{itemize}
-  \item Ethernet-over-Powerline
-  \item Others
-\end{itemize}
- 
 \subsection{Open source embedded platforms}
-
-\begin{itemize}
-  \item any other similar PoE platforms: Arduino PoE, etc
-    \begin{itemize}
-    \item technical difference from these
-    \item governance difference from these
-    \end{itemize}
-\end{itemize}
+\label{ssec:platforms}
 
 Today, there are a few tens of slightly different open source embedded
 platforms.  The Raspberry Pi~\cite{RasPi} forms a category of its own,
 offering an unbeatable price point in the embedded Linux category.  In
 the lower category, the Arduino~\cite{ArduinoProject,hribernik2011co}
 project has gained the largest user community, with half a dozen
-different official boards and a number of derivatives~\cite{XXX}.
-
-XXX
+different official boards and a number of derivatives.
 
 The Arduino project is a somewhat loose collaboration led by a number of
 people that developed the original Arduino design.  They have decided
@@ -368,31 +326,29 @@ less than \textsterling 10.000.  The foundation income and spendings for 2012
 were not registered at the UK Charity Commission at this writing.
 
 There are other Arduino and Raspberry Pi based PoE
-solutions~\cite{ArduinoEthernetPOE} \cite{ArduinoEthernetShieldPOE}
-\cite{POEthernetShield} \cite{etherduino} \cite{xtronix} currently available in
-the market. Some of them are complete PoE solutions while others are shields
-that can be plugged into an Arduino. The Arduino Ethernet with
+solutions~\cite{ArduinoEthernetPOE, ArduinoEthernetShieldPOE,
+  etherduino, POEthernetShield, xtronix} currently available in
+the market.  Some of them are complete PoE solutions, while others are shields
+that can be plugged into an Arduino.  The Arduino Ethernet with
 PoE~\cite{ArduinoEthernetPOE} is an Arduino development board with the built in
-Wiznet Ethernet interface. Although the board can be powered over the Ethernet
-connection, the developers have removed the USB-serial driver and hence it will
-need an FTDI breakout to upload Arduino sketches. The Arduino Ethernet Shield
+Wiznet Ethernet interface. 
+The Arduino Ethernet Shield
 with the PoE Module~\cite{ArduinoEthernetShieldPOE} allows an Arduino board to
-connect to the internet. It is based on Wiznet W5100 ethernet chip which
+connect to the Internet. It is based on Wiznet W5100 ethernet chip which
 provides a network IP stack capable of both TCP and UDP. The PoEthernet
 Shield~\cite{POEthernetShield} gives access to the Internet via the Ethernet
 library and also allows the Arduino based projects to power itself from the
 Ethernet line. The Raspberry Pi Power Over Ethernet (PoE) Adapter~\cite{xtronix}
-manufactured by Xtronix Ltd, is designed to be plugged directly on to a
+is designed to be plugged directly on to a
 Raspberry Pi and power it with +5 Volts at up to 1.0 Amps output. All of these
 solutions are either expensive and/or bulky to reside in a pattress box.
 
-The long term vision for ELL-i differs significantly from those of other PoE
-solutions that are described here. ELL-i is a multi-voltage domain design and
+All of these solutions focus on providing power to the MCU and its digital peripherals, powered through the 3.3V and/or 5V systems.
+The long term vision for ELL-i significantly different.  
+ELL-i is a multi-voltage domain design and
 both the PoE 48V or the DC-to-DC converters can be used. ELL-i is aiming to be
 an inexpensive low-cost PoE device which will come with integrated cloud based
-services pre-loaded out of the box. When it is ready, the ELL-i board will be
-around 45 $\times$ 45 $mm^2$ and can easily fit into DIN pattress boxes. 
-
+services pre-loaded out of the box. 
 
 % ------------------------------------------------------------------
 
@@ -406,7 +362,9 @@ details, please refer to the open source design files at
 First, we describe the overall technical architecture in a
 bottom-up-fashion, including hardware, firmware, and the forthcoming
 could components.  After that, we introduce the current
-implementation and discuss the plans for the next hardware implementation.  We
+implementation.
+% and discuss the plans for the next hardware implementation.
+We
 conclude the section with a brief discussion of the design choices
 made so far.
 
@@ -431,7 +389,7 @@ IEEE 802.3at Power-over-Ethernet standard, which is an economic
 solution when the power consumption is roughly in the 1--100 Watts
 range.  In the long run, we expect to expand the power range to both
 smaller and higher power levels; for example, there are no technical
-reasons why Power-over-Ethernet could not be applied to thicker wires
+reasons why Power-over-Ethernet technology could not be applied to thicker wires
 and higher currents.
 
 The main goal of the runtime and the cloud components is make it easy
@@ -440,22 +398,18 @@ runtime is to package TCP/IP based protocols, such as HTTP~\cite{fielding1999hyp
 and CoAP~\cite{shelby2013constrained} in an easy-to-use way.  As it is undesirable to
 perform packet processing in an interrupt context and as many of the
 protocols depend on timeouts, abstracting the protocol processing away
-from the runtime API requires some kind of threading, either in the
-``scouts honour'' style (as in e.g. Contiki~\cite{dunkels2004contiki})
-or in a proper pre-emptive manner.  At this writing it is still an
-open question which variant we will primarily support.
+from the runtime API requires some kind of threading.
 
 As ELL-i is positioned as an easy-to-start platform, the main goal in
 the programming environment area is to make it easy to start with the
 ELL-i platform.  Hence, we have focused on providing an Arduino IDE
 extension that allows Arduino skills to be readily applied on ELL-i.
 However, we also realise that the default Arduino runtime is geared
-for hobbyists.  Therefore we will also support XCode and Eclipse, most
-probably by adopting the existing Arduino plugins.
+for hobbyists.  Therefore we will also support XCode and Eclipse.
 
 \subsubsection{Hardware}
 
-In practice, the platform hardware consists of an MCU, an Ethernet
+The platform hardware consists of an MCU, an Ethernet
 communications module, a power supply module, and an I/O subsystem
 that connects the system to the real world.  The MCU provides the
 smarts, including a computational core, non-volatile (flash) and
@@ -482,8 +436,7 @@ Power-over-Ethernet standard, including the physical-layer signalling
 that consists of an initial resistive-load based detection phase, a
 current-sink based classification phase, an optional second
 classification mode added in 802.3at, and an operating-voltage rampup
-phase~\cite{802.3at}.  We will implemente the Ethernet Layer 2
-based advanced power management~\cite{802.3at} later.
+phase~\cite{802.3at}.  
 
 The DC/DC power supply is responsible for converting the incoming
 Power-over-Ethernet 48V voltage into the 5V and/or 3.3V needed by the
@@ -505,18 +458,18 @@ tolerated by the MCU.  In a typical case, the I/O subsystem consists
 of operational amplifiers acting in amplifier and/or level shifter
 role.  In many cases also optoisolators or other isolators are needed.
 
-In a typical application, the I/O subsystem needs application-specific
-design or adjustments.  Perhaps more importantly, when the ELL-i
-platform is used for driving real world actuators, in most cases there
-is also a need for an application-specific DC/DC converter.  ELL-i
-attempts to make designing and building both of these customisations
-easier than what the state-of-the-art has been so far.
+%% In a typical application, the I/O subsystem needs application-specific
+%% design or adjustments.  Perhaps more importantly, when the ELL-i
+%% platform is used for driving real world actuators, in most cases there
+%% is also a need for an application-specific DC/DC converter.  ELL-i
+%% attempts to make designing and building both of these customisations
+%% easier than what the state-of-the-art has been so far.
 
 \subsubsection{Runtime}
 \label{sssec:runtime}
 
 The runtime system forms the bases of any firmware running on the
-ELL-i platform.  In practise, it consists of a software library that
+ELL-i platform.  It consists of a software library that
 is linked into any specific firmware build by an application
 developer.  The runtime provides a number of APIs and services that make
 application development easier than building everything from scratch.
@@ -553,8 +506,8 @@ thereby causing e.g. busy loops to stall the whole MCU, in the ELL-i
 runtime there is a small scheduler running ``under'' the Arduino
 APIs.  Using the scheduler, the Internet and Web-server modules are
 implemented so that they always run concurrently with any Arduino
-sketch.  More advanced programmers that override the \hbox{\tt main()}
-function must include a call to initialise the scheduler.
+sketch.  % More advanced programmers that override the \hbox{\tt main()}
+% function must include a call to initialise the scheduler.
 
 The scheduler API provides services for starting and stopping concurrent
 threads and adjusting the scheduling algorithms.  By default threading
@@ -566,17 +519,17 @@ management is not supported and is strongly discouraged; any threads
 need to have their stacks to be allocated at compile time.
 
 The Internet API provides basic services for operating TCP, UDP and
-CoAP\cite{shelby2013constrained} sockets.  The TCP/IP stack is based on
+CoAP\cite{shelby2013constrained}.  The TCP/IP stack is based on
 uIP~\cite{dunkels2006uip}, with the
-uIP API working as such.  We plan to support Contiki~\cite{dunkels2004contiki}
-style protothreads~\cite{protothreads}, thereby making it easier to
+uIP API working as such.  We support Contiki~\cite{dunkels2004contiki}
+style protothreads~\cite{dunkels2006protothreads}, thereby making it easier to
 support existing uIP-based protocol stacks and applications.
 
 The optional built-in Web-server allows the ELL-i platform to provide
 AJAX-style Webservices towards the local network.  For security
 reasons, the TCP packet lifetime is limited to one hop, thereby making
 the webservice unreable from the Internet even in the case the node
-has a public IP address and full internet connectivity.
+has a public IP address and full Internet connectivity.
 
 The runtime library has been carefully built in a way that allows the
 linker to leave out any modules that are not used by a particular
@@ -589,7 +542,7 @@ components and by default sends sensor data to the cloud.
 
 In addition to the software components running on the ELL-i hardware,
 the ELL-i platform contains also cloud components, running on a
-compatible cloud runtime, such as AWS~\cite{AWS} or AppScale~\cite{AppScale}.
+ecompatible cloud runtime, such as Amazon Web Services (AWS).
 The cloud components provide interaction, update and community
 services to the ELL-i boards, and they are enabled by default in each
 ELL-i development board.
@@ -613,14 +566,14 @@ itself.  If the remote upgrade fails and the board no longer boots, it
 still remains possible to completely reflash the board using a serial
 line and a separate programming board.
 
-We are also contemplating of including community services to the cloud
-side, such as allowing the developers to see (but not modify) some of
-the cloud-side data of other developers' devices.
+%% We are also contemplating of including community services to the cloud
+%% side, such as allowing the developers to see (but not modify) some of
+%% the cloud-side data of other developers' devices.
 
 \subsubsection{Programming environments}
 
 The ELL-i platform is designed to support multiple programming
-environments, including the Arduino IDE, Eclipse, XCode, and for the
+environments, including the Arduino, Eclipse, XCode, and for the
 old timers, plain \hbox{\tt emacs} and \hbox{\tt make}.  At this
 writing only the Arduino IDE is formally supported, even though some
 of the early adopters do use command-line tools.  The aim is to make
@@ -642,14 +595,14 @@ achieveable through bare-metal access while still working with
 high-level C++ abstractions.  We are also considering whether it would
 be possible to pre-run the Arduino \hbox{\tt setup()} function and
 some of the preceeding setup machinery during the compilation
-time\cite{Rinta-aho_et_al}, providing boot-time optimisations.
+time~\cite{rintaaho2012clicktofpga}, providing boot-time optimisations.
 
 \subsection{Current implementation}
 
 At this writing in September 2013, the currently available
 implementation consists of the first prototyping board, an initial
-runtime, and support for the Arduino IDE.  Work on the cloud-side
-components will be started later.
+runtime, and support for the Arduino and Contiki APIs.  Work on the cloud-side
+components is to be started.
 The goal of the first prototyping board was to create
 Arduino-compatible hardware and software that would support a more
 powerful
@@ -658,15 +611,15 @@ power supply design.  This goal has been reached.  With the first
 prototyping board, prospecting developers can utilise the existing
 Arduino examples, learning material, and shields, to a large extent.
 
-\subsubsection{First prototyping board}
-
-The first ELL-i prototyping board was designed during spring 2013, and
-the first batch of 50 boards arrived in the end of May.  These initial
-boards have an STM32F051\cite{STM32F051} ARM Cortex-M0
-microcontroller, Microchip ENC28J60\cite{ENC28J60} Ethernet chip,
+The first ELL-i prototyping board was designed during spring 2013.  
+These initial
+boards have an STM32F051~\cite{STM32F051} ARM Cortex-M0
+microcontroller, Microchip ENC28J60~\cite{ENC28J60} Ethernet chip,
 Linear LTC4267 PoE controller with build-in flyback SMPS controller,
 and Arduino-compatible headers.  We also have a 3D printed case for
 the prototyping board, with enough of space for a few Arduino shields.
+The current case design is depicted in Figure~\ref{fig:casedesign} and
+a corresponding prototype in Figure~\ref{fig:case}.
 
 \begin{figure}
 \centering
@@ -675,45 +628,40 @@ the prototyping board, with enough of space for a few Arduino shields.
 \label{fig:casedesign}
 \end{figure}
 
-The STM32F051 MCU was selected partially because it was already
-familiar to us, partially because it represents a relatively new
-Cortex-M MCU at an attractive price point compared to the included
-peripherals.  We also appreciate the fact that the STM32F050 and
-STM32F060 MCUs are potentially even cheaper choices when considering
-mass production.  The STM32F051 is also available at an 64-leg LQFP
-package which is essentially pin compatible with its bigger brothers,
-up to STM32F4 Cortex-M4 series.
+%% The STM32F051 MCU was selected partially because it was already
+%% familiar to us, partially because it represents a relatively new
+%% Cortex-M MCU at an attractive price point compared to the included
+%% peripherals.  We also appreciate the fact that the STM32F050 and
+%% STM32F060 MCUs are potentially even cheaper choices when considering
+%% mass production.  The STM32F051 is also available at an 64-leg LQFP
+%% package which is essentially pin compatible with its bigger brothers,
+%% up to STM32F4 Cortex-M4 series.
 
-The old and tried ENC28J60 was selected for its low price and good
-software support, even though it has its known quirks.  As a chip that
-contains both the Ethernet PHY and MAC layers it provides a unique
-combination, saving both silicon and pins at the MCU end, thereby
-leading to an optimised overall pricepoint.
+%% The old and tried ENC28J60 was selected for its low price and good
+%% software support, even though it has its known quirks.  As a chip that
+%% contains both the Ethernet PHY and MAC layers it provides a unique
+%% combination, saving both silicon and pins at the MCU end, thereby
+%% leading to an optimised overall pricepoint.
 
-At the PoE side, Linear LTC4267 was chosen relatively blindly, as we
-had little understanding of the PoE PD chip choices when we started.
-Its evaluation kit worked nicely and it was easy to copy the
-schematics for our purposes.  At it works, it appeared to be a good
-choice for the initial design.  For the next round, we need to
-evaluate more alternatives.
+%% At the PoE side, Linear LTC4267 was chosen relatively blindly, as we
+%% had little understanding of the PoE PD chip choices when we started.
+%% Its evaluation kit worked nicely and it was easy to copy the
+%% schematics for our purposes.  At it works, it appeared to be a good
+%% choice for the initial design.  For the next round, we need to
+%% evaluate more alternatives.
 
 For Arduino-compatibility, we designed the LTC4267-based flyback DC/DC
 converter to produce 5V, using a standard linear regulator to produce
 3.3V out of the regulated 5V supply.  That allows us to replicate
-Arduino Due and Arduino Mega I/O pins with some accuracy.  We left out
-the ``east'' end headers, though, as there are clearly fewer I/O pins
-available in the 64-pins package than is available in either Due or
-Mega.  At the moment the I/O pins have been assigned so that there is
-a separate timer/counter channel available for all of the digital I/O
-pins, an ADC channel for all of the analog pins, and the DAC on the
-STM32F051 is connected to the Due DAC0 line.  At the moment, the Due
-DAC1 line is connected directly to the STM32F051 PA11 GPIO line;
-however, we are considering adding there a low pass filter to allow
-the attach PWM counter/timer to be used to generate analogue signals.
-
-The current case design is depicted in Figure~\ref{fig:casedesign} and
-a corresponding prototype in Figure~\ref{fig:case}.  The prototype has
-been printed with the MakerBot II~\cite{MakerBotII} 3D printer.
+Arduino Due and Arduino Mega I/O pins with some accuracy.  The I/O
+pins have been assigned so that there is a separate timer/counter
+channel available for all of the digital I/O pins, an ADC channel for
+all of the analog pins, and the DAC on the STM32F051 is connected to
+the Due DAC0 line.  
+%% At the moment, the Due DAC1 line is connected
+%% directly to the STM32F051 PA11 GPIO line; however, we are considering
+%% adding there a low pass filter to allow the attach PWM counter/timer
+%% to be used to generate analogue signals.
 
 \begin{figure}
 \centering
@@ -722,152 +670,144 @@ been printed with the MakerBot II~\cite{MakerBotII} 3D printer.
 \label{fig:case}
 \end{figure}
 
-
-\subsubsection{Runtime and Arduino IDE support}
-
 As the first programming environment, we have been focusing on
 supporting the Arduino IDE.  Starting with the Arduino IDE 1.5
 extension mechanism~\cite{ArduinoIDEextension}, we have developed our
 own Arduino-compatible runtime that compiles about over 90\% of the
 sketches provided with the Arduino IDE.  However, while most of the
 APIs are supported at the syntax level, there is still quite some
-underlying code missing so that only some 40-50\% of the API
-functionality is supported.  The existing functionality is enough for
-many of the basic sketches, though, thereby helping people to get
+underlying code missing.The existing functionality is enough for
+most of the basic sketches, though, thereby helping people to get
 started with ELL-i.
 
-At the moment we are busy implementing the first version of our
-scheduling system, after which we will be able to provide TCP/IP
-support with uIP.  XXX UPDATE!
+%% \subsection{Ongoing efforts}
 
-\subsection{Ongoing efforts}
+%% When designing the first prototyping board, our goal was to learn how
+%% to build Arduino-compatible boards and how to provide an Arduino
+%% compatible IDE with that.  We have clearly reached that goal.  With
+%% the next board, we want to go further.  A major goal of this present
+%% design round is to allow people to easily extend their designs from
+%% the Arduino world into real-world embedded applications, allowing
+%% real-life creation of intelligent and connected fixed appliances.
 
-When designing the first prototyping board, our goal was to learn how
-to build Arduino-compatible boards and how to provide an Arduino
-compatible IDE with that.  We have clearly reached that goal.  With
-the next board, we want to go further.  A major goal of this present
-design round is to allow people to easily extend their designs from
-the Arduino world into real-world embedded applications, allowing
-real-life creation of intelligent and connected fixed appliances.
+%% \subsubsection{Hardware design in progress}
 
-\subsubsection{Hardware design in progress}
+%% While the first prototyping board was produced as a single PCB in the
+%% Arduino Due/Mega form factor, the next hardware revision is based on
+%% the idea of using two separate boards in a sandwich fashion.  In
+%% addition to that, we plan to add support for 12--60V DC operations allowing
+%% the boards to be used independently from Power-over-Ethernet, for
+%% multiple MCU versions ranging from STM32F050 to STM32F407, for
+%% optional real time clock, operational amplifiers, level shifter, and
+%% driver FETs.  Finally, in addition to the current plastic case our
+%% plans include a sturdy metal case.
 
-While the first prototyping board was produced as a single PCB in the
-Arduino Due/Mega form factor, the next hardware revision is based on
-the idea of using two separate boards in a sandwich fashion.  In
-addition to that, we plan to add support for 12--60V DC operations allowing
-the boards to be used independently from Power-over-Ethernet, for
-multiple MCU versions ranging from STM32F050 to STM32F407, for
-optional real time clock, operational amplifiers, level shifter, and
-driver FETs.  Finally, in addition to the current plastic case our
-plans include a sturdy metal case.
+%% {\bf Two-board design.}
+%% There are two reasons for having two boards instead of one.  Firstly,
+%% we learned from the first board that the standard RJ11 Ethernet
+%% connectors and the typical flyback transformers are so high that they
+%% do not fit in to a board with standard-height 100mil
+%% headers\footnote{It the PCB industry, it is a standard practise to
+%%   space the pins on older component packages and larger connectors at
+%%   100mil or 0.1 inch spacing (2.56 mm).  The female connectors in the Arduino
+%%   boards do this.  The standard 100mil female header height is
+%%   typically around 8 mm, while even the lowest RJ45 sockets
+%%   are around 14 mm.  This makes it challenging to produce
+%%   Arduino-compatible boards with standard-height headers.}.
+%% Having two boards stacked in a sandwich fashion allows us to place the
+%% high components on the lower PCB and the Arduino-compatible 100 mil
+%% headers on the upper PCB.  In this way we can use standard-height
+%% connectors; see Figure~\ref{fig:stacking}.
 
-{\bf Two-board design.}
-There are two reasons for having two boards instead of one.  Firstly,
-we learned from the first board that the standard RJ11 Ethernet
-connectors and the typical flyback transformers are so high that they
-do not fit in to a board with standard-height 100mil
-headers\footnote{It the PCB industry, it is a standard practise to
-  space the pins on older component packages and larger connectors at
-  100mil or 0.1 inch spacing (2.56 mm).  The female connectors in the Arduino
-  boards do this.  The standard 100mil female header height is
-  typically around 8 mm, while even the lowest RJ45 sockets
-  are around 14 mm.  This makes it challenging to produce
-  Arduino-compatible boards with standard-height headers.}.
-Having two boards stacked in a sandwich fashion allows us to place the
-high components on the lower PCB and the Arduino-compatible 100 mil
-headers on the upper PCB.  In this way we can use standard-height
-connectors; see Figure~\ref{fig:stacking}.
+%% \begin{figure}
+%% \centering
+%% \includegraphics[scale=.4]{figure-stacking.eps}
+%% \caption{Stacking PCB construction}
+%% \label{fig:stacking}
+%% \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[scale=.4]{figure-stacking.eps}
-\caption{Stacking PCB construction}
-\label{fig:stacking}
-\end{figure}
+%% Secondly, dividing the board into two allows the ``main'' board to be
+%% designed with production use in mind, without any restrictions from
+%% Arduino compatibility.  The second board provides Arduino
+%% compatibility and other development facilities.  Consequently, we denote
+%% the lower ``main'' board as the {\it production} board and call the
+%% upper, Arduino-compatible board as the {\it development} board.
 
-Secondly, dividing the board into two allows the ``main'' board to be
-designed with production use in mind, without any restrictions from
-Arduino compatibility.  The second board provides Arduino
-compatibility and other development facilities.  Consequently, we denote
-the lower ``main'' board as the {\it production} board and call the
-upper, Arduino-compatible board as the {\it development} board.
+%% In the new design, the production board essentially hosts all the
+%% components in the current prototyping board in a smaller form factor.
+%% However, instead of having the Arduino-compatible 100 mil female
+%% headers, it has a pair of low-profile board-to-board connectors,
+%% providing connectivity with the development board or any other
+%% extension board.  Furthermore, the production board is designed in a
+%% fashion that allows it to be devided into two parts, one part hosting
+%% the MCU, the Ethernet chip, and the I/O subsystem, the other part hosting the
+%% PoE signalling, DC/DC PSU, and Ethernet magnetics.  When separated,
+%% these two boards may be connected with seven wires, allows them to be
+%% placed inside the device in a flexible manner.  This is illustreated
+%% in Figure~\ref{fig:divided}.
 
-In the new design, the production board essentially hosts all the
-components in the current prototyping board in a smaller form factor.
-However, instead of having the Arduino-compatible 100 mil female
-headers, it has a pair of low-profile board-to-board connectors,
-providing connectivity with the development board or any other
-extension board.  Furthermore, the production board is designed in a
-fashion that allows it to be devided into two parts, one part hosting
-the MCU, the Ethernet chip, and the I/O subsystem, the other part hosting the
-PoE signalling, DC/DC PSU, and Ethernet magnetics.  When separated,
-these two boards may be connected with seven wires, allows them to be
-placed inside the device in a flexible manner.  This is illustreated
-in Figure~\ref{fig:divided}.
+%% \begin{figure}
+%% \centering
+%% \includegraphics[scale=.4]{figure-divided.eps}
+%% \caption{Two-part PCB}
+%% \label{fig:stacking}
+%% \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[scale=.4]{figure-divided.eps}
-\caption{Two-part PCB}
-\label{fig:stacking}
-\end{figure}
+%% The development board, in turn, hosts the Arduino-compatible headers,
+%% and USB slave chip that can be used for flashing and debugging the MCU
+%% on the production board, and a number of low-current LEDs which may be
+%% used to monitor the I/O state at the Arduino-compatible connectors, and ability
+%% to provide 5V power from the USB connector, thereby allowing the board
+%% to be used even when powered only via the USB connector.
 
-The development board, in turn, hosts the Arduino-compatible headers,
-and USB slave chip that can be used for flashing and debugging the MCU
-on the production board, and a number of low-current LEDs which may be
-used to monitor the I/O state at the Arduino-compatible connectors, and ability
-to provide 5V power from the USB connector, thereby allowing the board
-to be used even when powered only via the USB connector.
+%% {\bf Other hardware enhancements.}
+%% According to the datasheet, the flyback controller on the LTC4267 chip
+%% is capable of using any input voltage between roughly 11 and 60
+%% volts\footnote{Care must be taken in generating the initial
+%% boot-time operating voltage for the LTC4267 chip so that it is placed
+%% at the right range of roughly 7--9V.}.  Hence, in the next revision we
+%% attempt to allow the board to be powered at any voltage in the range
+%% of 11--60V, both through the external power connector and over the
+%% spare pairs on the CAT5 cable.  The selection between PoE-compatible
+%% powering and other powering will take place with a jumper.  When
+%% alternative powering is used, care must be taken not to draw too much
+%% power as the PoE-built-in current limitation will not be in use.
 
-{\bf Other hardware enhancements.}
-According to the datasheet, the flyback controller on the LTC4267 chip
-is capable of using any input voltage between roughly 11 and 60
-volts\footnote{Care must be taken in generating the initial
-boot-time operating voltage for the LTC4267 chip so that it is placed
-at the right range of roughly 7--9V.}.  Hence, in the next revision we
-attempt to allow the board to be powered at any voltage in the range
-of 11--60V, both through the external power connector and over the
-spare pairs on the CAT5 cable.  The selection between PoE-compatible
-powering and other powering will take place with a jumper.  When
-alternative powering is used, care must be taken not to draw too much
-power as the PoE-built-in current limitation will not be in use.
+%% One of the benefits of using the STM32F series MCUs is that they have
+%% been designed to be (almost) pin compatible in various packages.
+%% Hence, in the 64-pin packages that we are using we can design the PCB
+%% to host MCUs ranging from the low-end STM32F050 Cortex-M0 one to the
+%% high end STM32F407 Cortex-M4 one, with just a few simple solder
+%% jumpers.
 
-One of the benefits of using the STM32F series MCUs is that they have
-been designed to be (almost) pin compatible in various packages.
-Hence, in the 64-pin packages that we are using we can design the PCB
-to host MCUs ranging from the low-end STM32F050 Cortex-M0 one to the
-high end STM32F407 Cortex-M4 one, with just a few simple solder
-jumpers.
+%% While we are not planning to add any additional placed components on
+%% the production board, in order to keep it at a low cost, we plan to
+%% add unplaced pads for supporting an RTC, operational amplifiers, level
+%% shifters, and driver FETs which may be used when connecting the MCU
+%% I/O pins various sensors and power devices.  The production board is
+%% planned to include 100 mil spaced soldering holes on both of its long
+%% sides, for directly connecting external devices or for adding male
+%% headers to plug in the production board to a breadboard,
 
-While we are not planning to add any additional placed components on
-the production board, in order to keep it at a low cost, we plan to
-add unplaced pads for supporting an RTC, operational amplifiers, level
-shifters, and driver FETs which may be used when connecting the MCU
-I/O pins various sensors and power devices.  The production board is
-planned to include 100 mil spaced soldering holes on both of its long
-sides, for directly connecting external devices or for adding male
-headers to plug in the production board to a breadboard,
+%% On the mechanical side, the plan is to allow one to use
+%% punch-down Ethernet connectors~\cite{Krone} instead of the RJ45 jack
+%% for fixed installation.  The metal case is planned to host the
+%% production board together with any extension boards of the same
+%% dimensions.
 
-On the mechanical side, the plan is to allow one to use
-punch-down Ethernet connectors~\cite{Krone} instead of the RJ45 jack
-for fixed installation.  The metal case is planned to host the
-production board together with any extension boards of the same
-dimensions.
+%% \subsubsection{Software efforts taking place}
 
-\subsubsection{Software efforts taking place}
+%% At the moment we are extending the existing Arduino-compatible runtime
+%% with a simple pre-emptive scheduling system, thereby allowing the uIP
+%% TCP/IP stack to run in parallel with any Arduino sketch.  We are
+%% considering whether we should support a more full fledged real time
+%% operating system (RTOS), such as ChibiOS/RT~\cite{ChibiOS}; at this
+%% writing the question is still open.
 
-At the moment we are extending the existing Arduino-compatible runtime
-with a simple pre-emptive scheduling system, thereby allowing the uIP
-TCP/IP stack to run in parallel with any Arduino sketch.  We are
-considering whether we should support a more full fledged real time
-operating system (RTOS), such as ChibiOS/RT~\cite{ChibiOS}; at this
-writing the question is still open.
-
-Once we will have basic TCP/IP up and running, the next step is to
-start integrating the system with cloud components.  The exact plan
-for this is still open.  Finally, proper cloud connectivity will
-enable secure remote software updates.
+%% Once we will have basic TCP/IP up and running, the next step is to
+%% start integrating the system with cloud components.  The exact plan
+%% for this is still open.  Finally, proper cloud connectivity will
+%% enable secure remote software updates.
 
 \subsection{Design choices}
 
@@ -921,8 +861,8 @@ available, they typically include more than what we need and with a
 license that is not fully compatible with our planned business model;
 see below.  The cloud-side components will be based on the lowest
 common platform-as-a-service (PAAS) denominator, which at the moment
-seems to be the Amazon Web Services (AWS)~\cite{AWS} APIs, also supported by
-e.g. the AppScale~\cite{AppScale} open source framework.
+AWS APIs, also supported by
+e.g. the AppScale~\cite{chohan2010appscale} open source framework.
 
 % ------------------------------------------------------------------
 
@@ -943,7 +883,7 @@ and wired together, was a driver for a commercial high-power RGB LED
 projector.  Since then, we have repeated the LED driver exercise a few
 times.
 
-From the electronics point of view, an adjustable HP LED driver is a
+From the electronics point of view, an adjustable high power LED driver is a
 relatively simple device, as LEDs in general are current-driven
 components.  That is, the voltage drop over a LED remains relatively
 constant independent of how much current is flowing through the LED,
@@ -954,8 +894,9 @@ LED it is enough to limit the amount of current.  For indicator LEDs
 the current is usually limited with a suitable series resistor;
 however, such an arrangment would be very inefficient for driving an
 HP LED out of the PoE nominal 48V.  Fortunately, a buck
-converter~\cite{buck-converter}, the simplest of the so-called
-switching mode power supply (SMPS)~\cite{SMPS} topologies, is quite
+converter, the simplest of the so-called
+switching mode power supply (SMPS)~\cite{maniktala2012switching} topologies, 
+is quite
 easy to regulate to produce a constant, adjustable current.  All that
 is needed is a simple current-measurement circuit and a simple
 algorithm to drive the switching FET in within the driver.  While
@@ -976,12 +917,12 @@ Consequently, ELL-i may be an excellent platform for implementing
 future, more intelligent show lighting systems, flexible retail
 lighting, and other illumination applications where it is beneficial
 to control each and every lamp separately.  In such an environment,
-ELL-i implements the yesterday maxim of each light bulb having its own
-IP address~\cite{lightbulb}.
+ELL-i implements Vint Cerf's vision of each light bulb having its own
+IP address~\cite{cerf1997next}.
 
 To communicate with the external world, and ELL-i node may implement the
 Ethernet or TCP/IP variants of the commonly used lighting control protocols,
-including DALI\cite{manual2001digital} and DMX\cite{bennette1994recommended}.
+including DALI~\cite{manual2001digital} and DMX~\cite{bennette1994recommended}.
 
 
 \subsection{Automation}
@@ -1002,8 +943,8 @@ actuators, and it does not as such implement any of the existing
 protocols.  Therefore, as a standalone component it does not integrate
 with the existing automation systems.
 
-However, ELL-i is a small, connected, intelligent, power-convoying low-cost
-component, the ELL-i platform provides a platform.  Therefore it could
+ELL-i is a small, connected, intelligent, power-convoying low-cost
+component.  Therefore it could
 potentially be co-located with the sensors and actuators, providing
 power to them and integrating both intelligence and connectivity
 directly to them.  Consequently, it would allow replacing the
@@ -1125,7 +1066,7 @@ functioning of such a sketch to be simulated and illustrated on a PC.
 Furthermore, with the Ethernet interface, another set of proxy classes
 could be used to instrument a sketch, allowing it to be run on the
 ELL-i platform while simultaneously inspecting the variables and I/O
-ports.  In practise the instrumentation classes would communicate the
+ports.  The instrumentation classes would communicate the
 application state over the Ethernet to a PC, which would then use the
 simulator user interface to illustrate the application state.
  
@@ -1136,8 +1077,7 @@ simulator user interface to illustrate the application state.
 
 In this section, we briefly look at the ELL-i business model, which somewhat
 deviates from most typical business models, being closer to to the Linux kernel
-community~\cite{hertel2003motivation} and
-XXX~\cite{Something-else-need-reference}.
+community~\cite{hertel2003motivation, lee2003firm}.
 
 As stated, the goal of the ELL-i project include providing an
 inexpensive and easy-to-use platform for all kinds of fixed
@@ -1163,22 +1103,23 @@ Hence, the ownership, governance and licencing models have been
 planned and will be adjusted to make the platform lucrative for
 commercial licensees.
 
-However, in order to get the platform there in the first place, we
+In order to get the platform there in the first place, we
 first need to entice a group of enthusiastic developers that want to
 contribute to the project.  For that, we presume that we first need to
-sell a few thousand boards.  Based on studies in similar kinds of
-situations~\cite{need-reference}, we expect that 1--4\% of the early
+sell a few thousand boards.  
+We expect that 1--4\% of the early
 % XXX Check the percentage above
-adopters will turn into active developers; see
+adopters will turn into active developers~\cite{anderson2012makers}; see
 Section~\ref{ssec:earlymarket} below.
 
-Hence, the ELL-i business model needs to be balanced between the early
+The ELL-i business model needs to be balanced between the early
 market need of creating a sizeable developer community and the
 somewhat later need of attarcing commercial companies in order to
-create volumes and benefitting the larger society.  We attempt to the
-address these somewhat conflicting needs through separating the
-ownership, governance and licencing practises; see
-Sections~\ref{ssec:ownership} and~\ref{ssec:licencing} below.
+create volumes and benefitting the larger society.  
+% We attempt to the
+% address these somewhat conflicting needs through separating the
+% ownership, governance and licencing practises.
+% ; see Sections~\ref{ssec:ownership} and~\ref{ssec:licencing} below.
 
 The resulting structure has probably a relatively low monetary value
 compared to its overall utility value, as the ownership will be more
@@ -1196,8 +1137,8 @@ first version of the hardware platform exists both as open source
 schematics and layout and as actual, functioning hardware boards.  The
 software platform is being continuously enhanced, providing the basic
 facilities that are needed to get started.  However, the group of
-active developers is quite small, just a handful of people working
-mostly on their spare time.  In order to get the ball rolling, more
+active developers is small, just a handful of people.  
+In order to get the ball rolling, more
 active developers are needed.
 
 We believe that the ELL-i approach of providing both power and
@@ -1390,32 +1331,31 @@ motors.
 %might work for individual developers, our understanding of the detals
 %of the licensing model are still in the works.
 %
-%\subsection{Business model summary}
-%
-%As a first approximation from the conventional economics point of
-%view, the ELL-i platform seems to form a fairly classical two-sided
-%market~\cite{rochet2003platform}.  ELL-i offers the platform
-%essentially free-of-charge to the developer community, allowing
-%individual developers to innovate and fulfil their personal needs.  At
-%the same time, it offers the platform for commercial companies for a
-%fee.  However, at the same time it attempts to form a joint community
-%of both individual developers and products companies, creating a
-%larger two-sided market where the sides are the hardware component
-%manufacturers and the product users.  From that point of view, ELL-i
-%benefits the component suppliers through larger volumes, the product
-%companies through increased bargaining power, and the product users
-%through increased variety and lower average price of the products.  A
-%more detailed analysis of the market structure is in the works.
-%
-%From a societal point of view, if ELL-i succeeds as a platform it may
-%produce essentially a virtual non-profit monopoly, benefitting the
-%society through the increased efficiency of scale of the used
-%components and overall lower user prices of the technology.  At the
-%same time, its egalitarian ownership structure anchors the forming
-%intellectual capital within the community while the meritocratic
-%governance structure allows any further development to be primarily
-%technology driven, aiming for long-term engineering excellence instead
-%of short-term profits.
+\subsection{Business model considerations}
+
+As a first approximation from the conventional economics point of
+view, the ELL-i platform seems to form a fairly classical two-sided
+market~\cite{rochet2003platform}.  ELL-i offers the platform
+essentially free-of-charge to the developer community, allowing
+individual developers to innovate and fulfil their personal needs.  At
+the same time, it offers the platform for commercial companies for a
+fee.  At the same time it attempts to form a joint community
+of both individual developers and products companies, creating a
+larger two-sided market where the sides are the hardware component
+manufacturers and the product users.  From that point of view, ELL-i
+benefits the component suppliers through larger volumes, the product
+companies through increased bargaining power, and the product users
+through increased variety and lower average price of the products.  
+
+From a societal point of view, if ELL-i succeeds as a platform it may
+produce essentially a virtual non-profit monopoly, benefitting the
+society through the increased efficiency of scale of the used
+components and overall lower user prices of the technology.  At the
+same time, its egalitarian ownership structure anchors the forming
+intellectual capital within the community while the meritocratic
+governance structure allows any further development to be primarily
+technology driven, aiming for long-term engineering excellence instead
+of short-term profits.
 
 % ------------------------------------------------------------------
 
@@ -1433,7 +1373,7 @@ a wider variety of environments; for example, it would be very
 desirable to use the ELL-i platform without requiring any new cabling
 when renovating existing installations.
 
-From the community building point of view, ELL-i has but started yet.
+From the community building point of view, ELL-i has but started.
 We are still considering how to best launch a campaign to expand the
 developer base beyond the founders of the co-operative.  It seems
 clear that we need some sort of a crowdsourcing campaign to attract
@@ -1451,7 +1391,7 @@ experimentation in the form of trying out a few alternatives.
 \section{Conclusions}
 \label{sec:conclusions}
 
-Realising the Internet-of-Things (IoT) and Machine-to-Machine (M2M)
+Realising the Internet-of-Things (IoT) and Machine-to-Machi\-ne (M2M)
 visions will make our environment immensely contextual in the sense
 that the digitally interconnected artifacts in our environment may
 jointly form a rich model of what is taking place in any given space,
@@ -1460,8 +1400,8 @@ we have discussed one potential step towards that vision, the ELL-i
 initiative and technical platform.
 
 The ELL-i initiative is organised as a co-operative, with the
-intention of producing inexpensive open source hardware and software
-for wired appliances and implements, such as aquariums, bowling
+intention of producing an inexpensive open source hardware and software
+platform for wired appliances and implements, such as aquariums, bowling
 alleys, cooktops, dishwashers, the way to toasters, underlayments,
 vacuum cleaners, washers, xerox machines, yachts, and kitchen zinks.
 The currently available ELL-i prototyping board allows researchers and
