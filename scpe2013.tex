@@ -441,7 +441,7 @@ and CoAP~\cite{CoAP} in an easy-to-use way.  As it is undesirable to
 perform packet processing in an interrupt context and as many of the
 protocols depend on timeouts, abstracting the protocol processing away
 from the runtime API requires some kind of threading, either in the
-``scouts honour'' style (as in e.g. Contiki~\cite{Contiki-scheduler})
+``scouts honour'' style (as in e.g. Contiki~\cite{dunkels2004contiki})
 or in a proper pre-emptive manner.  At this writing it is still an
 open question which variant we will primarily support.
 
@@ -568,7 +568,7 @@ need to have their stacks to be allocated at compile time.
 The Internet API provides basic services for operating TCP, UDP and
 CoAP\cite{CoAP} sockets.  The TCP/IP stack is based on
 uIP~\cite{uIP}, with the
-uIP API working as such.  We plan to support Contiki~\cite{Contiki}
+uIP API working as such.  We plan to support Contiki~\cite{dunkels2004contiki}
 style protothreads~\cite{protothreads}, thereby making it easier to
 support existing uIP-based protocol stacks and applications.
 
@@ -631,7 +631,7 @@ clear explanations of what is happening under the hood in the runtime.
 
 On the compiler side, at the moment we are still using the very GCC
 version provided by the default Arduino IDE.  However, our plan is to
-move to LLVM~\cite{LLVM} as soon as possible, and to enable global
+move to LLVM~\cite{lattner2004llvm} as soon as possible, and to enable global
 link-time optimisation.  This together with well-written static
 initialisation of global C++ objects, such as the Arduino \hbox{\tt
   Serial}, allows the compiler in many cases to optimise away not only
@@ -1082,7 +1082,7 @@ The simplicity and flexibility of the platform also allows the
 students to replace many parts of the platform with their own
 components.  For example, at this writing, a student group at
 University of Turku have completed a preliminary port of the
-FreeRTOS~\cite{FreeRTOS}.
+FreeRTOS~\cite{barry2008freertos}.
 
 {\bf EIT Smart Spaces summer school.}
 In June 2013, a couple of weeks after the first ELL-i prototyping
