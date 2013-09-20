@@ -157,6 +157,28 @@ summarise the lessons learned so far.
 \section{Related work}
 \label{sec:related}
 
+IoT devices can be used to design products and services which can be enhanced by
+data connectivity and can provide intelligent feedback back to the user.
+Proliferation of cheap and versatile sensors, actuators, computing, storage and
+networking solutions augmented by the desire to connect people with their
+devices in a more meaningful way have contributed significantly to the IOT
+research. IMS research predicts that there will be 30 billion devices which will
+be connected to the Internet by 2020~\cite{ABIresearch}. Most of the IOT
+research has been used to serve diverse domains of wireless and RFID based
+applications with built-in powering solutions. In this work we focus on an
+alternative way for providing both the communication and powering solutions to
+fixed and immovable devices, which would anyhow be powered by wirelines, using
+Power over Ethernet (PoE) standard. In this section, we give the general and
+broadly accepted definition for Internet-of-things (IoT), explain briefly how
+the plethora of digital devices can be connected together with both wired and
+wireless technologies in the Machine-to-Machine (M2M) branch of IoT, explain the
+application of IoT devices and delve into the power management and security
+related aspects in IoT and M2M research. Later, we explain briefly about digital
+power management in general of state of the art IoT devices, explain state of
+the art single-wire powering and communications solutions and finally conclude
+by detailing other opensource embedded PoE platforms.
+
+
 \subsection{Internet of Things and Machine-to-Machine}
 
 A first definition of Internet-of-Things (IoT) referred to identifiers
@@ -178,29 +200,14 @@ things have identities, physical attributes and virtual personalities
 and use intelligent interfaces, and are seamlessly integrated to the
 information network''~\cite{vermesan2011internet}.
 
-A second dimension and branch of development of IoT is the
-machine-to-machine or M2M concept with further refers to linking the
-plethora of digital devices (from simple microcontrolled devices to
-smartphones and large industrial instrumentation). This refers more to
-the communications protocols required to allow devices to communicate
-with standard communications, typically wireless or even more
-specifically cellular systems.  A couple of popular projects
-developing the technology are the Eclipse M2M Industry Working
-Group~\cite{EclipseM2M} and ITU-T Focus Group M2M~\cite{ITU-T_FG_M2M}.
-
-In general, IoT devices can be used to design products and services
-which can be enhanced by
-data connectivity and can provide intelligent feedback back to the user.
-Proliferation of cheap and versatile sensors, actuators, computing, storage and
-networking solutions augmented by the desire to connect people with their
-devices in a more meaningful way have contributed significantly to the IOT
-research. IMS research predicts that there will be 30 billion devices which will
-be connected to the Internet by 2020~\cite{ABIresearch}. Most of the IOT
-research has been used to serve diverse domains of wireless and RFID based
-applications with built-in powering solutions. In this work we focus on an
-alternative way for providing both the communication and powering solutions to
-fixed and immovable devices, which would anyhow be powered by wirelines, using
-Power over Ethernet (PoE) standard.
+A second dimension and branch of development of IoT is the machine-to-machine or
+M2M concept with further refers to linking the plethora of digital devices (from
+simple microcontrolled devices to smartphones and large industrial
+instrumentation). This refers more to the communications protocols required to
+allow devices to communicate with standard communications, typically wireless or
+even more specifically cellular systems. A couple of popular projects developing
+the technology are the Eclipse M2M Industry Working Group~\cite{EclipseM2M} and
+ITU-T Focus Group M2M~\cite{ITU-T_FG_M2M}.
 
 \subsection{Internet of Things applications}
 
@@ -289,7 +296,7 @@ proposition.
 
 It is possible to use the energy harvested from the environment to power
 nanosystems which have the capabilities to sense, control, communicate and
-actuate/respond~\cite{wang2010toward}. For independent, sustainable,
+actuate~\cite{wang2010toward}. For independent, sustainable,
 maintainance-free operations of implantable biosensors, remote and mobile
 environmental sensors, nanorobotics, micro electromechanical systems, and even
 portable/wearable personal electronics require power on the scale of
