@@ -28,7 +28,7 @@ Internet, thereby becoming a part of the ``context'' within which the
 applications live.  
 In most of the IoT research, the focus has been in enabling
 movable things to communicate, including phones, tablets, RFID tags,
-watches, and jewelry, to name but a few.  In such an approach, the
+watches, and jewellery, to name but a few.  In such an approach, the
 things are expected to have their own batteries or receive temporary
 power over short distance electro-magnetic field.
 This approach has also dominated the more fixed side of the
@@ -42,7 +42,7 @@ We argue that a large majority of the fixed or
 stationary things would benefit from being permanently powered using
 wireline connections, and while doing so, it becomes natural to use
 the same wires also for their communication and contextual needs.
-Such an approach allows the appliciances to become part of the
+Such an approach allows the appliances to become part of the
 the wider application context.  With this in mind,
 we introduce the
 ELL-i platform, a new open source initiative for provide a low-cost
@@ -74,20 +74,20 @@ easily see from the multitude of sensors that are available in today's
 smartphones, once we realise the Internet of Things (IoT)
 vision~\cite{Atzori20102787} of making each ``light bulb'' Internet
 connected~\cite{cerf1997next}, the amount of available sensor data is
-likely to multiply.  Furthermore, through making the applicances not
+likely to multiply.  Furthermore, through making the appliances not
 only sensitive but also active, the appliances may themselves become
-more aware of the nearby humans, reacting and proacting in a
+more aware of the nearby humans, reacting and pro-acting in a
 situation-aware manner~\cite{kindberg2002people}.
 
 Considering physical space, a key aspect of making a room, building,
 or any physical space context aware is to have a sufficient number of
-sensors and providing a framework for pre-prosessing the
+sensors and providing a framework for pre-processing the
 data~\cite{Baldauf2007a}.  This is typically expected to take place
 through installing a {\it sensor network} to an already existing
 building or space, and routing the collected data to an aggregation
 service.  In the large majority of the recent works, the sensor
 network is expected to be a wireless one, to the extent that the most
-widely referred referred survays carry the word ``wireless'' in their
+widely referred referred surveys carry the word ``wireless'' in their
 title~\cite{akkaya2005survey, akyildiz2002wireless}.
 
 At the same time, most of the works have implicitly ignored how the
@@ -105,7 +105,7 @@ not look like a very rewarding alternative~\cite{rowland2002prevalence}.
 While it may well be possible to create sensor nodes that scavenge
 energy from the environment and use radio or light bursts to
 communicate with the environment~\cite{wang2010toward}, creating
-wirelessly powered every day appliances that have some other active
+wireless powered every day appliances that have some other active
 function that mere sensing seems improbable.  Hence, it seems prudent
 to assume that a large majority of different appliances will remain
 wired, including air conditioners, blinds, coffee machines, doorbells,
@@ -149,7 +149,7 @@ wide perspective.  Then, in Section~\ref{sec:architecture} we
 introduce the ELL-i platform from a technical point of view.  In
 Section~\ref{sec:examples} we briefly describe some example
 applications that are immediately viable with ELL-i, followed in
-Section~\ref{sec:business} with a succint description of the
+Section~\ref{sec:business} with a succinct description of the
 business model.  Section~\ref{sec:ongoing} enlists our ongoing work.
 We conclude the paper in Section~\ref{sec:conclusions}, attempting to
 summarise the lessons learned so far.
@@ -181,7 +181,7 @@ other opensource embedded PoE platforms (\ref{ssec:platforms}).
 
 Perhaps the first definition of what later became Internet of Things
 was given by the Internet pioneer Vint Cerf in this ACM conference
-talk in 1997~\cite{cerf1997next}, where he visioned each light bulp
+talk in 1997~\cite{cerf1997next}, where he envisioned each light bulb
 having their own internet address.  
 The term Internet-of-Things (IoT) was first used
 by Kevin Ashton in 1999, when he referred to identifiers
@@ -191,7 +191,7 @@ became related to the famous and more generic definition of the
 disappearing computer by Mark Wiser~\cite{weiser1991computer}, where he
 described that miniaturization and ubiquity of sensors would
 eventually lead to disappearing to the computational elements ``into
-the fabric of everyday life''.  This has been later dentoted to as
+the fabric of everyday life''.  This has been later denoted to as
 pervasive or ubiquitous computing.
 
 More recently, one of many definitions of IoT is given by the Cluster
@@ -245,7 +245,7 @@ populating them~\cite{miorandi2012internet}.
 
 In this work, IoT devices have been classified by the amount of power required
 for their efficient operation. Some IoT devices use batteries, some scavenge
-energy from radio waves (RFID and NFC), while others are powered by seperate
+energy from radio waves (RFID and NFC), while others are powered by separate
 power supply from the mains.  Smart and tiny embedded systems
 have sensors, actuators, CPU, memory and a low-power communication
 device~\cite{lopez2012adding}. Usually, these can be powered by a battery. On
@@ -276,7 +276,7 @@ intermediate-bus architecture~\cite{FutureIOT}.
 It is possible to use the energy harvested from the environment to power
 nanosystems which have the capabilities to sense, control, communicate and
 actuate~\cite{wang2010toward}. For independent, sustainable,
-maintainance-free operations of implantable biosensors, remote and mobile
+maintenance-free operations of implantable biosensors, remote and mobile
 environmental sensors, nanorobotics, micro electromechanical systems, and even
 portable/wearable personal electronics require power on the scale of
 microwatts~\cite{wang2010toward}.  
@@ -295,7 +295,7 @@ battery-power nodes which has been limiting the development of this
 field~\cite{gluhak2011survey,rowland2002prevalence}.
  Also, indoor installation and usage of nodes
 provides easier access to power and cabling~\cite{gluhak2011survey}. Although,
-nodes maybe cheap, their deployment and maintainance is an expensive
+nodes maybe cheap, their deployment and maintenance is an expensive
 proposition.
 
 \subsection{Open source embedded platforms}
@@ -386,8 +386,8 @@ The hardware architecture is based on combining power and
 communications on a single cable, making both of them available to
 applications.  In practise, the current implementation is based on the
 IEEE 802.3at Power-over-Ethernet standard, which is an economic
-solution when the power consumption is roughly in the 1--100 Watts
-range.  In the long run, we expect to expand the power range to both
+solution when the power consumption is roughly in the 1-100 Watts
+range. In the long run, we expect to expand the power range to both
 smaller and higher power levels; for example, there are no technical
 reasons why Power-over-Ethernet technology could not be applied to thicker wires
 and higher currents.
@@ -435,7 +435,7 @@ IEEE 802.3af~\cite{802.3af} or 802.3at~\cite{802.3at}
 Power-over-Ethernet standard, including the physical-layer signalling
 that consists of an initial resistive-load based detection phase, a
 current-sink based classification phase, an optional second
-classification mode added in 802.3at, and an operating-voltage rampup
+classification mode added in 802.3at, and an operating-voltage ramp-up
 phase~\cite{802.3at}.  
 
 The DC/DC power supply is responsible for converting the incoming
@@ -444,7 +444,7 @@ MCU and other digital electronics.  In a specific ELL-i application,
 there may be an additional power supply producing ``bulk'' power for
 the ``real world'' components, such as a constant-current PSU for a
 high power LED light, a circuit generating suitable current pulses for
-a solenoid, or a precicely controlled PSU generating modulated
+a solenoid, or a precisely controlled PSU generating modulated
 currents for a direct-current driven electric motor.  In most real
 world applications there is a difference between the power
 requirements of the digital electronics, which typically require
@@ -452,11 +452,11 @@ constant voltage but variable current, and that of the real-world
 actuators, which typically require controlled current but are
 relatively insensitive to the actual voltage.
 
-Finally, the I/O subsystem adjust the electical signals generated by
+Finally, the I/O subsystem adjust the electrical signals generated by
 the sensors and required by the actuators with the levels created and
 tolerated by the MCU.  In a typical case, the I/O subsystem consists
 of operational amplifiers acting in amplifier and/or level shifter
-role.  In many cases also optoisolators or other isolators are needed.
+role.  In many cases also opto-isolators or other isolators are needed.
 
 %% In a typical application, the I/O subsystem needs application-specific
 %% design or adjustments.  Perhaps more importantly, when the ELL-i
@@ -491,7 +491,7 @@ programmatic access to all of these.
 % \label{fig:software}
 % \end{figure}
 
-The set of APIs may be devided into five groups, corresponding to the
+The set of APIs may be divided into five groups, corresponding to the
 booting, HAL, scheduler, Internet, and Web-services.  In the current
 implementation, the boot and HAL APIs provide an Arduino-compatible
 programming environment, allowing programmers to initialise the
@@ -528,7 +528,7 @@ support existing uIP-based protocol stacks and applications.
 The optional built-in Web-server allows the ELL-i platform to provide
 AJAX-style Webservices towards the local network.  For security
 reasons, the TCP packet lifetime is limited to one hop, thereby making
-the webservice unreable from the Internet even in the case the node
+the webservice unreachable from the Internet even in the case the node
 has a public IP address and full Internet connectivity.
 
 The runtime library has been carefully built in a way that allows the
@@ -542,7 +542,7 @@ components and by default sends sensor data to the cloud.
 
 In addition to the software components running on the ELL-i hardware,
 the ELL-i platform contains also cloud components, running on a
-ecompatible cloud runtime, such as Amazon Web Services (AWS).
+e-compatible cloud runtime, such as Amazon Web Services (AWS).
 The cloud components provide interaction, update and community
 services to the ELL-i boards, and they are enabled by default in each
 ELL-i development board.
@@ -552,7 +552,7 @@ board attempts to contact its counterpart component at the cloud
 side, making the cloud-side component aware that the board is running
 and has Internet connectivity.  At the same time, the user may direct
 their browser to a board-specific URL and view the board status.  The
-board may also peridically send sensor information to the cloud, such
+board may also periodically send sensor information to the cloud, such
 as a reading from the MCU-internal temperature sensor.  This data is
 then visualised to the user.
 
@@ -563,7 +563,7 @@ to download new firmware page-by-page to the RAM, and flash it.  By
 default, each page must be protected with a symmetric cryptographic
 key, shared between the board-specific cloud component and the board
 itself.  If the remote upgrade fails and the board no longer boots, it
-still remains possible to completely reflash the board using a serial
+still remains possible to completely re-flash the board using a serial
 line and a separate programming board.
 
 %% We are also contemplating of including community services to the cloud
@@ -591,10 +591,10 @@ initialisation of global C++ objects, such as the Arduino \hbox{\tt
 virtual function calls but use constant propagation down to the level
 where the Arduino syntactic sugar may be optimised completely way,
 providing the same level of efficiency as would normally be
-achieveable through bare-metal access while still working with
+achievable through bare-metal access while still working with
 high-level C++ abstractions.  We are also considering whether it would
 be possible to pre-run the Arduino \hbox{\tt setup()} function and
-some of the preceeding setup machinery during the compilation
+some of the preceding setup machinery during the compilation
 time~\cite{rintaaho2012clicktofpga}, providing boot-time optimisations.
 
 \subsection{Current implementation}
@@ -606,7 +606,7 @@ components is to be started.
 The goal of the first prototyping board was to create
 Arduino-compatible hardware and software that would support a more
 powerful
-MCU than the present basic Arduinoes do and to allow custom DC/DC
+MCU than the present basic Arduino's do and to allow custom DC/DC
 power supply design.  This goal has been reached.  With the first
 prototyping board, prospecting developers can utilise the existing
 Arduino examples, learning material, and shields, to a large extent.
@@ -840,8 +840,8 @@ the right approach.  At the moment, we are using the Arduino-compatible I/O
 connector design for development-time extensions.  However, it is
 clear that they are not a good choice for production use, for many
 reasons\footnote{The Arduino-compatible connectors are physically quite large,
-  requirign more space than what is available within many devices and
-  e.g. within a pattressbox.  Furthermore, the Arduino-compatible connectors are
+  requiring more space than what is available within many devices and
+  e.g. within a pattress box.  Furthermore, the Arduino-compatible connectors are
   basically unbuffered, making it somewhat tricky to get good ADC
   readings or driving higher loads through them.}.
 
@@ -892,7 +892,7 @@ typical voltage drop over a HP LED is around 3V.  Hence, for driving a
 LED from a voltage source that is higher than the voltage drop of the
 LED it is enough to limit the amount of current.  For indicator LEDs
 the current is usually limited with a suitable series resistor;
-however, such an arrangment would be very inefficient for driving an
+however, such an arrangement would be very inefficient for driving an
 HP LED out of the PoE nominal 48V.  Fortunately, a buck
 converter, the simplest of the so-called
 switching mode power supply (SMPS)~\cite{maniktala2012switching} topologies, 
@@ -1004,14 +1004,13 @@ protocols up to simple Web services.
 
 Hence, the ELL-i platform may be used to introduce and demonstrate all
 the elements of a modern Web-connected computer, including both the
-hardware and software, without the complexities present in the typical
-moder computers.
+hardware and software, without the complexities.
 
 \subsubsection{ELL-i as a student project platform}
 
 Due to the simplicity and the modular design of the ELL-i platform, it
 is a relatively easy platform for students to build their platforms
-upon.  Arduino compatibility allows adoptation of almost any of the
+upon.  Arduino compatibility allows adoption of almost any of the
 some 300 existing Arduino shields, typically with some minor
 software-side modifications.  In many cases, the more powerful MCU on
 the ELL-i platform allows the sensors or other components on the
@@ -1081,7 +1080,7 @@ community~\cite{hertel2003motivation, lee2003firm}.
 
 As stated, the goal of the ELL-i project include providing an
 inexpensive and easy-to-use platform for all kinds of fixed
-appliancies.  As always, in electronics production achieving a low
+appliances.  As always, in electronics production achieving a low
 price requires high volumes.  Hence, the ELL-i business model aims to
 make the platform widely available at a low cost, thereby encouraging
 it to be widely used, leading to increasing volumes and thereby even
@@ -1089,7 +1088,7 @@ lower prices.  In other words, the project does not aim to
 create profits as such but to distribute the added value in the form
 of lower prices, thereby contributing to the economy as a whole.
 
-The ELL-i project itself has been incorproated as a co-operative, with
+The ELL-i project itself has been incorporated as a co-operative, with
 the intention that the hardware and software copyrights are co-owned
 by the developers.  That is, the aim is that the co-operative owns the
 copyright for all of the hardware and software components within the
@@ -1099,7 +1098,7 @@ may join the co-operative as members if they wish to do so.
 We envision that the project and the co-op will create interest among
 commercial for-profit companies.  This is important both for creating
 volumes and for distributing the created value to the economy.
-Hence, the ownership, governance and licencing models have been
+Hence, the ownership, governance and licensing models have been
 planned and will be adjusted to make the platform lucrative for
 commercial licensees.
 
@@ -1114,8 +1113,8 @@ Section~\ref{ssec:earlymarket} below.
 
 The ELL-i business model needs to be balanced between the early
 market need of creating a sizeable developer community and the
-somewhat later need of attarcing commercial companies in order to
-create volumes and benefitting the larger society.  
+somewhat later need of attracting commercial companies in order to
+create volumes and benefiting the larger society.  
 % We attempt to the
 % address these somewhat conflicting needs through separating the
 % ownership, governance and licencing practises.
@@ -1123,10 +1122,10 @@ create volumes and benefitting the larger society.
 
 The resulting structure has probably a relatively low monetary value
 compared to its overall utility value, as the ownership will be more
-anchored than in most alternative models.  However, we consider this
+anchored than in most alternative models. However, we consider this
 as a virtual from the macroeconomic
 perspective~\cite{Olson2002}, somewhat similar to what
-state-owned enterprises provide but deteched from the populistic
+state-owned enterprises provide but detached from the populist
 political system.
 
 \subsection{Early market challenges}
@@ -1152,12 +1151,12 @@ requires both much more visibility than what ELL-i enjoys today and a
 number of additional power supply designs, making it easier to have
 suitable power tailored for each load.
 
-An initial market presense may be achieved through crowdsourcing,
+An initial market presence may be achieved through crowd-sourcing,
 e.g. through a Kickstarter~\cite{Kickstarter} campaign.  That may help
 with gaining initial production volume and inducing a few new
 developers; however, such a campaign is also likely to saturate the
 early market, making it considerably harder to sell new hardware for a
-while.  Hence, at the time a crowdsourcing campaign is commenced,
+while.  Hence, at the time a crowd-sourcing campaign is commenced,
 there must be sufficient structure in place so that the new developers
 have a clearly laid approach and incentive to start contributing to
 the project.
@@ -1166,7 +1165,7 @@ What comes to the powering of appliances, we basically need to learn
 ourselves -- within the core group -- to build a more diverse set of
 power supplies.  We also need to make the resulting knowledge
 available in an form that is easier for relative newcomers to apply
-than the currently available information, initially as recipies and
+than the currently available information, initially as recipes and
 later on as ready-applicable DC/DC converter units.  The basic ELL-i
 recipe for providing adjustable constant-current power is already
 there, thereby enabling adjustable LED drivers, and we expect to
@@ -1348,7 +1347,7 @@ companies through increased bargaining power, and the product users
 through increased variety and lower average price of the products.  
 
 From a societal point of view, if ELL-i succeeds as a platform it may
-produce essentially a virtual non-profit monopoly, benefitting the
+produce essentially a virtual non-profit monopoly, benefiting the
 society through the increased efficiency of scale of the used
 components and overall lower user prices of the technology.  At the
 same time, its egalitarian ownership structure anchors the forming
@@ -1365,10 +1364,10 @@ of short-term profits.
 As a platform and a business model, ELL-i is still at its infancy.  As
 a development platform, we are still busy laying out the building
 blocks: the next version of the hardware is being worked on, the
-software is receiving constant inprovements, and at the tools side we
+software is receiving constant improvements, and at the tools side we
 are smoothing out the developer path from the easy-to-start-with but
 simplistic Arduino IDE to the more powerful full-fledged tools.  At
-the same time we are looking at how to expand the technology to conver
+the same time we are looking at how to expand the technology to convert
 a wider variety of environments; for example, it would be very
 desirable to use the ELL-i platform without requiring any new cabling
 when renovating existing installations.
@@ -1376,14 +1375,14 @@ when renovating existing installations.
 From the community building point of view, ELL-i has but started.
 We are still considering how to best launch a campaign to expand the
 developer base beyond the founders of the co-operative.  It seems
-clear that we need some sort of a crowdsourcing campaign to attract
+clear that we need some sort of a crowd-sourcing campaign to attract
 developers and to gain initial volumes.
 
-Finally, the governance and licencing models clearly need much more
+Finally, the governance and licensing models clearly need much more
 work.  Our understanding of how to structure the business model in a
 way that allows both fast organic growth and sustained technical
 development is still inadequate, requiring both better theoretical
-understanding of the various stekeholder incentives and real-life
+understanding of the various stakeholder incentives and real-life
 experimentation in the form of trying out a few alternatives.
 
 % ------------------------------------------------------------------
@@ -1393,7 +1392,7 @@ experimentation in the form of trying out a few alternatives.
 
 Realising the Internet-of-Things (IoT) and Machine-to-Machi\-ne (M2M)
 visions will make our environment immensely contextual in the sense
-that the digitally interconnected artifacts in our environment may
+that the digitally interconnected artefacts in our environment may
 jointly form a rich model of what is taking place in any given space,
 allowing the environment to react in a smart manner.  In this paper,
 we have discussed one potential step towards that vision, the ELL-i
@@ -1428,7 +1427,7 @@ co-operative have been designed with sustainability in mind.  They aim
 to create an openly governed, jointly owned platform that is firmly
 anchored within the society and developed as an essentially public good.
 
-\section*{Acknowledgments}
+\section*{Acknowledgements}
 
 The authors would like to TBD.
 
