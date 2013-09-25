@@ -937,9 +937,10 @@ and industrial automation.  In the building automation area, there are
 already a number of Power-over-Ethernet products at the market,
 including locks and other security and safety equipment.  However, to
 a large extent the existing automation systems are still based on
-standards, such as KNX\cite{knx2011knx}, BACnet\cite{bushby1997bacnet}, or
-LonTalk\cite{LonTalk}, which generally utilise twisted pair
-control cables with separate power supply.
+standards, such as BACnet~\cite{bushby1997bacnet}, KNX~\cite{knx2011knx},
+LonTalk~\cite{LonTalk}, or ModBus~\cite{ModBus},
+which generally utilise twisted pair
+control cables and separate power supply.
 
 From that point of view, ELL-i provides an open source platform to
 build upon.  As such, ELL-i provides little benefit directly to
@@ -992,9 +993,6 @@ and to understand.  The MCU-related part of schematic is very similar
 to the relevant part of the MCU manufacturer's evaluation board.  The
 Ethernet communications module consists of a single chip and the
 magnetics and has a wide support in the open source community.
-Finally, the DC/DC PSU is a relatively simple buck converter design
-that can be understood in a few days with a basic analogue electronics
-background.
 
 At the software side, the firmware has been written in a modular
 manner, as was explained above in Section~\ref{sssec:runtime}.  Hence,
@@ -1169,7 +1167,7 @@ available in an form that is easier for relative newcomers to apply
 than the currently available information, initially as recipes and
 later on as ready-applicable DC/DC converter units.  The basic ELL-i
 recipe for providing adjustable constant-current power is already
-there, thereby enabling adjustable LED drivers, and we expect to
+there, thereby enabling adjustable LED drivers, and we expect soon to
 complete our first design for inductive loads, such as solenoids and
 motors.
 
@@ -1418,8 +1416,8 @@ at a very reasonable price point.  If ELL-i ever reaches
 mass-production quantities, it will provide an electronics module that
 allows almost any wired electrical device to be converted into its
 ``smart'' equivalent at the additional production cost of just a
-couple euros.  Consequently, as even a typical light switch or toaster
-is priced at a level close to or exceeding ten euros, that may
+couple euro.  Consequently, as even a typical light switch or toaster
+is priced at a level close to or exceeding ten euro, that may
 gradually enable complete ``smartification'' of our urban
 environment. 
 
@@ -1431,9 +1429,10 @@ anchored within the society and developed as an essentially public good.
 \section*{Acknowledgements}
 
 The authors would like to thank Antti-Juhani Filpus, Dmitri Gursov,
-Teemu Hakala, and Matti Viita for their constructive comments on
-various drafts of this paper, as well as the founding members of the
-ELL-i open source co-operative for their initiative and courage.
+Teemu Hakala, Jukka Korpihete, and Matti Viita for their constructive
+comments on various versions of this paper, as well as the founding
+members of the ELL-i open source co-operative for their initiative and
+courage.
 
 \bibliography{scpe2013}{}
 \bibliographystyle{plain}
