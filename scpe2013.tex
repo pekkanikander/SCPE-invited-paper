@@ -13,7 +13,7 @@
 \title{{ELL-i}: An inexpensive platform for fixed things}
 
 \author{Pekka Nikander\thanks{{ELL-i} open source co-operative,
-    Helsinki, Finland. (pekka.nikander@iki.fi).  Questions, comments,
+    Helsinki, Finland. (pekka.nikander@ell-i.org).  Questions, comments,
     or corrections to this document may be directed to that email
     address.}
   \and Vaddina Kameswar Rao\thanks{Department of Information
@@ -132,9 +132,9 @@ As its first technical platform, the ELL-i initiative
 provides open source hardware
 and software for building inexpensive embedded intelligence into
 devices, allowing them to communicate and be powered with
-Power-over-Ethernet (PoE)~\cite{PoE}, an established but rapidly
+Power-over-Ethernet (PoE)~\cite{802.3at}, an established but rapidly
 evolving standard for providing up to 100 Watts of electric 
-power~\cite{hdbaset2011}
+power~\cite{htbaset2011}
 through standard Ethernet cables.  The currently available ELL-i
 prototyping board is compatible with the popular
 Arduino~\cite{ArduinoProject} prototyping platform.
@@ -321,21 +321,19 @@ people that developed the original Arduino design.  They have decided
 to open source all of the software and hardware but to keep the
 Arduino and associated graphics as a trademark.  At the moment there are
 three companies that are authorized by the project leaders to produce
-official Arduino boards~\cite{ArduinoPolicy}.  The financial
-arrangements between the project leaders and the authorised
-manufacturers are not known.
-
-The Raspberry Pi is produced by the Raspberry Pi Foundation, which is
-a UK registered charity founded in May 2009 in Caldecote,
-Cambridgeshire, UK, supported by the University of Cambridge Computer
+official Arduino boards~\cite{ArduinoPolicy}.  
+As another example,
+the Raspberry Pi is produced by the Raspberry Pi Foundation, which is
+a UK registered charity 
+supported by the University of Cambridge Computer
 Laboratory and Broadcom~\cite{RaspiFoundationWikipedia}.  For its
 first three years of operation, the foundation income was annually
 less than \textsterling 10.000.  The foundation income and spendings for 2012
 were not registered at the UK Charity Commission at this writing.
 
 There are other Arduino and Raspberry Pi based PoE
-solutions~\cite{ArduinoEthernetPOE, ArduinoEthernetShieldPOE,
-  etherduino, POEthernetShield, xtronix} currently available in
+solutions~\cite{xtronix, ArduinoEthernetShieldPOE, ArduinoEthernetPOE, 
+  POEthernetShield} currently available in
 the market.  Some of them are complete PoE solutions, while others are shields
 that can be plugged into an Arduino.  The Arduino Ethernet with
 PoE~\cite{ArduinoEthernetPOE} is an Arduino development board with the built in
@@ -348,15 +346,15 @@ Shield~\cite{POEthernetShield} gives access to the Internet via the Ethernet
 library and also allows the Arduino based projects to power itself from the
 Ethernet line. The Raspberry Pi Power Over Ethernet (PoE) Adapter~\cite{xtronix}
 is designed to be plugged directly on to a
-Raspberry Pi and power it with +5 Volts at up to 1.0 Amps output. All of these
-solutions are either expensive and/or bulky to reside in a pattress box.
+Raspberry Pi and power it with +5 Volts at up to 1.0 Amps output. 
 
-All of these solutions focus on providing power to the MCU and its digital peripherals, powered through the 3.3V and/or 5V systems.
+All of solutions above focus on providing power to the MCU and its
+digital peripherals, powered through the 3.3V and/or 5V systems.
 The long term vision for ELL-i significantly different.  
-ELL-i is a multi-voltage domain design and
-both the PoE 48V or the DC-to-DC converters can be used. ELL-i is aiming to be
-an inexpensive low-cost PoE device which will come with integrated cloud based
-services pre-loaded out of the box. 
+ELL-i is a multi-voltage domain design making the ``raw'' 48V from PoE
+available.  ELL-i is aiming to be
+an inexpensive platform for low-cost PoE devices that come with integrated cloud 
+services. 
 
 % ------------------------------------------------------------------
 
@@ -393,7 +391,7 @@ Figure~\ref{fig:arch}.
 The hardware architecture is based on combining power and
 communications on a single cable, making both of them available to
 applications.  In practise, the current implementation is based on the
-IEEE 802.3at Power-over-Ethernet standard, which is an economic
+IEEE 802.3at~\cite{802.3at} Power-over-Ethernet standard, which is an economic
 solution when the power consumption is roughly in the 1--100 Watts
 range. In the long run, we expect to expand the power range to both
 smaller and higher power levels; for example, there are no technical
@@ -438,19 +436,19 @@ processing.
 
 The power supply module consists of an Power-over-Ethernet signalling
 module and a DC/DC power supply module.  The former implements the
-IEEE 802.3af~\cite{802.3af} or 802.3at~\cite{802.3at}
+IEEE 802.3af or 802.3at
 Power-over-Ethernet standard, including the physical-layer signalling
 that consists of an initial resistive-load based detection phase, a
 current-sink based classification phase, an optional second
 classification mode added in 802.3at, and an operating-voltage ramp-up
-phase~\cite{802.3at}.  
+phase.  
 
 The DC/DC power supply is responsible for converting the incoming
 Power-over-Ethernet 48V voltage into the 5V and/or 3.3V needed by the
 MCU and other digital electronics.  In a specific ELL-i application,
 there may be an additional power supply producing ``bulk'' power for
 the ``real world'' components, such as a constant-current PSU for a
-high power LED light, a circuit generating suitable current pulses for
+high-power LED light, a circuit generating suitable current pulses for
 a solenoid, or a precisely controlled PSU generating modulated
 currents for a direct-current driven electric motor.  In most real
 world applications there is a difference between the power
@@ -493,7 +491,7 @@ programmatic access to all of these.
 
 % \begin{figure}
 % \centering
-x% \includegraphics[scale=.4]{figures/software.eps}
+% \includegraphics[scale=.4]{figures/software.eps}
 % \caption{ELL-i runtime architecture}
 % \label{fig:software}
 % \end{figure}
@@ -525,13 +523,11 @@ context, in order to preempt packet processing.  Dynamic memory
 management is not supported and is strongly discouraged; any threads
 need to have their stacks to be allocated at compile time.
 
-The Internet API provides basic services for operating TCP, UDP and
+The Internet API provides services for operating TCP, UDP and
 CoAP~\cite{shelby2013constrained}.  The TCP/IP stack is based on
-uIP~\cite{dunkels2006uip}, with the
-uIP API working as such.  We support Contiki~\cite{dunkels2004contiki}
+uIP~\cite{dunkels2003full}.  We support Contiki~\cite{dunkels2004contiki}
 style protothreads~\cite{dunkels2006protothreads}, thereby making it easier to
 support existing uIP-based protocol stacks and applications.
-
 The optional built-in Web-server allows the ELL-i platform to provide
 AJAX-style Webservices towards the local network.  For security
 reasons, the TCP packet lifetime is limited to one hop, thereby making
@@ -604,6 +600,13 @@ be possible to pre-run the Arduino \hbox{\tt setup()} function and
 some of the preceding setup machinery during the compilation
 time~\cite{rintaaho2012clicktofpga}, providing boot-time optimisations.
 
+\begin{figure}
+\centering
+\includegraphics[scale=.28]{figures/casedesign.eps}
+\caption{ELL-i case design}
+\label{fig:casedesign}
+\end{figure}
+
 \subsection{Current implementation}
 
 At this writing in September 2013, the currently available
@@ -627,13 +630,6 @@ and Arduino-compatible headers.  We also have a 3D printed case for
 the prototyping board, with enough of space for a few Arduino shields.
 The current case design is depicted in Figure~\ref{fig:casedesign} and
 a corresponding prototype in Figure~\ref{fig:case}.
-
-\begin{figure}
-\centering
-\includegraphics[scale=.28]{figures/casedesign.eps}
-\caption{ELL-i case design}
-\label{fig:casedesign}
-\end{figure}
 
 %% The STM32F051 MCU was selected partially because it was already
 %% familiar to us, partially because it represents a relatively new
@@ -889,17 +885,17 @@ commercial high-power RGB LED
 projector.  Since then, we have repeated the LED driver exercise a few
 times.
 
-From the electronics point of view, an adjustable high power LED driver is a
+From the electronics point of view, an adjustable high-power LED driver is a
 relatively simple device, as LEDs in general are current-driven
 components.  That is, the voltage drop over a LED remains relatively
 constant independent of how much current is flowing through the LED,
 and the amount of current determines how brightly the LED shines.  The
-typical voltage drop over a HP LED is around 3V.  Hence, for driving a
+typical voltage drop over a high-power LED is around 3V.  Hence, for driving a
 LED from a voltage source that is higher than the voltage drop of the
 LED it is enough to limit the amount of current.  For indicator LEDs
 the current is usually limited with a suitable series resistor;
 however, such an arrangement would be very inefficient for driving an
-HP LED out of the PoE nominal 48V.  Fortunately, a buck
+high-power LED out of the PoE nominal 48V.  Fortunately, a buck
 converter, the simplest of the so-called
 switching mode power supply (SMPS)~\cite{maniktala2012switching} topologies, 
 is quite
@@ -1156,12 +1152,12 @@ requires both much more visibility than what ELL-i enjoys today and a
 number of additional power supply designs, making it easier to have
 suitable power tailored for each load.
 
-An initial market presence may be achieved through crowd-sourcing,
-e.g. through a Kickstarter~\cite{Kickstarter} campaign.  That may help
+An initial market presence may be achieved through
+crowd-funding~\cite{kuppuswamy2013crowdfunding}.  That may help
 with gaining initial production volume and inducing a few new
 developers; however, such a campaign is also likely to saturate the
 early market, making it considerably harder to sell new hardware for a
-while.  Hence, at the time a crowd-sourcing campaign is commenced,
+while.  Hence, at the time a crowd-funding campaign is commenced,
 there must be sufficient structure in place so that the new developers
 have a clearly laid approach and incentive to start contributing to
 the project.
@@ -1380,7 +1376,7 @@ when renovating existing installations.
 From the community building point of view, ELL-i has but started.
 We are still considering how to best launch a campaign to expand the
 developer base beyond the founders of the co-operative.  It seems
-clear that we need some sort of a crowd-sourcing campaign to attract
+clear that we need some sort of a crowd-funding campaign to attract
 developers and to gain initial volumes.
 
 Finally, the governance and licensing models clearly need much more

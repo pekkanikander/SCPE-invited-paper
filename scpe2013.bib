@@ -26,22 +26,15 @@ keywords = "\{RFID\} systems "
 
 
 
-@techreport{Olson2002,
+@misc{Olson2002,
 title = "Fix Globalization: Make it more inclusive, democratic,
                   accountable and sustainable",
 author = "Deborah Groban Olson and John Logue",
 url = "http://cog.kent.edu/DC\%20Conference/DCCOnferenceReport.htm",
 institution = "Capital Ownership Group, Ford Foundation",
+howpublished = "Capital Ownership Group, Ford Foundation",
 year = "2002",
 month = oct
-}
-
-
-
-
-@other{Kickstarter,
-title = "Kickstarter",
-url = "http://www.kickstarter.com",
 }
 
 
@@ -89,7 +82,7 @@ url = "http://www.kickstarter.com",
 
 
 
-@other{ABIresearch,
+@misc{ABIresearch,
 title = "ABI research",
 url = "https://www.abiresearch.com/press/more-than-30-billion-devices-will-wirelessly-conne",
 }
@@ -97,7 +90,7 @@ url = "https://www.abiresearch.com/press/more-than-30-billion-devices-will-wirel
 
 
 
-@other{FutureIOT,
+@misc{FutureIOT,
 title = "The future of power management in the {I}nternet of {T}hings",
 url = "http://www.edn.com/design/power-management/4402999/The-future-of-power-management-in-the-Internet-of-Things",
 }
@@ -258,9 +251,11 @@ url = "http://www.edn.com/design/power-management/4402999/The-future-of-power-ma
 
 
 
-@article{vermesan2011internet,
-  title={Internet of {T}hings strategic research roadmap},
+@inbook{vermesan2011internet,
+  title="Cluster SRA 2011",
+  chapter={Internet of {T}hings strategic research roadmap},
   author={Vermesan, Ovidiu and Friess, Peter and Guillemin, Patrick and Gusmeroli, Sergio and Sundmaeker, Harald and Bassi, Alessandro and Jubert, Ignacio Soler and Mazura, Margaretha and Harrison, Mark and Eisenhauer, M and others},
+  publisher={European Research Cluster on the Internet of Things},
   pages={9--52},
   year={2011}
 }
@@ -268,17 +263,23 @@ url = "http://www.edn.com/design/power-management/4402999/The-future-of-power-ma
 
 
 
-@other{EclipseM2M,
-title = "Eclipse Foundation Machine-to-Machine Industry Working Group",
-url = "m2m.eclipse.org",
+@misc{EclipseM2M,
+key="Eclipse",
+title = "Eclipse Foundation {M}achine-to-{M}achine Industry Working Group -- Charter",
+url = "http://www.eclipse.org/org/industry-workgroups/m2miwg_charter.php",
+howpublished = "Eclipse Foundation, Inc., Centrepointe Drive, Ottawa, Ontario, Canada",
+institution = "Eclipse Foundation, Inc.",
+address = "102 Centrepointe Drive, Ottawa, Ontario, Canada",
 }
 
 
 
 
-@other{ITU-T_FG_M2M,
-title = "ITU-T Focus Group on M2M Service Layer",
+@misc{ITU-T_FG_M2M,
+key = "ITU-T",
+title = "{ITU-T} Focus Group on {M2M} Service Layer",
 url = "http://www.itu.int/en/ITU-T/focusgroups/m2m/Pages/default.aspx",
+howpublished = "International Telecommunication Union, Telecommunication Standardization Bureau, Place des Nations, Geneva, Switzerland",
 }
 
 
@@ -353,7 +354,8 @@ url = "http://www.itu.int/en/ITU-T/focusgroups/m2m/Pages/default.aspx",
 
 
 
-@other{ArduinoPolicy,
+@misc{ArduinoPolicy,
+author={Mellis, David A and Cuartielles, David and Fissore, Federico and Cicchi, Alberto}, 
 title = "So you want to make an {A}rduino",
 url = "http://arduino.cc/en/Main/Policy",
 }
@@ -361,16 +363,18 @@ url = "http://arduino.cc/en/Main/Policy",
 
 
 
-@other{ArduinoProject,
-title="TBD",
-url="http://arduino.cc"
+@misc{ArduinoProject,
+author={Banzi, Massimo and Mellis, David A and Cuartielles, David and Shirky, Clay and Badger, Paul and Igoe, Tom and Fissore, Federico and Guido, Roberto and Shiloh, Michael},
+title="Arduino",
+url="http://arduino.cc",
+howpublished="The official Arduino web page at http://arduino.cc",
 }
 
 
 
 
 @inproceedings{hribernik2011co,
-  title={Co-creating the Internet of Things--First experiences in the participatory design of Intelligent Products with Arduino},
+  title={Co-creating the {I}nternet of {T}hings--First experiences in the participatory design of Intelligent Products with {A}rduino},
   author={Hribernik, Karl A and Ghrairi, Zied and Hans, Carl and Thoben, K-D},
   booktitle={Concurrent Enterprising (ICE), 2011 17th International Conference on},
   pages={1--9},
@@ -430,55 +434,65 @@ url="http://arduino.cc"
 
 
 
-@other{PoE,
-  title="Power over Ethernet",
+
+@manual{ArduinoEthernetPOE,
+key="Sparkfun",
+title="Arduino {E}thernet with {PoE}",
+url="https://www.sparkfun.com/products/11361",
+howpublished="Spark Fun Electronics Inc., Boulder, Colorado, USA",
+institution="Spark Fun Electronics Inc.",
+address="Spark Fun Electronics Inc., Longbow Drive, Boulder, Colorado, USA",
+year=2013,
+number="DEV-11361",
 }
 
 
 
 
-@other{ArduinoEthernetPOE,
-title="Arduino Ethernet with PoE",
-url="https://www.sparkfun.com/products/11361"
+@manual{ArduinoEthernetShieldPOE,
+key="Sparkfun",
+title="Arduino {E}thernet Shield with {PoE}",
+url="https://www.sparkfun.com/products/11230",
+howpublished="Spark Fun Electronics Inc., Boulder, Colorado, USA",
+institution="Spark Fun Electronics Inc.",
+address="Spark Fun Electronics Inc., Longbow Drive, Boulder, Colorado, USA",
+year=2013,
+number="DEV-11230",
 }
 
 
 
 
-@other{ArduinoEthernetShieldPOE,
-title="Arduino Ethernet Shield with PoE",
-url="https://www.sparkfun.com/products/11230"
+@manual{POEthernetShield,
+key="Sparkfun",
+title="{POE}thernet Shield",
+url="https://www.sparkfun.com/products/10864",
+howpublished="Spark Fun Electronics Inc., Boulder, Colorado, USA",
+institution="Spark Fun Electronics Inc.",
+address="Spark Fun Electronics Inc., Longbow Drive, Boulder, Colorado, USA",
+year=2013,
+number="DEV-11864",
 }
 
 
 
 
-@other{POEthernetShield,
-title="POEthernetShield",
-url="https://www.sparkfun.com/products/10864"
-}
-
-
-
-
-@other{etherduino,
-title="etherduino",
-url="https://code.google.com/p/etherduino/"
-}
-
-
-
-
-@other{xtronix,
-title="Raspberry Pi Power Over Ethernet (PoE) Adapter by Xtronix Ltd",
-url="http://www.xtronix.co.uk/raspberry-pi-poe.htm"
+@manual{xtronix,
+author="James Carter",
+title="Raspberry {P}i {P}ower over {E}thernet ({PoE}) Adapter by {X}tronix Ltd",
+url="http://www.xtronix.co.uk/raspberry-pi-poe.htm",
+howpublished="Xtronix Ltd., Reading, Berks, United Kingdom",
+institution="Xtronix Ltd.",
+address="Whitchurch Hill, Reading, Berks, United Kingdom",
+year=2013,
+month=jun,
 }
 
 
 
 
 @inproceedings{dunkels2004contiki,
-  title={Contiki-a lightweight and flexible operating system for tiny networked sensors},
+  title={Contiki --- a lightweight and flexible operating system for tiny networked sensors},
   author={Dunkels, Adam and Gronvall, Bjorn and Voigt, Thiemo},
   booktitle={Local Computer Networks, 2004. 29th Annual IEEE International Conference on},
   pages={455--462},
@@ -491,7 +505,7 @@ url="http://www.xtronix.co.uk/raspberry-pi-poe.htm"
 
 
 @inproceedings{lattner2004llvm,
-  title={LLVM: A compilation framework for lifelong program analysis \& transformation},
+  title={{LLVM}: A compilation framework for lifelong program analysis \& transformation},
   author={Lattner, Chris and Adve, Vikram},
   booktitle={Code Generation and Optimization, 2004. CGO 2004. International Symposium on},
   pages={75--86},
@@ -503,7 +517,7 @@ url="http://www.xtronix.co.uk/raspberry-pi-poe.htm"
 
 
 
-@other{ChibiOS,
+@misc{ChibiOS,
 title="The ChibiOS/RT Project",
 url="http://chibios.org/"
 }
@@ -511,24 +525,29 @@ url="http://chibios.org/"
 
 
 
-@other{RasPi,
-title="Raspberry Pi",
-url="http://raspberrypi.org/"
+@misc{RasPi,
+key="Raspberry Pi",
+title="Raspberry {P}i",
+url="http://raspberrypi.org/",
+howpublished="Rasberry Pi Foundation, Caldecote, Cambridgeshire, UK",
 }
 
 
 
 
-@other{RaspiFoundationWikipedia,
-title="Raspberry Pi Foundation",
-url="http://en.wikipedia.org/wiki/Raspberry_Pi_Foundation"
+@misc{RaspiFoundationWikipedia,
+author={Johnson, Trevor and Meirowsky, Steve and Weare, Johnathon and Walmsley, Ryan and et.al.},
+key="Raspberry Pi",
+title="Raspberry {P}i Foundation",
+url="http://en.wikipedia.org/wiki/Raspberry_Pi_Foundation",
+howpublished="Wikimedia Foundation, San Francisco, California, USA",
 }
 
 
 
 
 @article{barry2008freertos,
-  title={FreeRTOS},
+  title={Free{RTOS}},
   author={Barry, Richard},
   journal={Internet, Oct},
   year={2008}
@@ -537,10 +556,10 @@ url="http://en.wikipedia.org/wiki/Raspberry_Pi_Foundation"
 
 
 
-@article{manual2001digital,
+@misc{manual2001digital,
+  key="Dali Manual",
   title={Digital Addressable Lighting Interface Activity Group},
-  author={Manual, DALI and Dali, AG},
-  journal={ZVEI-Division Luminaires},
+  howpublished="DALI Manual, Dali AG, ZVEI-Division Luminaires",
   pages={1--62},
   year={2001}
 }
@@ -561,7 +580,7 @@ url="http://en.wikipedia.org/wiki/Raspberry_Pi_Foundation"
 
 
 @article{bushby1997bacnet,
-  title={BACnet< sup> TM</sup>: a standard communication infrastructure for intelligent buildings},
+  title={BACnet: a standard communication infrastructure for intelligent buildings},
   author={Bushby, Steven T},
   journal={Automation in Construction},
   volume={6},
@@ -574,17 +593,24 @@ url="http://en.wikipedia.org/wiki/Raspberry_Pi_Foundation"
 
 
 
-@other{LonTalk,
-title="International control networking standard - ISO/IEC 14908",
-url="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=60203"
+@misc{LonTalk,
+key="International Electrotechnical Commission",
+title="{IEC} 14908 {O}pen data communication in building automation,
+                  controls and building management - Control Network
+                  Protocol",
+howpublished="International Electrotechnical Commission, rue de Varembé, Geneva, Switzerland",
+institution="International Electrotechnical Commission",
+url="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=60203",
+address="rue de Varembé, Geneva, Switzerland.",
 }
 
 
 
 
 @misc{knx2011knx,
-  title={KNX Standard},
-  author={KNX Association and others},
+  key={KNX Association and others},
+  title={{KNX} Standard},
+  howpublished={KNX Association, De Kleetlaan, Brussels/Diegem, Belgium},
   year={2011}
 }
 
@@ -592,7 +618,7 @@ url="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnu
 
 
 @article{hertel2003motivation,
-  title={Motivation of software developers in Open Source projects: an Internet-based survey of contributors to the Linux kernel},
+  title={Motivation of software developers in Open Source projects: an Internet-based survey of contributors to the {L}inux kernel},
   author={Hertel, Guido and Niedner, Sven and Herrmann, Stefanie},
   journal={Research policy},
   volume={32},
@@ -605,25 +631,37 @@ url="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnu
 
 
 
-@other{STM32F051,
-title="STM32F05xxx/06xxx advanced ARM-based 32-bit MCUs, Refernce Manual",
-url="http://www.st.com/web/en/resource/technical/document/reference_manual/DM00031936.pdf"
+@manual{STM32F051,
+key="ST Microelectronics", 
+title="{STM32F05xxx/06xxx} advanced {ARM}-based 32-bit {MCU}s, Reference Manual",
+url="http://www.st.com/web/en/resource/technical/document/reference_manual/DM00031936.pdf",
+number="RM0091",
+year=2013,
+month=may,
+publisher="ST Microelectronics", 
+pages={1--761},
 }
 
 
 
 
-@other{ENC28J60,
-title="Microchip, ENC28J60 Data Sheet",
-url="http://ww1.microchip.com/downloads/en/devicedoc/39662c.pdf"
+@manual{ENC28J60,
+key="Microchip Technology Inc",
+title="{ENC28J60} Data Sheet -- {S}tand-Alone {E}thernet Controller with {SPI} Interface",
+url="http://ww1.microchip.com/downloads/en/devicedoc/39662c.pdf",
+institution="Microchip Technology Inc",
+number="DS39662C",
+address="Microchip Technology Inc., West Chandler Blvd., Chandler, Arizona, USA",
+year=2008,
 }
 
 
 
 
-@article{shelby2013constrained,
-  title={Constrained application protocol (coap)},
+@techreport{shelby2013constrained,
+  title={Constrained application protocol ({CoAP})},
   author={Shelby, Zach and Hartke, Klaus and Bormann, Carsten},
+  institution={Internet Engineering Task Force},
   year={2013}
 }
 
@@ -641,34 +679,43 @@ url="http://ww1.microchip.com/downloads/en/devicedoc/39662c.pdf"
 
 
 
-@article{dunkels2006uip,
-  title={uIP--a TCP/IP stack for 8-and 16-bit microcontrollers},
-  author={Dunkels, A},
-  journal={Web page. Visited Nov},
-  volume={13},
-  year={2006}
+@inproceedings{dunkels2003full,
+  title={Full {TCP/IP} for 8-bit architectures},
+  author={Dunkels, Adam},
+  booktitle={Proceedings of the 1st international conference on Mobile
+                  systems, applications and services},
+  pages={85--98},
+  year={2003},
+  organization={ACM}
 }
 
 
 
 
 @misc{802.3,
-  title={802.3},
+  key="IEEE 802.3",
+  title={{IEEE} 802.3 Standard for {E}thernet},
+  institution = "IEEE Computer Society",
+  howpublished = "IEEE Computer Society, New York, NY, USA",
+  year = 2012,
+  month = dec,
+  address = "3 Park Avenue, New York, NY, USA",
 }
 
-
-
-
-
-@misc{802.3af,
-  title={802.3af},
-}
 
 
 
 
 @misc{802.3at,
-  title={802.3af},
+  key="IEEE 802.3at",
+  title={{IEEE} 802.3at Standard for {E}thernet.  {A}mendment 3: {D}ata
+                  Terminal Equipment ({DTE}) Power via the Media
+                  Dependent Interface ({MDI}) Enhancements},
+  institution = "IEEE Computer Society",
+  howpublished = "IEEE Computer Society, New York, NY, USA",
+  year = 2009,
+  month = sep,
+  address = "3 Park Avenue, New York, NY, USA",
 }
 
 
@@ -699,7 +746,7 @@ url="http://ww1.microchip.com/downloads/en/devicedoc/39662c.pdf"
 
 
 @inproceedings{rintaaho2012clicktofpga,
-  title={The Click2NetFPGA Toolchain},
+  title={The {Click2NetFPGA} Toolchain},
   author={Rinta-aho, Teemu and Karlstedt, Mika and Desai, Madhav P},
   booktitle={USENIX Annual Technical Conference},
   year={2012},
@@ -710,7 +757,7 @@ url="http://ww1.microchip.com/downloads/en/devicedoc/39662c.pdf"
 
 
 @misc{ArduinoIDEextension,
-  title="Arduino IDE 1.5 3rd party Hardware specification",
+  title="Arduino {IDE} 1.5 3rd party Hardware specification",
   author="Maglie, Cristian",
   url="https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5---3rd-party-Hardware-specification"
 }
@@ -719,7 +766,7 @@ url="http://ww1.microchip.com/downloads/en/devicedoc/39662c.pdf"
 
 
 @book{maniktala2012switching,
-  title={Switching power supplies A to Z},
+  title={Switching power supplies {A} to {Z}},
   author={Maniktala, Sanjaya},
   year={2012},
   publisher={Elsevier}
@@ -729,7 +776,7 @@ url="http://ww1.microchip.com/downloads/en/devicedoc/39662c.pdf"
 
 
 @article{lee2003firm,
-  title={From a firm-based to a community-based model of knowledge creation: The case of the Linux kernel development},
+  title={From a firm-based to a community-based model of knowledge creation: The case of the {L}inux kernel development},
   author={Lee, Gwendolyn K and Cole, Robert E},
   journal={Organization Science},
   volume={14},
@@ -777,22 +824,34 @@ url="http://ww1.microchip.com/downloads/en/devicedoc/39662c.pdf"
 
 
 
-@other{hdbaset2011,
-  title={Introduction to power over hdbaset},
-  author={HDBaseT Alliance},
+@misc{htbaset2011,
+  title={Introduction to {P}ower over {HDBaseT}},
+  key={HDBaseT Alliance},
   year=2011,
   month=sep,
   url={http://hdbaset.org/docs/news/0911\%20Introduction\%20to\%20Power\%20over\%20HDBaseT_Whitepaper.pdf},
-  address = {3855 SW 153rd Drive, Beaverton, OR 97006, USA}
+  howpublished={HDBaseT Alliance, Beaverton, OR, USA},
+  address = {3855 SW 153rd Drive, Beaverton, OR 97006, USA},
 }
 
 
 
 
-@other{ModBus,
+@misc{ModBus,
+  key="Modbus-IDA",
   title="Modbus application protocol specification v1.1b",
   url="http://www.modbus.org/docs/Modbus_Application_Protocol_V1_1b.pdf",
-  author="Modbus-IDA",
+  howpublished="Modbus Organization, Hopkinton, MA, USA",
   month=dec,
   year=2006,
+}
+
+
+
+
+@techreport{kuppuswamy2013crowdfunding,
+  title={Crowdfunding Creative Ideas: the Dynamics of Projects Backers in {K}ickstarter},
+  author={Kuppuswamy, Venkat and Bayus, Barry L},
+  year={2013},
+  institution={SSRN Working Paper, http://papers. ssrn. com/sol3/papers. cfm}
 }
