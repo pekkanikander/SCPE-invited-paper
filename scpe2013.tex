@@ -87,7 +87,7 @@ through installing a {\it sensor network} to an already existing
 building or space, and routing the collected data to an aggregation
 service.  In the large majority of the recent works, the sensor
 network is expected to be a wireless one, to the extent that the most
-widely referred referred surveys carry the word ``wireless'' in their
+widely referred surveys carry the word ``wireless'' in their
 title~\cite{akkaya2005survey, akyildiz2002wireless}.
 
 At the same time, most of the works have implicitly ignored how the
@@ -131,9 +131,7 @@ evolving standard for providing up to 100 Watts of electric
 power~\cite{hdbaset2011}
 through standard Ethernet cables.  The currently available ELL-i
 prototyping board is compatible with the popular
-Arduino~\cite{ArduinoProject} prototyping platform, with a path
-for mass-producable miniature units that may be embedded into standard
-pattress boxes within buildings and most wired appliances.
+Arduino~\cite{ArduinoProject} prototyping platform.
 
 The ELL-i initiative is organised a co-operative, providing an
 egalitarian ownership model that anchors the property rights with the
@@ -172,9 +170,11 @@ In this section, we give a general and broadly accepted definition for
 Internet-of-things (Sec.~\ref{ssec:definition}, explore IoT
 applications (\ref{ssec:applications}, and delve quickly into the
 power management and security related aspects in IoT and M2M research
-(\ref{ssec:powersec}.  After that, we briefly look into digital power
-management in genera (\ref{ssec:powermgmt}, and conclude by detailing
+(\ref{ssec:powersec}.  We conclude by enumerating some
 other opensource embedded PoE platforms (\ref{ssec:platforms}).
+
+% After that, we  briefly look into digital power
+% management in general (\ref{ssec:powermgmt}, and
 
 \subsection{Internet of Things and Machine-to-Machine}
 \label{ssec:definition}
@@ -249,8 +249,8 @@ energy from radio waves (RFID and NFC), while others are powered by separate
 power supply from the mains.  Smart and tiny embedded systems
 have sensors, actuators, CPU, memory and a low-power communication
 device~\cite{lopez2012adding}. Usually, these can be powered by a battery. On
-the other hand, Wireless Sensor Networks (WSN's) which is a popular research
-area uses energy efficient battery powered wireless devices for transmitting
+the other hand, Wireless Sensor Networks (WSN's)
+use energy efficient battery powered wireless devices for transmitting
 sensor data~\cite{akyildiz2002wireless}.
 
 From the security point of view, as the complexity of the encryption algorithm
@@ -259,44 +259,46 @@ among symmetric encryption algorithms used in security protocols, the AES128 alg
 increases the battery consumption and the processing time by 75\% and 65\%
 respectively when compared to "no encryption" results~\cite{hamad2009energy}.
 Furthermore, increasing the key size for the encryption also increases the
-battery consumption and processing time. For example, in one case study increasing the keysize from
-128 bits to 192 bits resulted in 8\% increase in power and time consumption and
-16\% increase when the key size was increased to 256
-bits~\cite{hamad2009energy}.
+battery consumption and processing time.
 
-\subsection{Digital power management in general}
-\label{ssec:powermgmt}
+% For example, in one case study increasing the keysize from
+% 128 bits to 192 bits resulted in 8\% increase in power and time consumption and
+% 16\% increase when the key size was increased to 256
+%bits~\cite{hamad2009energy}.
 
-The industry has been challenged to provide digital power-management solutions
-which can communicate with various connected systems that inhabit our world.
-Digital power-management protocols cannot
-provide real value to the designer before the introduction of
-intermediate-bus architecture~\cite{FutureIOT}. 
+%% \subsection{Digital power management in general}
+%% \label{ssec:powermgmt}
 
-It is possible to use the energy harvested from the environment to power
-nanosystems which have the capabilities to sense, control, communicate and
-actuate~\cite{wang2010toward}. For independent, sustainable,
-maintenance-free operations of implantable biosensors, remote and mobile
-environmental sensors, nanorobotics, micro electromechanical systems, and even
-portable/wearable personal electronics require power on the scale of
-microwatts~\cite{wang2010toward}.  
+%% The industry has been challenged to provide digital power-management solutions
+%% which can communicate with various connected systems that inhabit our world.
+%% Digital power-management protocols cannot
+%% provide real value to the designer before the introduction of
+%% intermediate-bus architecture~\cite{FutureIOT}.
 
-A nanogenerator is able to convert random energy into electrical energy using
-piezoelectric zinc oxide nanowire
-arrays~\cite{wang2006piezoelectric,yang2009converting}. A gentle straining
-on the array of nanowires can output 1.2-3V.  Although the power that
-is generated by the nanogenerator may not be sufficient for continuous operation
-of a nanodevice, it is sufficient enough to drive the device for a few seconds,
-when the charge being generated is accumulated over a period of
-time~\cite{wang2010toward}. 
+%% It is possible to use the energy harvested from the environment to power
+%% nanosystems which have the capabilities to sense, control, communicate and
+%% actuate~\cite{wang2010toward}. For independent, sustainable,
+%% maintenance-free operations of implantable biosensors, remote and mobile
+%% environmental sensors, nanorobotics, micro electromechanical systems, and even
+%% portable/wearable personal electronics require power on the scale of
+%% microwatts~\cite{wang2010toward}.
 
-It would be a daunting logistical challenge to experiment with thousands of
-battery-power nodes which has been limiting the development of this
-field~\cite{gluhak2011survey,rowland2002prevalence}.
- Also, indoor installation and usage of nodes
-provides easier access to power and cabling~\cite{gluhak2011survey}. Although,
-nodes maybe cheap, their deployment and maintenance is an expensive
-proposition.
+%% A nanogenerator is able to convert random energy into electrical energy using
+%% piezoelectric zinc oxide nanowire
+%% arrays~\cite{wang2006piezoelectric,yang2009converting}. A gentle straining
+%% on the array of nanowires can output 1.2-3V.  Although the power that
+%% is generated by the nanogenerator may not be sufficient for continuous operation
+%% of a nanodevice, it is sufficient enough to drive the device for a few seconds,
+%% when the charge being generated is accumulated over a period of
+%% time~\cite{wang2010toward}.
+
+%% It would be a daunting logistical challenge to experiment with thousands of
+%% battery-power nodes which has been limiting the development of this
+%% field~\cite{gluhak2011survey,rowland2002prevalence}.
+%%  Also, indoor installation and usage of nodes
+%% provides easier access to power and cabling~\cite{gluhak2011survey}. Although,
+%% nodes maybe cheap, their deployment and maintenance is an expensive
+%% proposition.
 
 \subsection{Open source embedded platforms}
 \label{ssec:platforms}
@@ -311,7 +313,7 @@ different official boards and a number of derivatives.
 The Arduino project is a somewhat loose collaboration led by a number of
 people that developed the original Arduino design.  They have decided
 to open source all of the software and hardware but to keep the
-Arduino and associated graphics as trademark.  At the moment there are
+Arduino and associated graphics as a trademark.  At the moment there are
 three companies that are authorized by the project leaders to produce
 official Arduino boards~\cite{ArduinoPolicy}.  The financial
 arrangements between the project leaders and the authorised
@@ -361,7 +363,7 @@ details, please refer to the open source design files at
 \hbox{\tt http://www.github.com/ELL-i}.}.
 First, we describe the overall technical architecture in a
 bottom-up-fashion, including hardware, firmware, and the forthcoming
-could components.  After that, we introduce the current
+cloud components.  After that, we introduce the current
 implementation.
 % and discuss the plans for the next hardware implementation.
 We
@@ -373,7 +375,7 @@ made so far.
 The ELL-i platform consists of a hardware architecture, a runtime
 (firmware), cloud-based components, and support for a set of
 programming environments.  The basic architecture is depicted in
-\ref{fig:arch}.
+Figure~\ref{fig:arch}.
 
 \begin{figure}
 \centering
@@ -392,7 +394,7 @@ smaller and higher power levels; for example, there are no technical
 reasons why Power-over-Ethernet technology could not be applied to thicker wires
 and higher currents.
 
-The main goal of the runtime and the cloud components is make it easy
+The main goal of the runtime and the cloud components is to make it easy
 to provide connectivity for the appliances.  Hence, the goal of the
 runtime is to package TCP/IP based protocols, such as HTTP~\cite{fielding1999hypertext}
 and CoAP~\cite{shelby2013constrained} in an easy-to-use way.  As it is undesirable to
@@ -400,9 +402,8 @@ perform packet processing in an interrupt context and as many of the
 protocols depend on timeouts, abstracting the protocol processing away
 from the runtime API requires some kind of threading.
 
-As ELL-i is positioned as an easy-to-start platform, the main goal in
-the programming environment area is to make it easy to start with the
-ELL-i platform.  Hence, we have focused on providing an Arduino IDE
+ELL-i is positioned as an easy-to-start platform.
+Hence, we have focused on providing an Arduino IDE
 extension that allows Arduino skills to be readily applied on ELL-i.
 However, we also realise that the default Arduino runtime is geared
 for hobbyists.  Therefore we will also support XCode and Eclipse.
@@ -495,7 +496,7 @@ The set of APIs may be divided into five groups, corresponding to the
 booting, HAL, scheduler, Internet, and Web-services.  In the current
 implementation, the boot and HAL APIs provide an Arduino-compatible
 programming environment, allowing programmers to initialise the
-hardware using the familiar \hbox{\tt setup()} function and to run a
+hardware using the Arduino \hbox{\tt setup()} function and to run a
 main loop within the \hbox{\tt loop()} function.  Both of these are
 called by a \hbox{\tt main()} function, allowing more advanced
 programmers to override the Arduino approach.  The familiar Arduino
@@ -519,7 +520,7 @@ management is not supported and is strongly discouraged; any threads
 need to have their stacks to be allocated at compile time.
 
 The Internet API provides basic services for operating TCP, UDP and
-CoAP\cite{shelby2013constrained}.  The TCP/IP stack is based on
+CoAP~\cite{shelby2013constrained}.  The TCP/IP stack is based on
 uIP~\cite{dunkels2006uip}, with the
 uIP API working as such.  We support Contiki~\cite{dunkels2004contiki}
 style protothreads~\cite{dunkels2006protothreads}, thereby making it easier to
@@ -542,7 +543,7 @@ components and by default sends sensor data to the cloud.
 
 In addition to the software components running on the ELL-i hardware,
 the ELL-i platform contains also cloud components, running on a
-e-compatible cloud runtime, such as Amazon Web Services (AWS).
+compatible cloud runtime, such as Amazon Web Services (AWS).
 The cloud components provide interaction, update and community
 services to the ELL-i boards, and they are enabled by default in each
 ELL-i development board.
@@ -739,7 +740,7 @@ started with ELL-i.
 %% headers, it has a pair of low-profile board-to-board connectors,
 %% providing connectivity with the development board or any other
 %% extension board.  Furthermore, the production board is designed in a
-%% fashion that allows it to be devided into two parts, one part hosting
+%% fashion that allows it to be diveded into two parts, one part hosting
 %% the MCU, the Ethernet chip, and the I/O subsystem, the other part hosting the
 %% PoE signalling, DC/DC PSU, and Ethernet magnetics.  When separated,
 %% these two boards may be connected with seven wires, allows them to be
@@ -877,9 +878,8 @@ nature of ELL-i will benefit the individual applications.
 
 \subsection{Illumination}
 
-The very first demo that we implemented using ELL-i, while the
-platform was still a set of evaluation kits bolted to a wooden board
-and wired together, was a driver for a commercial high-power RGB LED
+The very first demo that we implemented using ELL-i was a driver for a
+commercial high-power RGB LED
 projector.  Since then, we have repeated the LED driver exercise a few
 times.
 
@@ -904,15 +904,20 @@ achieving high efficiency requires somewhat more work, even an
 electronics amateur, like us, is able to design a simple
 MCU-controlled buck converter in a couple of weeks time.
 
-So, it looks like that from the hardware point of view, driving
-LED-based lamps would be an ideal application for the ELL-i platform.
-In addition to the components already in ELL-i, a LED driver at its
-simplest format requires a switching FET, a choke coil, a diode for
-the sustained current from the coil when the FET is not conducting,
-and a current measurement circuit consisting of a shunt resistor and
-an operational amplifier.  In a practical design, a few more
-components are needed, but their additional cost is a few cents.
+% So, it looks like that from the hardware point of view, driving
+% LED-based lamps would be an ideal application for the ELL-i platform.
+% In addition to the components already in ELL-i, a LED driver at its
+% simplest format requires a switching FET, a choke coil, a diode for
+% the sustained current from the coil when the FET is not conducting,
+% and a current measurement circuit consisting of a shunt resistor and
+% an operational amplifier.  In a practical design, a few more
+% components are needed, but their additional cost is a few cents.
 
+So, from the hardware point of view, driving LED-based lamps would be an
+ideal application for the ELL-i platform.  In addition to the
+components already in ELL-i, a LED driver at its simplest form
+requires only few inexpensive components, including a switching
+FET, a choke coil, and a diode.
 Consequently, ELL-i may be an excellent platform for implementing
 future, more intelligent show lighting systems, flexible retail
 lighting, and other illumination applications where it is beneficial
@@ -943,8 +948,8 @@ actuators, and it does not as such implement any of the existing
 protocols.  Therefore, as a standalone component it does not integrate
 with the existing automation systems.
 
-ELL-i is a small, connected, intelligent, power-convoying low-cost
-component.  Therefore it could
+Being a small, connected, intelligent, power-convoying low-cost
+component, ELL-i could
 potentially be co-located with the sensors and actuators, providing
 power to them and integrating both intelligence and connectivity
 directly to them.  Consequently, it would allow replacing the
@@ -969,11 +974,10 @@ software-level redundancy through differing runtime systems.
 
 A third area where ELL-i may turn out to be useful is education.  As
 an open system, ELL-i itself can be studied and modified by the
-students.  Secondly, as an easy-to-use embedded system ELL-i may be
-used in various student projects where real-life interaction is
-needed.  We already have some experience on this; see below.  Finally,
-the ELL-i system itself may be extended to be a platform for teaching
-basic programming in a fun and easy-to-understand way.
+students, and it could as such be extended to be a platform for teaching
+basic programming.  Secondly, as an easy-to-use embedded system ELL-i
+may be used in various student projects where real-life interaction is
+needed.
 
 \subsubsection{ELL-i platform itself as course material}
 
@@ -984,7 +988,7 @@ chosen MCU is a relatively simple but still powerful one, from a
 family that is commonly used in open source projects.  The CPU core
 within the MCU is a modern 32-bit RISC architecture with simple
 3-stage pipelining and no instruction reordering, being easy to teach
-and to understand.  The MCU-related prt of schematic is very similar
+and to understand.  The MCU-related part of schematic is very similar
 to the relevant part of the MCU manufacturer's evaluation board.  The
 Ethernet communications module consists of a single chip and the
 magnetics and has a wide support in the open source community.
@@ -1005,6 +1009,26 @@ protocols up to simple Web services.
 Hence, the ELL-i platform may be used to introduce and demonstrate all
 the elements of a modern Web-connected computer, including both the
 hardware and software, without the complexities.
+
+%% ELL-i has potential of becoming a
+%% platform for teaching the basics of programming.  With today's
+%% computers and smart phones with fancy graphical user interfaces,
+%% writing very basic programs that only print on a console log is
+%% unexciting.  On the other hand, with an Arduino-like platform even a
+%% simple program can light up LEDs and affect real-life things.  With
+%% its powering capability ELL-i adds there the ability of doing ``real''
+%% things as such, such as driving solenoids or even motors.
+
+Given that the Arduino APIs and sketches are C++ programs in practise,
+it would be possible to write a set of C++ proxy classes and templates that
+compile an Arduino sketch so that it runs in an emulator, allowing the
+functioning of such a sketch to be simulated and illustrated on a PC.
+Furthermore, with the Ethernet interface, another set of proxy classes
+could be used to instrument a sketch, allowing it to be run on the
+ELL-i platform while simultaneously inspecting the variables and I/O
+ports.  The instrumentation classes would communicate the
+application state over the Ethernet to a PC, which would then use the
+simulator user interface to illustrate the application state.
 
 \subsubsection{ELL-i as a student project platform}
 
@@ -1043,32 +1067,9 @@ unregulated DC power available from the PoE header on the ELL-i
 prototyping board.  The background of the students varied from ones
 that had only taken theoretical basic courses in electronics, as a
 part of their basic studies, to a few that had built simple
-Arduino-based prototypes before.  None of the students had any idea of
-how the DC/DC power supplies actually work.
+Arduino-based prototypes before.  None of the students had previous
+knowledge of how the DC/DC power supplies actually work.
 
-
-\subsubsection{ELL-i as an educational tool}
-
-With relatively simple extensions, ELL-i has potential of becoming a
-platform for teaching the basics of programming.  With today's
-computers and smart phones with fancy graphical user interfaces,
-writing very basic programs that only print on a console log is
-unexciting.  On the other hand, with an Arduino-like platform even a
-simple program can light up LEDs and affect real-life things.  With
-its powering capability ELL-i adds there the ability of doing ``real''
-things as such, such as driving solenoids or even motors.
-
-Given that the Arduino APIs and sketches are C++ programs in practise,
-it would be possible to write a set of C++ proxy classes and templates that
-compile an Arduino sketch so that it runs in an emulator, allowing the
-functioning of such a sketch to be simulated and illustrated on a PC.
-Furthermore, with the Ethernet interface, another set of proxy classes
-could be used to instrument a sketch, allowing it to be run on the
-ELL-i platform while simultaneously inspecting the variables and I/O
-ports.  The instrumentation classes would communicate the
-application state over the Ethernet to a PC, which would then use the
-simulator user interface to illustrate the application state.
- 
 % ------------------------------------------------------------------
 
 \section{Business model}
@@ -1429,7 +1430,10 @@ anchored within the society and developed as an essentially public good.
 
 \section*{Acknowledgements}
 
-The authors would like to TBD.
+The authors would like to thank Antti-Juhani Filpus, Dmitri Gursov,
+Teemu Hakala, and Matti Viita for their constructive comments on
+various drafts of this paper, as well as the founding members of the
+ELL-i open source co-operative for their initiative and courage.
 
 \bibliography{scpe2013}{}
 \bibliographystyle{plain}
