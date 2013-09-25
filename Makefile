@@ -6,7 +6,7 @@ scpe2013.pdf: 	scpe2013.dvi
 	dvi2ps  scpe2013
 	pstopdf scpe2013.ps -o scpe2013.pdf
 
-scpe2013.dvi:	scpe2013.tex scpe2013.bbl figure-arch.eps
+scpe2013.dvi:	scpe2013.tex scpe2013.bbl figures/*.eps
 	latex scpe2013
 
 scpe2013.aux:
