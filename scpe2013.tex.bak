@@ -177,7 +177,7 @@ Internet-of-things (Sec.~\ref{ssec:definition}, explore IoT
 applications (\ref{ssec:applications}, and delve quickly into the
 power management and security related aspects in IoT and M2M research
 (\ref{ssec:powersec}.  We conclude by enumerating some
-other open source embedded PoE platforms (\ref{ssec:platforms}).
+other opensource embedded PoE platforms (\ref{ssec:platforms}).
 
 % After that, we  briefly look into digital power
 % management in general (\ref{ssec:powermgmt}, and
@@ -188,7 +188,7 @@ other open source embedded PoE platforms (\ref{ssec:platforms}).
 Perhaps the first definition of what later became Internet of Things
 was given by the Internet pioneer Vint Cerf in this ACM conference
 talk in 1997~\cite{cerf1997next}, where he envisioned each light bulb
-having their own Internet address.
+having their own internet address.  
 The term Internet-of-Things (IoT) was first used
 by Kevin Ashton in 1999, when he referred to identifiers
 placed in objects so that they could be monitored and managed by
@@ -255,7 +255,7 @@ energy from radio waves (RFID and NFC), while others are powered by separate
 power supply from the mains.  Smart and tiny embedded systems
 have sensors, actuators, CPU, memory and a low-power communication
 device~\cite{lopez2012adding}. Usually, these can be powered by a battery. On
-the other hand, Wireless Sensor Networks (WSN)
+the other hand, Wireless Sensor Networks (WSN's)
 use energy efficient battery powered wireless devices for transmitting
 sensor data~\cite{akyildiz2002wireless}.
 
@@ -340,7 +340,7 @@ PoE~\cite{ArduinoEthernetPOE} is an Arduino development board with the built in
 Wiznet Ethernet interface. 
 The Arduino Ethernet Shield
 with the PoE Module~\cite{ArduinoEthernetShieldPOE} allows an Arduino board to
-connect to the Internet. It is based on Wiznet W5100 Ethernet chip which
+connect to the Internet. It is based on Wiznet W5100 ethernet chip which
 provides a network IP stack capable of both TCP and UDP. The PoEthernet
 Shield~\cite{POEthernetShield} gives access to the Internet via the Ethernet
 library and also allows the Arduino based projects to power itself from the
@@ -664,7 +664,7 @@ the Due DAC0 line.
 %% At the moment, the Due DAC1 line is connected
 %% directly to the STM32F051 PA11 GPIO line; however, we are considering
 %% adding there a low pass filter to allow the attach PWM counter/timer
-%% to be used to generate analog signals.
+%% to be used to generate analogue signals.
 
 \begin{figure}
 \centering
@@ -742,11 +742,11 @@ started with ELL-i.
 %% headers, it has a pair of low-profile board-to-board connectors,
 %% providing connectivity with the development board or any other
 %% extension board.  Furthermore, the production board is designed in a
-%% fashion that allows it to be divided into two parts, one part hosting
+%% fashion that allows it to be diveded into two parts, one part hosting
 %% the MCU, the Ethernet chip, and the I/O subsystem, the other part hosting the
 %% PoE signalling, DC/DC PSU, and Ethernet magnetics.  When separated,
 %% these two boards may be connected with seven wires, allows them to be
-%% placed inside the device in a flexible manner.  This is illustrated
+%% placed inside the device in a flexible manner.  This is illustreated
 %% in Figure~\ref{fig:divided}.
 
 %% \begin{figure}
@@ -1186,7 +1186,7 @@ motors.
 %Each member may only have one membership share.
 %
 %The current bylaws state that the board accepts new members.  Each new
-%member shall have a single membership share and they are obliged to
+%member shall have a single membership share and they are oblidged to
 %pay the membership fee and a sign-up fee.
 %
 %The mutual understanding within the current membership is that the
@@ -1250,11 +1250,11 @@ motors.
 %include social aspects such as community respect and membership in an
 %exclusive community.
 %
-%According to conceptual process model of sustained participation, as
+%According to conceptual process modelf of sustained participation, as
 %introduced by Fang and Neufeld~\cite{fang2009understanding}, an open
 %source project needs a large pool of potential candidate developers in
-%order to build a sustainable base of core developers.  To attract such
-%candidates, the project needs to be easily accessible and the platform
+%order to build a sustainable base of core developers.  To attrack such
+%candiates, the project needs to be easily accessible and the platform
 %needs to be useful, creating an initial motivation based on expected
 %personal use.  The ELL-i platform aims to reach these goals through
 %making the platform easy to use, marketing the platform widely in the
@@ -1271,8 +1271,8 @@ motors.
 %
 %We postulate that such sustained participation created initially
 %through personal utility and later mainly through communal respect and other
-%social factors may be further strengthened via non-conventional
-%extrinsic factors, resembling Lietaer's alternative
+%social factors may be further strengthened via non-convential
+%extrinsic factors, resembling Lieataer's alternative
 %currencies~\cite{Lietaer2001}.  Examples of such incentive mechanisms
 %may be both non-transferable or even convertible ``contribution tokens'',
 %denoting a developers' overall level of contribution to the project
@@ -1293,14 +1293,14 @@ motors.
 %    the core may formally join to the co-operative as full members.
 %  \item The full members of the co-operative govern the co-operative
 %    an get extrinsic membership benefits, such as discounts on future
-%    versions of the hardware or special non-money or alternative-money
+%    versions of the hardware or special non-money or alternative-mony
 %    tokens denoting the significance of their contributions.
 %\end{enumerate}
 %
 %\subsubsection{Commercial licensee incentive structure}
 %
 %Let us now look at the situation from a commercial licensee point of
-%view.  When considering the ELL-i platform, a company has a number of
+%view.  When considering the ELL-i platfrom, a company has a number of
 %choices: they may decide to use the ELL-i platform using the open
 %source license, they may decide to license the ELL-i platform under a
 %different license, they may decide to use another platform, or they
@@ -1315,10 +1315,10 @@ motors.
 %for example, if the open source license is a GPL variant, the
 %``virality'' of the GPL may be considered as a drawback.  For ELL-i to
 %be more attractive than some other platform or in-house development,
-%it shall provide tangible benefits, such faster time-to-market,
+%it shall provide tanglible benefits, such faster time-to-market,
 %lower investment costs, lower maintenance costs, or higher quality.
 %
-%In addition to the initial licensing decision, we also need to
+%In addition to the initiali licensing decision, we also need to
 %consider the incentives for a commercial company to contribute back to
 %the community in the form of donated code or other technology.
 %In addition to the ownership and governance benefits stemming from
@@ -1328,7 +1328,7 @@ motors.
 %them.
 %
 %While we have a relatively good understanding how the incentive model
-%might work for individual developers, our understanding of the details
+%might work for individual developers, our understanding of the detals
 %of the licensing model are still in the works.
 %
 \subsection{Business model considerations}
@@ -1401,7 +1401,7 @@ initiative and technical platform.
 
 The ELL-i initiative is organised as a co-operative, with the
 intention of producing an inexpensive open source hardware and software
-platform for wired appliances and implements, such as aquaria, bowling
+platform for wired appliances and implements, such as aquariums, bowling
 alleys, cooktops, dishwashers, the way to toasters, underlayments,
 vacuum cleaners, washers, xerox machines, yachts, and kitchen zinks.
 The currently available ELL-i prototyping board allows researchers and
@@ -1418,8 +1418,8 @@ at a very reasonable price point.  If ELL-i ever reaches
 mass-production quantities, it will provide an electronics module that
 allows almost any wired electrical device to be converted into its
 ``smart'' equivalent at the additional production cost of just a
-couple Euro.  Consequently, as even a typical light switch or toaster
-is priced at a level close to or exceeding ten Euro, that may
+couple euro.  Consequently, as even a typical light switch or toaster
+is priced at a level close to or exceeding ten euro, that may
 gradually enable complete ``smartification'' of our urban
 environment. 
 
