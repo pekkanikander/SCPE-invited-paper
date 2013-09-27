@@ -5,8 +5,8 @@
 %% Mathematics, October 1, 1995, Version 1.0
 %% 
 
-\documentclass{siamltex}
-%\documentclass[final]{siamltex}
+%\documentclass{siamltex}
+\documentclass[final]{siamltex}
 
 \usepackage{graphicx}
 
@@ -17,7 +17,7 @@
     or corrections to this document may be directed to that email
     address.}
   \and Vaddina Kameswar Rao\thanks{Department of Information
-    Technology, University of Turku, Finland. (kamesh.vaddina@gmail. com).}
+    Technology, University of Turku, Finland. (vadrao@utu.fi).}
   \and Petri Liuha\thanks{EIT ICT Labs, Helsinki Node,
     Finland. (petri.liuha@eitictlabs.eu).}
   \and \hbox{Hannu Tenhunen}\thanks{Kungliga Tekniska H\"{o}gskolan,
@@ -165,19 +165,17 @@ summarise the lessons learned so far.
 
 Proliferation of cheap and versatile sensors, actuators, computing, storage and
 networking solutions, augmented with the desire to connect people with their
-devices in a meaningful way, have contributed significantly to the IoT
-research. 
-In this work we focus on an
-almost banal way for providing both the communication and powering solutions to
-fixed and immovable devices, which would anyhow be powered by wirelines, using
-Power over Ethernet (PoE) standard. 
+devices in a meaningful way, have contributed significantly to the IoT research.
+In this work we focus on an almost banal way for providing both the
+communication and powering solutions to fixed and immovable devices, which would
+anyhow be powered by wirelines, using Power over Ethernet (PoE) standard. 
 
 In this section, we give a general and broadly accepted definition for
-Internet-of-things (Sect.~\ref{ssec:definition}, explore IoT
-applications (\ref{ssec:applications}, and delve quickly into the
+Internet-of-things (Sect.\ref{ssec:definition}), explore IoT
+applications (Sect.\ref{ssec:applications}), and delve quickly into the
 power management and security related aspects in IoT and M2M research
-(\ref{ssec:powersec}).  We conclude by enumerating some
-other open source embedded PoE platforms (\ref{ssec:platforms}).
+(Sect.\ref{ssec:powersec}). We conclude by enumerating some
+other open source embedded PoE platforms (Sect.\ref{ssec:platforms}).
 
 % After that, we  briefly look into digital power
 % management in general (\ref{ssec:powermgmt}, and
@@ -348,13 +346,11 @@ Ethernet line. The Raspberry Pi Power Over Ethernet (PoE) Adapter~\cite{xtronix}
 is designed to be plugged directly on to a
 Raspberry Pi and power it with +5 Volts at up to 1.0 Amps output. 
 
-All of solutions above focus on providing power to the MCU and its
-digital peripherals, powered through the 3.3V and/or 5V systems.
-The long term vision for ELL-i significantly different.  
-ELL-i is a multi-voltage domain design making the ``raw'' 48V from PoE
-available.  ELL-i is aiming to be
-an inexpensive platform for low-cost PoE devices that come with integrated cloud 
-services. 
+All the above solutions focus on providing power to the MCU and its digital
+peripherals, powered through the 3.3V and/or 5V systems. The long term vision
+for ELL-i is significantly different. ELL-i is a multi-voltage domain design making
+the ``raw'' 48V from PoE available. ELL-i is aiming to be an inexpensive
+platform for low-cost PoE devices that come with integrated cloud services. 
 
 % ------------------------------------------------------------------
 
@@ -621,15 +617,14 @@ power supply design.  This goal has been reached.  With the first
 prototyping board, prospecting developers can utilise the existing
 Arduino examples, learning material, and shields, to a large extent.
 
-The first ELL-i prototyping board was designed during spring 2013.  
-These initial
-boards have an STM32F051~\cite{STM32F051} ARM Cortex-M0
-microcontroller, Microchip ENC28J60~\cite{ENC28J60} Ethernet chip,
-Linear LTC4267 PoE controller with build-in flyback SMPS controller,
-and Arduino-compatible headers.  We also have a 3D printed case for
-the prototyping board, with enough of space for a few Arduino shields.
-The current case design is depicted in Figure~\ref{fig:casedesign} and
-a corresponding prototype in Figure~\ref{fig:case}.
+The first ELL-i prototyping board was designed during spring 2013.  These
+initial boards have an STM32F051~\cite{STM32F051} ARM Cortex-M0 microcontroller,
+Microchip ENC28J60~\cite{ENC28J60} Ethernet chip, Linear LTC4267 PoE controller
+with build-in flyback SMPS controller, and Arduino-compatible headers.  We also
+have a 3D printed case for the prototyping board, with enough of space for a few
+Arduino shields. The current computer generated case design is depicted in
+Figure~\ref{fig:casedesign} and a corresponding 3D-printed prototype in
+Figure~\ref{fig:case}.
 
 %% The STM32F051 MCU was selected partially because it was already
 %% familiar to us, partially because it represents a relatively new
