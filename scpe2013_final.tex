@@ -102,7 +102,7 @@ sensors are to be powered or assume that they have a battery that will
 last for their lifetime.  Additionally, in most of the published
 research, the presented use cases and applications assume the use of
 some wireless connectivity technology, although the primary ideas do
-not specifically refer to specifically wireless or wired networking,
+not specifically refer to either wireless or wired networking,
 or to a any specific information and communications technology.
 Looking at the situation from greenfield applications point of view,
 or more widely from a sustainability perspective, assuming that the
@@ -113,7 +113,7 @@ While it may well be possible to create sensor nodes that scavenge
 energy from the environment and use radio or light bursts to
 communicate with the environment~\cite{wang2010toward}, creating
 wireless powered every day appliances that have some other active
-function that mere sensing seems improbable.  Hence, it seems prudent
+function than mere sensing seems improbable.  Hence, it seems prudent
 to assume that a large majority of different appliances will remain
 wired, including air conditioners, blinds, coffee machines, doorbells,
 electroliers, and freezers, to mention but a few.
@@ -140,7 +140,7 @@ through standard Ethernet cables.  The currently available ELL-i
 prototyping board is compatible with the popular
 Arduino~\cite{ArduinoProject} prototyping platform.
 
-The ELL-i initiative is organised a co-operative, providing an
+The ELL-i initiative is organised as a co-operative, providing an
 egalitarian ownership model that anchors the property rights with the
 community.  The governance model is designed to be meritocratic,
 assuring that the platform will evolve in a technically sound manner.
@@ -241,7 +241,7 @@ connectivity, a good part of them are in fact for fixed things, like
 in home management, industrial automation and metering, sensors, and
 lighting. More generally, there are IoT use cases with no mobility in
 smart homes or smart buildings and smart cities; e.g., for the purpose
-of reducing the consumption of resources associated to buildings
+of reducing the consumption of resources associated with buildings
 (electricity, water) or improving the satisfaction level of humans
 populating them~\cite{miorandi2012internet}.
 
@@ -262,7 +262,7 @@ From the security point of view, as the complexity of the encryption algorithm
 increases, their battery consumption increases as well. It has been shown that
 among symmetric encryption algorithms used in security protocols, the AES128 algorithm
 increases the battery consumption and the processing time by 75\% and 65\%
-respectively when compared to "no encryption" results~\cite{hamad2009energy}.
+respectively when compared to ``no encryption'' results~\cite{hamad2009energy}.
 Furthermore, increasing the key size for the encryption also increases the
 battery consumption and processing time.
 
@@ -388,7 +388,7 @@ Figure~\ref{fig:arch}.
 The hardware architecture is based on combining power and
 communications on a single cable, making both of them available to
 applications.  In practise, the current implementation is based on the
-IEEE 802.3at~\cite{802.3at} Power-over-Ethernet standard, which is an economic
+IEEE 802.3at~\cite{802.3at} Power-over-Ethernet standard, which is an economical
 solution when the power consumption is roughly in the 1--100 Watts
 range. In the long run, we expect to expand the power range to both
 smaller and higher power levels; for example, there are no technical
@@ -420,7 +420,7 @@ communications, power, and I/O subsystems.  It executes a program
 stored into its flash, converting commands received over the Internet
 into changes into its I/O state and vice versa.  The MCU program is
 primarily responsible for implementing the TCP/IP protocols.  In a
-typical case, it takes also (partial) responsibility on controlling
+typical case, it takes also (partial) responsibility for controlling
 the DC/DC power supplies, thereby reducing the overall cost of the
 system.
 
@@ -431,7 +431,7 @@ isolation magnetics, the physical interface (PHY) and the media access
 control interface (MAC).  The firmware takes care of the actual packet
 processing.
 
-The power supply module consists of an Power-over-Ethernet signalling
+The power supply module consists of a Power-over-Ethernet signalling
 module and a DC/DC power supply module.  The former implements the
 IEEE 802.3af or 802.3at
 Power-over-Ethernet standard, including the physical-layer signalling
@@ -470,7 +470,7 @@ role.  In many cases also opto-isolators or other isolators are needed.
 \subsubsection{Runtime}
 \label{sssec:runtime}
 
-The runtime system forms the bases of any firmware running on the
+The runtime system forms the basis of any firmware running on the
 ELL-i platform.  It consists of a software library that
 is linked into any specific firmware build by an application
 developer.  The runtime provides a number of APIs and services that make
@@ -578,7 +578,7 @@ old timers, plain \hbox{\tt emacs} and \hbox{\tt make}.  At this
 writing only the Arduino IDE is formally supported, even though some
 of the early adopters do use command-line tools.  The aim is to make
 it {\it easy} to move from the Arduino IDE to the more advanced
-programming environments, with clear instructions how to convert
+programming environments, with clear instructions on how to convert
 Arduino sketches into proper C++ source files.  This also requires
 clear explanations of what is happening under the hood in the runtime.
 
@@ -859,7 +859,7 @@ our own runtime.  Looking at the various open source RTOS options
 available, they typically include more than what we need and with a
 license that is not fully compatible with our planned business model;
 see below.  The cloud-side components will be based on the lowest
-common platform-as-a-service (PAAS) denominator, which at the moment
+common platform-as-a-service (PAAS) denominator, which at the moment is
 AWS APIs, also supported by
 e.g. the AppScale~\cite{chohan2010appscale} open source framework.
 
@@ -890,7 +890,7 @@ typical voltage drop over a high-power LED is around 3V.  Hence, for driving a
 LED from a voltage source that is higher than the voltage drop of the
 LED it is enough to limit the amount of current.  For indicator LEDs
 the current is usually limited with a suitable series resistor;
-however, such an arrangement would be very inefficient for driving an
+however, such an arrangement would be very inefficient for driving a
 high-power LED out of the PoE nominal 48V.  Fortunately, a buck
 converter, the simplest of the so-called
 switching mode power supply (SMPS)~\cite{maniktala2012switching} topologies, 
@@ -932,7 +932,7 @@ including DALI~\cite{manual2001digital} and DMX~\cite{bennette1994recommended}.
 
 Another area where the ELL-i platform may bring benefits is building
 and industrial automation.  In the building automation area, there are
-already a number of Power-over-Ethernet products at the market,
+already a number of Power-over-Ethernet products on the market,
 including locks and other security and safety equipment.  However, to
 a large extent the existing automation systems are still based on
 standards, such as BACnet~\cite{bushby1997bacnet}, KNX~\cite{knx2011knx},
@@ -983,7 +983,7 @@ needed.
 The ELL-i platform has been designed to be not only easy to use but
 also easy to understand.  The hardware represents a complete design
 with an MCU, Ethernet-based communications, and a DC/DC PSU.  The
-chosen MCU is a relatively simple but still powerful one, from a
+chosen MCU is a relatively simple but still a powerful one, from a
 family that is commonly used in open source projects.  The CPU core
 within the MCU is a modern 32-bit RISC architecture with simple
 3-stage pipelining and no instruction reordering, being easy to teach
@@ -1072,7 +1072,7 @@ knowledge of how the DC/DC power supplies actually work.
 \label{sec:business}
 
 In this section, we briefly look at the ELL-i business model, which somewhat
-deviates from most typical business models, being closer to to the Linux kernel
+deviates from most typical business models, being closer to the Linux kernel
 community~\cite{hertel2003motivation, lee2003firm}.
 
 As stated, the goal of the ELL-i project include providing an
@@ -1144,7 +1144,7 @@ into a DC voltage suitable for various kinds of loads.  Hence, from
 the ELL-i point of view, a major challenge is to find the people that
 are already struggling with the appliance powering problem and
 demonstrate the viability of the ELL-i solution.  That in turn
-requires both much more visibility than what ELL-i enjoys today and a
+requires much more visibility than what ELL-i enjoys today and a
 number of additional power supply designs, making it easier to have
 suitable power tailored for each load.
 
@@ -1161,7 +1161,7 @@ the project.
 What comes to the powering of appliances, we basically need to learn
 ourselves -- within the core group -- to build a more diverse set of
 power supplies.  We also need to make the resulting knowledge
-available in an form that is easier for relative newcomers to apply
+available in a form that is easier for relative newcomers to apply
 than the currently available information, initially as recipes and
 later on as ready-applicable DC/DC converter units.  The basic ELL-i
 recipe for providing adjustable constant-current power is already
@@ -1336,7 +1336,7 @@ essentially free-of-charge to the developer community, allowing
 individual developers to innovate and fulfil their personal needs.  At
 the same time, it offers the platform for commercial companies for a
 fee.  At the same time it attempts to form a joint community
-of both individual developers and products companies, creating a
+of both individual developers and product companies, creating a
 larger two-sided market where the sides are the hardware component
 manufacturers and the product users.  From that point of view, ELL-i
 benefits the component suppliers through larger volumes, the product
@@ -1414,8 +1414,8 @@ at a very reasonable price point.  If ELL-i ever reaches
 mass-production quantities, it will provide an electronics module that
 allows almost any wired electrical device to be converted into its
 ``smart'' equivalent at the additional production cost of just a
-couple Euro.  Consequently, as even a typical light switch or toaster
-is priced at a level close to or exceeding ten Euro, that may
+couple of euro.  Consequently, as even a typical light switch or toaster
+is priced at a level close to or exceeding ten euro, that may
 gradually enable complete ``smartification'' of our urban
 environment. 
 
